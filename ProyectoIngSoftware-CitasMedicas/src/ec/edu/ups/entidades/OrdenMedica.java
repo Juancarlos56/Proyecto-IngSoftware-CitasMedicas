@@ -23,6 +23,7 @@ public class OrdenMedica implements Serializable {
 	private Paciente paciente;
 	private Date fecha;
 	
+	
 	@ManyToOne
 	@JoinColumn(name = "FK_OrdenMedica_Consulta")
 	private Paciente ordenesMedicasDeUnaConsulta;
