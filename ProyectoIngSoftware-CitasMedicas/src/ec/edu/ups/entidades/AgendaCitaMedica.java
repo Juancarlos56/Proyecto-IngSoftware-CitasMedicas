@@ -15,8 +15,11 @@ public class AgendaCitaMedica implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAgenda;
+	
 	private Paciente paciente;
 	private Medico medico;
 	private GregorianCalendar fechaActual;
@@ -24,7 +27,10 @@ public class AgendaCitaMedica implements Serializable {
 	private String tipoCita;
 	private String estado;
 	private float precio;
-	private Secretaria secretaria;
+	@Column
+	private Secretaria secretariaAgendaCita;
+	
+	
 	public AgendaCitaMedica() {
 		super();
 	}
@@ -77,10 +83,10 @@ public class AgendaCitaMedica implements Serializable {
 		this.precio = precio;
 	}
 	public Secretaria getSecretaria() {
-		return secretaria;
+		return secretariaAgendaCita;
 	}
 	public void setSecretaria(Secretaria secretaria) {
-		this.secretaria = secretaria;
+		this.secretariaAgendaCita = secretaria;
 	}
 	@Override
 	public int hashCode() {

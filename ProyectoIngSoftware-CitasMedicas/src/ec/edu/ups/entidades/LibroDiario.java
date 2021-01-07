@@ -19,7 +19,7 @@ public class LibroDiario implements Serializable {
 	private int id;
 	private float total;	
 	private GregorianCalendar fecha;
-	private Secretaria responsable;
+	private Secretaria responsableLibroDiario;
 	
 	public LibroDiario() {
 		super();

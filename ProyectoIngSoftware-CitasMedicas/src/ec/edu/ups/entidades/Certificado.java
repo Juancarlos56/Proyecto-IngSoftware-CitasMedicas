@@ -21,7 +21,6 @@ public class Certificado implements Serializable {
 	private int numDiaresp;
 	private String descripcion;
 	
-	
 
 	public int getIdCertificado() {
 		return idCertificado;
