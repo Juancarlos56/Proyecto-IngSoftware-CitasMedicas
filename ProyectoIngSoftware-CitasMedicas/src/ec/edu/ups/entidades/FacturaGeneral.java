@@ -78,6 +78,23 @@ public abstract class FacturaGeneral<T> implements Serializable{
 		this.tipoFactura = tipoFactura;
 	}
 
+	
+	
+
+	public FacturaGeneral(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura) {
+		super();
+		this.idFactura = idFactura;
+		this.fecha = fecha;
+		this.descripcion = descripcion;
+		this.tipoTransaccion = tipoTransaccion;
+		this.estado = estado;
+		Subtotal = subtotal;
+		this.iva = iva;
+		this.total = total;
+		this.tipoFactura = tipoFactura;
+	}
+
 
 	/**
 	 * Metodo para calcular el subtotal de una factura

@@ -20,23 +20,23 @@ public class CajaDiaria implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "caj_id")
+	@Column(name = "codigoCajaDiaria")
     private int codigoCajaDiaria;
 	
-	@Column(name = "caj_dineroSalario")
+	@Column(name = "totalDineroSalarioCajaDiaria")
     private int totalDineroSalarioCajaDiaria;
 	
 	
-	@Column(name = "caj_dineroActivo")
+	@Column(name = "totalDineroActivoCajaDiaria")
     private int totalDineroActivoCajaDiaria;
 	
-	@Column(name = "caj_dineroDeuda")
+	@Column(name = "totalDineroDeudaCajaDiaria")
     private int totalDineroDeudaCajaDiaria;
 	
-	@Column(name = "caj_dineroPatrimonio")
+	@Column(name = "totalDineroPatrimonioCajaDiaria")
     private int totalDineroPatrimonioCajaDiaria;
 	
-	@Column(name = "caj_fecha")
+	@Column(name = "fechaCajaDiaria")
 	private GregorianCalendar fechaCajaDiaria;
 	
 	/*Relacion de mucho a uno con la entidad LibroDiario, mapeado por libroDiario */
@@ -50,6 +50,21 @@ public class CajaDiaria implements Serializable {
 
 	
 	
+	public CajaDiaria(int codigoCajaDiaria, int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria,
+			int totalDineroDeudaCajaDiaria, int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria,
+			List<LibroDiario> registroLibroDiario) {
+		super();
+		this.codigoCajaDiaria = codigoCajaDiaria;
+		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
+		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
+		this.totalDineroDeudaCajaDiaria = totalDineroDeudaCajaDiaria;
+		this.totalDineroPatrimonioCajaDiaria = totalDineroPatrimonioCajaDiaria;
+		this.fechaCajaDiaria = fechaCajaDiaria;
+		this.registroLibroDiario = registroLibroDiario;
+	}
+
+
+	//Constructor sin codigo por autogeneracion
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
 			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria) {
 		super();

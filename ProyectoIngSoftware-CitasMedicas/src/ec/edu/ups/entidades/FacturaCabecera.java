@@ -34,6 +34,13 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
 	
 	}
+	
+	public FacturaCabecera(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura) {
+		
+		super(idFactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
+	
+	}
 
 
 

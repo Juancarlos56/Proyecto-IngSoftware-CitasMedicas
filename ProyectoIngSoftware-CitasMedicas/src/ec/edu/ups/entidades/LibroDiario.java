@@ -21,13 +21,13 @@ public class LibroDiario implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "libroId")
-	private int id;
+	private int libroId;
 	
 	@Column(name = "totalLibroDiario")
-	private float total;	
+	private float totalLibroDiario;	
 	
 	@Column(name = "fechaLibroDiario")
-	private GregorianCalendar fecha;
+	private GregorianCalendar fechaLibroDiario;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_libroDiario_CajaDiaria")
@@ -42,82 +42,76 @@ public class LibroDiario implements Serializable {
 		super();
 	}
 
-	
-
-	public LibroDiario(int id, float total, GregorianCalendar fecha, CajaDiaria libroDiarioDeCajaDiaria,
-			Secretaria responsable) {
+	public LibroDiario(int libroId, float totalLibroDiario, GregorianCalendar fechaLibroDiario,
+			CajaDiaria libroDiarioDeCajaDiaria, Secretaria responsable) {
 		super();
-		this.id = id;
-		this.total = total;
-		this.fecha = fecha;
+		this.libroId = libroId;
+		this.totalLibroDiario = totalLibroDiario;
+		this.fechaLibroDiario = fechaLibroDiario;
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
 		this.responsable = responsable;
 	}
 
-
-
-	public int getId() {
-		return id;
+	//Contructor sin codigo por autogeneracion
+	public LibroDiario(float totalLibroDiario, GregorianCalendar fechaLibroDiario, CajaDiaria libroDiarioDeCajaDiaria,
+			Secretaria responsable) {
+		super();
+		this.totalLibroDiario = totalLibroDiario;
+		this.fechaLibroDiario = fechaLibroDiario;
+		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
+		this.responsable = responsable;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public int getLibroId() {
+		return libroId;
 	}
 
-	public float getTotal() {
-		return total;
+	public void setLibroId(int libroId) {
+		this.libroId = libroId;
 	}
 
-	public void setTotal(float total) {
-		this.total = total;
+	public float getTotalLibroDiario() {
+		return totalLibroDiario;
 	}
 
-	public GregorianCalendar getFecha() {
-		return fecha;
+	public void setTotalLibroDiario(float totalLibroDiario) {
+		this.totalLibroDiario = totalLibroDiario;
 	}
 
-	public void setFecha(GregorianCalendar fecha) {
-		this.fecha = fecha;
+	public GregorianCalendar getFechaLibroDiario() {
+		return fechaLibroDiario;
 	}
 
-
+	public void setFechaLibroDiario(GregorianCalendar fechaLibroDiario) {
+		this.fechaLibroDiario = fechaLibroDiario;
+	}
 
 	public CajaDiaria getLibroDiarioDeCajaDiaria() {
 		return libroDiarioDeCajaDiaria;
 	}
 
-
-
 	public void setLibroDiarioDeCajaDiaria(CajaDiaria libroDiarioDeCajaDiaria) {
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
 	}
-
-
 
 	public Secretaria getResponsable() {
 		return responsable;
 	}
 
-
-
 	public void setResponsable(Secretaria responsable) {
 		this.responsable = responsable;
 	}
-
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((fechaLibroDiario == null) ? 0 : fechaLibroDiario.hashCode());
 		result = prime * result + ((libroDiarioDeCajaDiaria == null) ? 0 : libroDiarioDeCajaDiaria.hashCode());
-		result = prime * result + Float.floatToIntBits(total);
+		result = prime * result + libroId;
+		result = prime * result + Float.floatToIntBits(totalLibroDiario);
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,31 +122,28 @@ public class LibroDiario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		LibroDiario other = (LibroDiario) obj;
-		if (fecha == null) {
-			if (other.fecha != null)
+		if (fechaLibroDiario == null) {
+			if (other.fechaLibroDiario != null)
 				return false;
-		} else if (!fecha.equals(other.fecha))
-			return false;
-		if (id != other.id)
+		} else if (!fechaLibroDiario.equals(other.fechaLibroDiario))
 			return false;
 		if (libroDiarioDeCajaDiaria == null) {
 			if (other.libroDiarioDeCajaDiaria != null)
 				return false;
 		} else if (!libroDiarioDeCajaDiaria.equals(other.libroDiarioDeCajaDiaria))
 			return false;
-		if (Float.floatToIntBits(total) != Float.floatToIntBits(other.total))
+		if (libroId != other.libroId)
+			return false;
+		if (Float.floatToIntBits(totalLibroDiario) != Float.floatToIntBits(other.totalLibroDiario))
 			return false;
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "LibroDiario [id=" + id + ", total=" + total + ", fecha=" + fecha + ", libroDiarioDeCajaDiaria="
-				+ libroDiarioDeCajaDiaria + "]";
+		return "LibroDiario [libroId=" + libroId + ", totalLibroDiario=" + totalLibroDiario + ", fechaLibroDiario="
+				+ fechaLibroDiario + ", libroDiarioDeCajaDiaria=" + libroDiarioDeCajaDiaria + "]";
 	}
 
-	
-   
+
 }

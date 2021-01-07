@@ -37,6 +37,14 @@ public class Paciente implements Serializable {
 	public Paciente() {
 		super();
 	}
+	
+	public Paciente(int idPaciente, String tipoSangre) {
+		super();
+		this.idPaciente = idPaciente;
+		this.tipoSangre = tipoSangre;
+	}
+
+	
 
 	public int getIdPaciente() {
 		return idPaciente;

@@ -36,13 +36,13 @@ public class AgendaCitaMedica implements Serializable {
 	@Column(name = "precioDeAgendaCitaMedica")
 	private float precioDeAgendaCitaMedica;
 	
-	//@ManyToOne
-	//@JoinColumn(name = "FK_Secretaria")
-	//private Secretaria secretaria;
+	@ManyToOne
+	@JoinColumn(name = "FK_Secretaria")
+	private Secretaria secretaria;
 	
-	//@ManyToOne
-	//@JoinColumn(name = "FK_Medico")
-	//private Medico medico;
+	@ManyToOne
+	@JoinColumn(name = "FK_Medico")
+	private Medico medico;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_Paciente")
@@ -58,6 +58,44 @@ public class AgendaCitaMedica implements Serializable {
 	
 	
 	
+	public AgendaCitaMedica(int idAgendaCitaMedica, GregorianCalendar fechaActualDeAgendaCitaMedica,
+			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
+			Paciente pacienteCitaMedica) {
+		super();
+		this.idAgendaCitaMedica = idAgendaCitaMedica;
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+		this.secretaria = secretaria;
+		this.medico = medico;
+		this.pacienteCitaMedica = pacienteCitaMedica;
+	}
+
+
+	
+
+	//Contructor sin ID por autogeneracion del codigo 
+	public AgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica,
+			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
+			Paciente pacienteCitaMedica) {
+		super();
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+		this.secretaria = secretaria;
+		this.medico = medico;
+		this.pacienteCitaMedica = pacienteCitaMedica;
+	}
+
+
+
+
 	public int getIdAgendaCitaMedica() {
 		return idAgendaCitaMedica;
 	}
@@ -106,7 +144,7 @@ public class AgendaCitaMedica implements Serializable {
 		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
 	}
 
-	/*
+	
 	public Secretaria getSecretaria() {
 		return secretaria;
 	}
@@ -122,7 +160,7 @@ public class AgendaCitaMedica implements Serializable {
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-*/
+
 	public Paciente getPacienteCitaMedica() {
 		return pacienteCitaMedica;
 	}
@@ -130,6 +168,9 @@ public class AgendaCitaMedica implements Serializable {
 	public void setPacienteCitaMedica(Paciente paciente) {
 		this.pacienteCitaMedica = paciente;
 	}
+
+
+
 
 	@Override
 	public int hashCode() {
@@ -146,6 +187,9 @@ public class AgendaCitaMedica implements Serializable {
 		result = prime * result + ((tipoCitaDeAgendaCitaMedica == null) ? 0 : tipoCitaDeAgendaCitaMedica.hashCode());
 		return result;
 	}
+
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -188,16 +232,18 @@ public class AgendaCitaMedica implements Serializable {
 		return true;
 	}
 
+
+
+
 	@Override
 	public String toString() {
 		return "AgendaCitaMedica [idAgendaCitaMedica=" + idAgendaCitaMedica + ", fechaActualDeAgendaCitaMedica="
 				+ fechaActualDeAgendaCitaMedica + ", fechaReservaDeAgendaCitaMedica=" + fechaReservaDeAgendaCitaMedica
 				+ ", tipoCitaDeAgendaCitaMedica=" + tipoCitaDeAgendaCitaMedica + ", estadoDeAgendaCitaMedica="
-				+ estadoDeAgendaCitaMedica + ", precioDeAgendaCitaMedica=" + precioDeAgendaCitaMedica + ", paciente="
-				+ pacienteCitaMedica + "]";
+				+ estadoDeAgendaCitaMedica + ", precioDeAgendaCitaMedica=" + precioDeAgendaCitaMedica
+				+ ", pacienteCitaMedica=" + pacienteCitaMedica + "]";
 	}
-	
-	
+
 	
 	
    

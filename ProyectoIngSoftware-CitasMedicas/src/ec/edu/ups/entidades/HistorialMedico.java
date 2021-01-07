@@ -68,7 +68,7 @@ public class HistorialMedico implements Serializable {
 	}
 
 	
-
+	//Contructor sin codigo por autogeneracion
 	public HistorialMedico(String anamnesis, String examenFisico, String examenSemiologico,
 			String diagnosticoPresuntivo, String metodosComplementarios, String evolucionDiaria, String epicrisis,
 			Date fecha, String medicacionActual, String enfermedadesActuales, float peso, float iMC,
@@ -88,6 +88,33 @@ public class HistorialMedico implements Serializable {
 		IMC = iMC;
 		this.historialDelPaciente = historialDelPaciente;
 	}
+	
+	
+	
+	
+
+	public HistorialMedico(int idHistorial, String anamnesis, String examenFisico, String examenSemiologico,
+			String diagnosticoPresuntivo, String metodosComplementarios, String evolucionDiaria, String epicrisis,
+			Date fecha, String medicacionActual, String enfermedadesActuales, float peso, float iMC,
+			Paciente historialDelPaciente) {
+		super();
+		this.idHistorial = idHistorial;
+		this.anamnesis = anamnesis;
+		this.examenFisico = examenFisico;
+		this.examenSemiologico = examenSemiologico;
+		this.diagnosticoPresuntivo = diagnosticoPresuntivo;
+		this.metodosComplementarios = metodosComplementarios;
+		this.evolucionDiaria = evolucionDiaria;
+		this.epicrisis = epicrisis;
+		this.fecha = fecha;
+		this.medicacionActual = medicacionActual;
+		this.enfermedadesActuales = enfermedadesActuales;
+		this.peso = peso;
+		IMC = iMC;
+		this.historialDelPaciente = historialDelPaciente;
+	}
+
+
 
 	public int getIdHistorial() {
 		return idHistorial;

@@ -40,11 +40,26 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 		
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
+		
 		this.totalPagoMedicoFacturaSalario = totalPagoMedicoFacturaSalario;
 		this.comisionEmpresaFacturaSalario = comisionEmpresaFacturaSalario;
 		this.facturasSalarioDeMedico = facturasSalarioDeMedico;
 	}
-
+	
+	public FacturaSalario(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			double totalPagoMedicoFacturaSalario, double comisionEmpresaFacturaSalario, 
+			Medico facturasSalarioDeMedico) {
+		
+		
+		super(idFactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
+		
+		this.totalPagoMedicoFacturaSalario = totalPagoMedicoFacturaSalario;
+		this.comisionEmpresaFacturaSalario = comisionEmpresaFacturaSalario;
+		this.facturasSalarioDeMedico = facturasSalarioDeMedico;
+	}
+	
+	
 	public double calcularSubtotal() {
 		return super.calcularSubtotal();
 	}
