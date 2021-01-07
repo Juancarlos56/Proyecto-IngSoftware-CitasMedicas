@@ -1,7 +1,9 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -18,29 +20,29 @@ public class CajaDiaria implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "caj_id")
+	@Column(name = "codigoCajaDiaria")
     private int codigoCajaDiaria;
 	
-	@Column(name = "caj_dineroSalario")
+	@Column(name = "totalDineroSalarioCajaDiaria")
     private int totalDineroSalarioCajaDiaria;
 	
 	
-	@Column(name = "caj_dineroActivo")
+	@Column(name = "totalDineroActivoCajaDiaria")
     private int totalDineroActivoCajaDiaria;
 	
-	@Column(name = "caj_dineroDeuda")
+	@Column(name = "totalDineroDeudaCajaDiaria")
     private int totalDineroDeudaCajaDiaria;
 	
-	@Column(name = "caj_dineroPatrimonio")
+	@Column(name = "totalDineroPatrimonioCajaDiaria")
     private int totalDineroPatrimonioCajaDiaria;
 	
-	@Column(name = "caj_fecha")
+	@Column(name = "fechaCajaDiaria")
 	private GregorianCalendar fechaCajaDiaria;
 	
-	/*Relacion de mucho a uno con la entidad LibroDiario, atributo registroCajasDiarias */
-    @ManyToOne
-	@JoinColumn
-	private LibroDiario registroCajasDiarias;    
+	/*Relacion de mucho a uno con la entidad LibroDiario, mapeado por libroDiario */
+   
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "libroDiarioDeCajaDiaria")
+    private List<LibroDiario> registroLibroDiario=new ArrayList<LibroDiario>();
     
 	public CajaDiaria() {
 		super();
@@ -48,15 +50,29 @@ public class CajaDiaria implements Serializable {
 
 	
 	
+	public CajaDiaria(int codigoCajaDiaria, int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria,
+			int totalDineroDeudaCajaDiaria, int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria,
+			List<LibroDiario> registroLibroDiario) {
+		super();
+		this.codigoCajaDiaria = codigoCajaDiaria;
+		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
+		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
+		this.totalDineroDeudaCajaDiaria = totalDineroDeudaCajaDiaria;
+		this.totalDineroPatrimonioCajaDiaria = totalDineroPatrimonioCajaDiaria;
+		this.fechaCajaDiaria = fechaCajaDiaria;
+		this.registroLibroDiario = registroLibroDiario;
+	}
+
+
+	//Constructor sin codigo por autogeneracion
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
-			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria, LibroDiario registroCajasDiarias) {
+			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria) {
 		super();
 		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
 		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
 		this.totalDineroDeudaCajaDiaria = totalDineroDeudaCajaDiaria;
 		this.totalDineroPatrimonioCajaDiaria = totalDineroPatrimonioCajaDiaria;
 		this.fechaCajaDiaria = fechaCajaDiaria;
-		this.registroCajasDiarias = registroCajasDiarias;
 	}
 
 
@@ -168,21 +184,21 @@ public class CajaDiaria implements Serializable {
 		this.fechaCajaDiaria = fechaCajaDiaria;
 	}
 
-
-
-	public LibroDiario getRegistroCajasDiarias() {
-		return registroCajasDiarias;
+	public List<LibroDiario> getRegistroLibroDiario() {
+		return registroLibroDiario;
 	}
 
 
 
-	public void setRegistroCajasDiarias(LibroDiario registroCajasDiarias) {
-		this.registroCajasDiarias = registroCajasDiarias;
+	public void setRegistroLibroDiario(List<LibroDiario> registroLibroDiario) {
+		this.registroLibroDiario = registroLibroDiario;
 	}
 
-	/**
-	 * Metodos Hashcode and equals
-	 */
+	
+	public void agregarLibroDiario(LibroDiario libroDiario) {
+		this.registroLibroDiario.add(libroDiario);
+	}
+
 
 
 	@Override
@@ -191,6 +207,7 @@ public class CajaDiaria implements Serializable {
 		int result = 1;
 		result = prime * result + codigoCajaDiaria;
 		result = prime * result + ((fechaCajaDiaria == null) ? 0 : fechaCajaDiaria.hashCode());
+		result = prime * result + ((registroLibroDiario == null) ? 0 : registroLibroDiario.hashCode());
 		result = prime * result + totalDineroActivoCajaDiaria;
 		result = prime * result + totalDineroDeudaCajaDiaria;
 		result = prime * result + totalDineroPatrimonioCajaDiaria;
@@ -216,6 +233,11 @@ public class CajaDiaria implements Serializable {
 				return false;
 		} else if (!fechaCajaDiaria.equals(other.fechaCajaDiaria))
 			return false;
+		if (registroLibroDiario == null) {
+			if (other.registroLibroDiario != null)
+				return false;
+		} else if (!registroLibroDiario.equals(other.registroLibroDiario))
+			return false;
 		if (totalDineroActivoCajaDiaria != other.totalDineroActivoCajaDiaria)
 			return false;
 		if (totalDineroDeudaCajaDiaria != other.totalDineroDeudaCajaDiaria)
@@ -234,14 +256,10 @@ public class CajaDiaria implements Serializable {
 		return "CajaDiaria [codigoCajaDiaria=" + codigoCajaDiaria + ", totalDineroSalarioCajaDiaria="
 				+ totalDineroSalarioCajaDiaria + ", totalDineroActivoCajaDiaria=" + totalDineroActivoCajaDiaria
 				+ ", totalDineroDeudaCajaDiaria=" + totalDineroDeudaCajaDiaria + ", totalDineroPatrimonioCajaDiaria="
-				+ totalDineroPatrimonioCajaDiaria + ", fechaCajaDiaria=" + fechaCajaDiaria + "]";
+				+ totalDineroPatrimonioCajaDiaria + ", fechaCajaDiaria=" + fechaCajaDiaria + ", registroLibroDiario="
+				+ registroLibroDiario + "]";
 	}
-	
-	
-	/**
-	 * Metodo ToString devuelve una cadena con los atributos de la clase
-	 */
-	
+
 
 	
 }

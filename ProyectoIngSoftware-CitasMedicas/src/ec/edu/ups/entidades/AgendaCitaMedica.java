@@ -18,88 +18,179 @@ public class AgendaCitaMedica implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idAgenda;
+	@Column(name = "idAgendaCitaMedica")
+	private int idAgendaCitaMedica;
 	
-	private Paciente paciente;
+	@Column(name = "fechaActualDeAgendaCitaMedica")
+	private GregorianCalendar fechaActualDeAgendaCitaMedica;
+	
+	@Column(name = "fechaReservaDeAgendaCitaMedica")
+	private GregorianCalendar fechaReservaDeAgendaCitaMedica;
+	
+	@Column(name = "tipoCitaDeAgendaCitaMedica")
+	private String tipoCitaDeAgendaCitaMedica;
+	
+	@Column(name = "estadoDeAgendaCitaMedica")
+	private String estadoDeAgendaCitaMedica;
+	
+	@Column(name = "precioDeAgendaCitaMedica")
+	private float precioDeAgendaCitaMedica;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_Secretaria")
+	private Secretaria secretaria;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_Medico")
 	private Medico medico;
-	private GregorianCalendar fechaActual;
-	private GregorianCalendar fechaReserva;
-	private String tipoCita;
-	private String estado;
-	private float precio;
-	@Column
-	private Secretaria secretariaAgendaCita;
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_Paciente")
+	private Paciente pacienteCitaMedica;
+	
+	
 	
 	
 	public AgendaCitaMedica() {
 		super();
 	}
-	public int getIdAgenda() {
-		return idAgenda;
+
+	
+	
+	
+	public AgendaCitaMedica(int idAgendaCitaMedica, GregorianCalendar fechaActualDeAgendaCitaMedica,
+			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
+			Paciente pacienteCitaMedica) {
+		super();
+		this.idAgendaCitaMedica = idAgendaCitaMedica;
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+		this.secretaria = secretaria;
+		this.medico = medico;
+		this.pacienteCitaMedica = pacienteCitaMedica;
 	}
-	public void setIdAgenda(int idAgenda) {
-		this.idAgenda = idAgenda;
+
+
+	
+
+	//Contructor sin ID por autogeneracion del codigo 
+	public AgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica,
+			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
+			Paciente pacienteCitaMedica) {
+		super();
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+		this.secretaria = secretaria;
+		this.medico = medico;
+		this.pacienteCitaMedica = pacienteCitaMedica;
 	}
-	public Paciente getPaciente() {
-		return paciente;
+
+
+
+
+	public int getIdAgendaCitaMedica() {
+		return idAgendaCitaMedica;
 	}
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+
+	public void setIdAgendaCitaMedica(int idAgendaCitaMedica) {
+		this.idAgendaCitaMedica = idAgendaCitaMedica;
 	}
+
+	public GregorianCalendar getFechaActualDeAgendaCitaMedica() {
+		return fechaActualDeAgendaCitaMedica;
+	}
+
+	public void setFechaActualDeAgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica) {
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+	}
+
+	public GregorianCalendar getFechaReservaDeAgendaCitaMedica() {
+		return fechaReservaDeAgendaCitaMedica;
+	}
+
+	public void setFechaReservaDeAgendaCitaMedica(GregorianCalendar fechaReservaDeAgendaCitaMedica) {
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+	}
+
+	public String getTipoCitaDeAgendaCitaMedica() {
+		return tipoCitaDeAgendaCitaMedica;
+	}
+
+	public void setTipoCitaDeAgendaCitaMedica(String tipoCitaDeAgendaCitaMedica) {
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+	}
+
+	public String getEstadoDeAgendaCitaMedica() {
+		return estadoDeAgendaCitaMedica;
+	}
+
+	public void setEstadoDeAgendaCitaMedica(String estadoDeAgendaCitaMedica) {
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+	}
+
+	public float getPrecioDeAgendaCitaMedica() {
+		return precioDeAgendaCitaMedica;
+	}
+
+	public void setPrecioDeAgendaCitaMedica(float precioDeAgendaCitaMedica) {
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+	}
+
+	
+	public Secretaria getSecretaria() {
+		return secretaria;
+	}
+
+	public void setSecretaria(Secretaria secretaria) {
+		this.secretaria = secretaria;
+	}
+
 	public Medico getMedico() {
 		return medico;
 	}
+
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
-	public GregorianCalendar getFechaActual() {
-		return fechaActual;
+
+	public Paciente getPacienteCitaMedica() {
+		return pacienteCitaMedica;
 	}
-	public void setFechaActual(GregorianCalendar fechaActual) {
-		this.fechaActual = fechaActual;
+
+	public void setPacienteCitaMedica(Paciente paciente) {
+		this.pacienteCitaMedica = paciente;
 	}
-	public GregorianCalendar getFechaReserva() {
-		return fechaReserva;
-	}
-	public void setFechaReserva(GregorianCalendar fechaReserva) {
-		this.fechaReserva = fechaReserva;
-	}
-	public String getTipoCita() {
-		return tipoCita;
-	}
-	public void setTipoCita(String tipoCita) {
-		this.tipoCita = tipoCita;
-	}
-	public String getEstado() {
-		return estado;
-	}
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
-	public float getPrecio() {
-		return precio;
-	}
-	public void setPrecio(float precio) {
-		this.precio = precio;
-	}
-	public Secretaria getSecretaria() {
-		return secretariaAgendaCita;
-	}
-	public void setSecretaria(Secretaria secretaria) {
-		this.secretariaAgendaCita = secretaria;
-	}
+
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result + ((fechaActual == null) ? 0 : fechaActual.hashCode());
-		result = prime * result + ((fechaReserva == null) ? 0 : fechaReserva.hashCode());
-		result = prime * result + idAgenda;
-		result = prime * result + Float.floatToIntBits(precio);
-		result = prime * result + ((tipoCita == null) ? 0 : tipoCita.hashCode());
+		result = prime * result + ((estadoDeAgendaCitaMedica == null) ? 0 : estadoDeAgendaCitaMedica.hashCode());
+		result = prime * result
+				+ ((fechaActualDeAgendaCitaMedica == null) ? 0 : fechaActualDeAgendaCitaMedica.hashCode());
+		result = prime * result
+				+ ((fechaReservaDeAgendaCitaMedica == null) ? 0 : fechaReservaDeAgendaCitaMedica.hashCode());
+		result = prime * result + idAgendaCitaMedica;
+		result = prime * result + ((pacienteCitaMedica == null) ? 0 : pacienteCitaMedica.hashCode());
+		result = prime * result + Float.floatToIntBits(precioDeAgendaCitaMedica);
+		result = prime * result + ((tipoCitaDeAgendaCitaMedica == null) ? 0 : tipoCitaDeAgendaCitaMedica.hashCode());
 		return result;
 	}
+
+
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,36 +200,51 @@ public class AgendaCitaMedica implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		AgendaCitaMedica other = (AgendaCitaMedica) obj;
-		if (estado == null) {
-			if (other.estado != null)
+		if (estadoDeAgendaCitaMedica == null) {
+			if (other.estadoDeAgendaCitaMedica != null)
 				return false;
-		} else if (!estado.equals(other.estado))
+		} else if (!estadoDeAgendaCitaMedica.equals(other.estadoDeAgendaCitaMedica))
 			return false;
-		if (fechaActual == null) {
-			if (other.fechaActual != null)
+		if (fechaActualDeAgendaCitaMedica == null) {
+			if (other.fechaActualDeAgendaCitaMedica != null)
 				return false;
-		} else if (!fechaActual.equals(other.fechaActual))
+		} else if (!fechaActualDeAgendaCitaMedica.equals(other.fechaActualDeAgendaCitaMedica))
 			return false;
-		if (fechaReserva == null) {
-			if (other.fechaReserva != null)
+		if (fechaReservaDeAgendaCitaMedica == null) {
+			if (other.fechaReservaDeAgendaCitaMedica != null)
 				return false;
-		} else if (!fechaReserva.equals(other.fechaReserva))
+		} else if (!fechaReservaDeAgendaCitaMedica.equals(other.fechaReservaDeAgendaCitaMedica))
 			return false;
-		if (idAgenda != other.idAgenda)
+		if (idAgendaCitaMedica != other.idAgendaCitaMedica)
 			return false;
-		if (Float.floatToIntBits(precio) != Float.floatToIntBits(other.precio))
-			return false;
-		if (tipoCita == null) {
-			if (other.tipoCita != null)
+		if (pacienteCitaMedica == null) {
+			if (other.pacienteCitaMedica != null)
 				return false;
-		} else if (!tipoCita.equals(other.tipoCita))
+		} else if (!pacienteCitaMedica.equals(other.pacienteCitaMedica))
+			return false;
+		if (Float.floatToIntBits(precioDeAgendaCitaMedica) != Float.floatToIntBits(other.precioDeAgendaCitaMedica))
+			return false;
+		if (tipoCitaDeAgendaCitaMedica == null) {
+			if (other.tipoCitaDeAgendaCitaMedica != null)
+				return false;
+		} else if (!tipoCitaDeAgendaCitaMedica.equals(other.tipoCitaDeAgendaCitaMedica))
 			return false;
 		return true;
 	}
+
+
+
+
 	@Override
 	public String toString() {
-		return "AgendaCitaMedica [idAgenda=" + idAgenda + ", fechaActual=" + fechaActual + ", fechaReserva="
-				+ fechaReserva + ", tipoCita=" + tipoCita + ", estado=" + estado + ", precio=" + precio + "]";
+		return "AgendaCitaMedica [idAgendaCitaMedica=" + idAgendaCitaMedica + ", fechaActualDeAgendaCitaMedica="
+				+ fechaActualDeAgendaCitaMedica + ", fechaReservaDeAgendaCitaMedica=" + fechaReservaDeAgendaCitaMedica
+				+ ", tipoCitaDeAgendaCitaMedica=" + tipoCitaDeAgendaCitaMedica + ", estadoDeAgendaCitaMedica="
+				+ estadoDeAgendaCitaMedica + ", precioDeAgendaCitaMedica=" + precioDeAgendaCitaMedica
+				+ ", pacienteCitaMedica=" + pacienteCitaMedica + "]";
 	}
+
+	
+	
    
 }

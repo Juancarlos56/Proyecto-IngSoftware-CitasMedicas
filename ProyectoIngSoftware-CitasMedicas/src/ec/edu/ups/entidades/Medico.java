@@ -26,7 +26,7 @@ public class Medico implements Serializable {
 	@Column(name = "med_foto")
 	private String urlFotoMedico;
 	
-	OneToMany(cascade )
+	//OneToMany(cascade )
 
 	public Medico() {
 		super();

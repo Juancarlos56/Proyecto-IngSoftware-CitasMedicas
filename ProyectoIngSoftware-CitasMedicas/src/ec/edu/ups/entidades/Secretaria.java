@@ -35,8 +35,6 @@ public class Secretaria implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "secretariaAgendaCita")
 	private List<AgendaCitaMedica> secretariaAgendaCita = new ArrayList<AgendaCitaMedica>();
 	
-	
-	
 	public Secretaria() {
 		super();
 	}  

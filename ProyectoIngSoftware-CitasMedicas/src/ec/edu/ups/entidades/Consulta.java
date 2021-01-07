@@ -3,6 +3,8 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -17,25 +19,86 @@ public class Consulta implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idConsulta")
 	private int idConsulta;
-	private Paciente paciente;
-	private Medico medico;
-	private Date fechaactual;
-	private String sintomas;
-	private String observaciones;
-	private String medicinas;
+	
+	@Column(name = "fechaActualDeLaConsulta")
+	private GregorianCalendar fechaActualDeLaConsulta;
+	
+	@Column(name = "sintomasDelPaciente", length = 255, nullable = false)
+	private String sintomasDelPaciente;
+	
+	@Column(name = "diagnosticoDeLaConsulta", length = 255, nullable = false)
+	private String diagnosticoDeLaConsulta;
+	
+	@Column(name = "observacionesDeLaConsulta", length = 255, nullable = false)
+	private String observacionesDeLaConsulta;
+	
+	@Column(name = "medicinasRecetadasParaElPaciente", length = 255, nullable = false)
+	private String medicinasParaElPaciente;
+	
+	@Column(name = "dosisRecetadaParaElPaciente", length = 255, nullable = false)
 	private String dosis;
-	private Certificado certificado;
-	private ArrayList<Orden> oredenes;
 	
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_Paciente_Consulta")
+	private Paciente pacienteConsulta;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_Medico_Consulta")
+	private Medico medicoConsulta;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "certificadoDeUnaConsulta")
+	private Certificado certificadoMedicoParaConsulta;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ordenesMedicasDeUnaConsulta")
+	private List<OrdenMedica> ordenesMedicasDeConsulta = new ArrayList<OrdenMedica>();
+	
+	
 	public Consulta() {
 		super();
 	}
 
+	
+	
+	public Consulta(int idConsulta, GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
+			String dosis, Paciente pacienteConsulta, Medico medicoConsulta, Certificado certificadoMedicoParaConsulta,
+			List<OrdenMedica> ordenesMedicasDeConsulta) {
+		super();
+		this.idConsulta = idConsulta;
+		this.fechaActualDeLaConsulta = fechaActualDeLaConsulta;
+		this.sintomasDelPaciente = sintomasDelPaciente;
+		this.diagnosticoDeLaConsulta = diagnosticoDeLaConsulta;
+		this.observacionesDeLaConsulta = observacionesDeLaConsulta;
+		this.medicinasParaElPaciente = medicinasParaElPaciente;
+		this.dosis = dosis;
+		this.pacienteConsulta = pacienteConsulta;
+		this.medicoConsulta = medicoConsulta;
+		this.certificadoMedicoParaConsulta = certificadoMedicoParaConsulta;
+		this.ordenesMedicasDeConsulta = ordenesMedicasDeConsulta;
+	}
 
+
+
+	//Contructor sin codigo por autogeneracion
+	public Consulta(GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
+			String dosis, Paciente pacienteConsulta, Medico medicoConsulta, Certificado certificadoMedicoParaConsulta) {
+		super();
+		
+		this.fechaActualDeLaConsulta = fechaActualDeLaConsulta;
+		this.sintomasDelPaciente = sintomasDelPaciente;
+		this.diagnosticoDeLaConsulta = diagnosticoDeLaConsulta;
+		this.observacionesDeLaConsulta = observacionesDeLaConsulta;
+		this.medicinasParaElPaciente = medicinasParaElPaciente;
+		this.dosis = dosis;
+		this.pacienteConsulta = pacienteConsulta;
+		this.medicoConsulta = medicoConsulta;
+		this.certificadoMedicoParaConsulta = certificadoMedicoParaConsulta;
+	}
 
 
 	public int getIdConsulta() {
@@ -43,97 +106,59 @@ public class Consulta implements Serializable {
 	}
 
 
-
-
 	public void setIdConsulta(int idConsulta) {
 		this.idConsulta = idConsulta;
 	}
 
 
-
-
-	public Paciente getPaciente() {
-		return paciente;
+	public GregorianCalendar getFechaActualDeLaConsulta() {
+		return fechaActualDeLaConsulta;
 	}
 
 
-
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+	public void setFechaActualDeLaConsulta(GregorianCalendar fechaActualDeLaConsulta) {
+		this.fechaActualDeLaConsulta = fechaActualDeLaConsulta;
 	}
 
 
-
-
-	public Medico getMedico() {
-		return medico;
+	public String getSintomasDelPaciente() {
+		return sintomasDelPaciente;
 	}
 
 
-
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+	public void setSintomasDelPaciente(String sintomasDelPaciente) {
+		this.sintomasDelPaciente = sintomasDelPaciente;
 	}
 
 
-
-
-	public Date getFechaactual() {
-		return fechaactual;
+	public String getDiagnosticoDeLaConsulta() {
+		return diagnosticoDeLaConsulta;
 	}
 
 
-
-
-	public void setFechaactual(Date fechaactual) {
-		this.fechaactual = fechaactual;
+	public void setDiagnosticoDeLaConsulta(String diagnosticoDeLaConsulta) {
+		this.diagnosticoDeLaConsulta = diagnosticoDeLaConsulta;
 	}
 
 
-
-
-	public String getSintomas() {
-		return sintomas;
+	public String getObservacionesDeLaConsulta() {
+		return observacionesDeLaConsulta;
 	}
 
 
-
-
-	public void setSintomas(String sintomas) {
-		this.sintomas = sintomas;
+	public void setObservacionesDeLaConsulta(String observacionesDeLaConsulta) {
+		this.observacionesDeLaConsulta = observacionesDeLaConsulta;
 	}
 
 
-
-
-	public String getObservaciones() {
-		return observaciones;
+	public String getMedicinasParaElPaciente() {
+		return medicinasParaElPaciente;
 	}
 
 
-
-
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
+	public void setMedicinasParaElPaciente(String medicinasParaElPaciente) {
+		this.medicinasParaElPaciente = medicinasParaElPaciente;
 	}
-
-
-
-
-	public String getMedicinas() {
-		return medicinas;
-	}
-
-
-
-
-	public void setMedicinas(String medicinas) {
-		this.medicinas = medicinas;
-	}
-
-
 
 
 	public String getDosis() {
@@ -141,44 +166,72 @@ public class Consulta implements Serializable {
 	}
 
 
-
-
 	public void setDosis(String dosis) {
 		this.dosis = dosis;
 	}
 
 
-
-
-	public Certificado getCertificado() {
-		return certificado;
+	public Paciente getPacienteConsulta() {
+		return pacienteConsulta;
 	}
 
 
-
-
-	public void setCertificado(Certificado certificado) {
-		this.certificado = certificado;
+	public void setPacienteConsulta(Paciente pacienteConsulta) {
+		this.pacienteConsulta = pacienteConsulta;
 	}
 
 
+	public Medico getMedicoConsulta() {
+		return medicoConsulta;
+	}
+
+
+	public void setMedicoConsulta(Medico medicoConsulta) {
+		this.medicoConsulta = medicoConsulta;
+	}
+
+
+	public Certificado getCertificadoMedicoParaConsulta() {
+		return certificadoMedicoParaConsulta;
+	}
+
+
+	public void setCertificadoMedicoParaConsulta(Certificado certificadoMedicoParaConsulta) {
+		this.certificadoMedicoParaConsulta = certificadoMedicoParaConsulta;
+	}
+
+
+	public List<OrdenMedica> getOrdenesMedicasDeConsulta() {
+		return ordenesMedicasDeConsulta;
+	}
+
+
+	public void setOrdenesMedicasDeConsulta(List<OrdenMedica> ordenesMedicasDeConsulta) {
+		this.ordenesMedicasDeConsulta = ordenesMedicasDeConsulta;
+	}
+	
+	public void agregarOrdenMedica(OrdenMedica ordenMedica) {
+		this.ordenesMedicasDeConsulta.add(ordenMedica);
+	}
 
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((certificadoMedicoParaConsulta == null) ? 0 : certificadoMedicoParaConsulta.hashCode());
+		result = prime * result + ((diagnosticoDeLaConsulta == null) ? 0 : diagnosticoDeLaConsulta.hashCode());
 		result = prime * result + ((dosis == null) ? 0 : dosis.hashCode());
-		result = prime * result + ((fechaactual == null) ? 0 : fechaactual.hashCode());
+		result = prime * result + ((fechaActualDeLaConsulta == null) ? 0 : fechaActualDeLaConsulta.hashCode());
 		result = prime * result + idConsulta;
-		result = prime * result + ((medicinas == null) ? 0 : medicinas.hashCode());
-		result = prime * result + ((observaciones == null) ? 0 : observaciones.hashCode());
-		result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
-		result = prime * result + ((sintomas == null) ? 0 : sintomas.hashCode());
+		result = prime * result + ((medicinasParaElPaciente == null) ? 0 : medicinasParaElPaciente.hashCode());
+		result = prime * result + ((observacionesDeLaConsulta == null) ? 0 : observacionesDeLaConsulta.hashCode());
+		result = prime * result + ((ordenesMedicasDeConsulta == null) ? 0 : ordenesMedicasDeConsulta.hashCode());
+		result = prime * result + ((pacienteConsulta == null) ? 0 : pacienteConsulta.hashCode());
+		result = prime * result + ((sintomasDelPaciente == null) ? 0 : sintomasDelPaciente.hashCode());
 		return result;
 	}
-
-
 
 
 	@Override
@@ -190,53 +243,67 @@ public class Consulta implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Consulta other = (Consulta) obj;
+		if (certificadoMedicoParaConsulta == null) {
+			if (other.certificadoMedicoParaConsulta != null)
+				return false;
+		} else if (!certificadoMedicoParaConsulta.equals(other.certificadoMedicoParaConsulta))
+			return false;
+		if (diagnosticoDeLaConsulta == null) {
+			if (other.diagnosticoDeLaConsulta != null)
+				return false;
+		} else if (!diagnosticoDeLaConsulta.equals(other.diagnosticoDeLaConsulta))
+			return false;
 		if (dosis == null) {
 			if (other.dosis != null)
 				return false;
 		} else if (!dosis.equals(other.dosis))
 			return false;
-		if (fechaactual == null) {
-			if (other.fechaactual != null)
+		if (fechaActualDeLaConsulta == null) {
+			if (other.fechaActualDeLaConsulta != null)
 				return false;
-		} else if (!fechaactual.equals(other.fechaactual))
+		} else if (!fechaActualDeLaConsulta.equals(other.fechaActualDeLaConsulta))
 			return false;
 		if (idConsulta != other.idConsulta)
 			return false;
-		if (medicinas == null) {
-			if (other.medicinas != null)
+		if (medicinasParaElPaciente == null) {
+			if (other.medicinasParaElPaciente != null)
 				return false;
-		} else if (!medicinas.equals(other.medicinas))
+		} else if (!medicinasParaElPaciente.equals(other.medicinasParaElPaciente))
 			return false;
-		if (observaciones == null) {
-			if (other.observaciones != null)
+		if (observacionesDeLaConsulta == null) {
+			if (other.observacionesDeLaConsulta != null)
 				return false;
-		} else if (!observaciones.equals(other.observaciones))
+		} else if (!observacionesDeLaConsulta.equals(other.observacionesDeLaConsulta))
 			return false;
-		if (paciente == null) {
-			if (other.paciente != null)
+		if (ordenesMedicasDeConsulta == null) {
+			if (other.ordenesMedicasDeConsulta != null)
 				return false;
-		} else if (!paciente.equals(other.paciente))
+		} else if (!ordenesMedicasDeConsulta.equals(other.ordenesMedicasDeConsulta))
 			return false;
-		if (sintomas == null) {
-			if (other.sintomas != null)
+		if (pacienteConsulta == null) {
+			if (other.pacienteConsulta != null)
 				return false;
-		} else if (!sintomas.equals(other.sintomas))
+		} else if (!pacienteConsulta.equals(other.pacienteConsulta))
+			return false;
+		if (sintomasDelPaciente == null) {
+			if (other.sintomasDelPaciente != null)
+				return false;
+		} else if (!sintomasDelPaciente.equals(other.sintomasDelPaciente))
 			return false;
 		return true;
 	}
 
 
-
-
-	public ArrayList<Orden> getOredenes() {
-		return oredenes;
+	@Override
+	public String toString() {
+		return "Consulta [idConsulta=" + idConsulta + ", fechaActualDeLaConsulta=" + fechaActualDeLaConsulta
+				+ ", sintomasDelPaciente=" + sintomasDelPaciente + ", diagnosticoDeLaConsulta="
+				+ diagnosticoDeLaConsulta + ", observacionesDeLaConsulta=" + observacionesDeLaConsulta
+				+ ", medicinasParaElPaciente=" + medicinasParaElPaciente + ", dosis=" + dosis + ", pacienteConsulta="
+				+ pacienteConsulta + ", certificadoMedicoParaConsulta=" + certificadoMedicoParaConsulta
+				+ ", ordenesMedicasDeConsulta=" + ordenesMedicasDeConsulta + "]";
 	}
 
+	
 
-
-
-	public void setOredenes(ArrayList<Orden> oredenes) {
-		this.oredenes = oredenes;
-	}
-   
 }

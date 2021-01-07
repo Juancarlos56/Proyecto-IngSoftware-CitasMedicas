@@ -11,9 +11,9 @@
 		<class>ec.edu.ups.entidades.AgendaCitaMedica</class>
 		<class>ec.edu.ups.entidades.Consulta</class>
 		<class>ec.edu.ups.entidades.Paciente</class>
-		<class>ec.edu.ups.entidades.HistoralMedico</class>
+		<class>ec.edu.ups.entidades.HistorialMedico</class>
 		<class>ec.edu.ups.entidades.Certificado</class>
-		<class>ec.edu.ups.entidades.Orden</class>
+		<class>ec.edu.ups.entidades.OrdenMedica</class>
 		<class>ec.edu.ups.entidades.Secretaria</class>
 		<class>ec.edu.ups.entidades.Medico</class>
 		<properties>

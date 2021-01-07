@@ -16,78 +16,98 @@ public class Certificado implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idCertificado")
 	private int idCertificado;
-	private Date fecha;
-	private int numDiaresp;
-	private String descripcion;
 	
-
-	public int getIdCertificado() {
-		return idCertificado;
-	}
-
-
-
-	public void setIdCertificado(int idCertificado) {
-		this.idCertificado = idCertificado;
-	}
-
-
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-
-
-	public int getNumDiaresp() {
-		return numDiaresp;
-	}
-
-
-
-	public void setNumDiaresp(int numDiaresp) {
-		this.numDiaresp = numDiaresp;
-	}
-
-
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-
+	@Column(name = "fechaEnvioDeCerficado")
+	private Date fechaEnvioDeCerficado;
+	
+	@Column(name = "numeroDiasDeReposoParaPaciente")
+	private int numeroDiasDeReposoParaPaciente;
+	
+	@Column(name = "descripcionParaCertificado")
+	private String descripcionParaCertificado;
+	
+	@OneToOne
+    @JoinColumn(name = "FK_Consulta_Certificado")
+    private Consulta certificadoDeUnaConsulta;
 
 	public Certificado() {
 		super();
 	}
 
+	public Certificado(int idCertificado, Date fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
+		super();
+		this.idCertificado = idCertificado;
+		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
+		this.numeroDiasDeReposoParaPaciente = numeroDiasDeReposoParaPaciente;
+		this.descripcionParaCertificado = descripcionParaCertificado;
+		this.certificadoDeUnaConsulta = certificadoDeUnaConsulta;
+	}
 
+	//Contructor sin codigo por autogeneracion
+	public Certificado(Date fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
+		super();
+		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
+		this.numeroDiasDeReposoParaPaciente = numeroDiasDeReposoParaPaciente;
+		this.descripcionParaCertificado = descripcionParaCertificado;
+		this.certificadoDeUnaConsulta = certificadoDeUnaConsulta;
+	}
+
+	public int getIdCertificado() {
+		return idCertificado;
+	}
+
+	public void setIdCertificado(int idCertificado) {
+		this.idCertificado = idCertificado;
+	}
+
+	public Date getFechaEnvioDeCerficado() {
+		return fechaEnvioDeCerficado;
+	}
+
+	public void setFechaEnvioDeCerficado(Date fechaEnvioDeCerficado) {
+		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
+	}
+
+	public int getNumeroDiasDeReposoParaPaciente() {
+		return numeroDiasDeReposoParaPaciente;
+	}
+
+	public void setNumeroDiasDeReposoParaPaciente(int numeroDiasDeReposoParaPaciente) {
+		this.numeroDiasDeReposoParaPaciente = numeroDiasDeReposoParaPaciente;
+	}
+
+	public String getDescripcionParaCertificado() {
+		return descripcionParaCertificado;
+	}
+
+	public void setDescripcionParaCertificado(String descripcionParaCertificado) {
+		this.descripcionParaCertificado = descripcionParaCertificado;
+	}
+
+	public Consulta getCertificadoDeUnaConsulta() {
+		return certificadoDeUnaConsulta;
+	}
+
+	public void setCertificadoDeUnaConsulta(Consulta certificadoDeUnaConsulta) {
+		this.certificadoDeUnaConsulta = certificadoDeUnaConsulta;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+		result = prime * result + ((certificadoDeUnaConsulta == null) ? 0 : certificadoDeUnaConsulta.hashCode());
+		result = prime * result + ((descripcionParaCertificado == null) ? 0 : descripcionParaCertificado.hashCode());
+		result = prime * result + ((fechaEnvioDeCerficado == null) ? 0 : fechaEnvioDeCerficado.hashCode());
 		result = prime * result + idCertificado;
-		result = prime * result + numDiaresp;
+		result = prime * result + numeroDiasDeReposoParaPaciente;
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -98,29 +118,37 @@ public class Certificado implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Certificado other = (Certificado) obj;
-		if (descripcion == null) {
-			if (other.descripcion != null)
+		if (certificadoDeUnaConsulta == null) {
+			if (other.certificadoDeUnaConsulta != null)
 				return false;
-		} else if (!descripcion.equals(other.descripcion))
+		} else if (!certificadoDeUnaConsulta.equals(other.certificadoDeUnaConsulta))
 			return false;
-		if (fecha == null) {
-			if (other.fecha != null)
+		if (descripcionParaCertificado == null) {
+			if (other.descripcionParaCertificado != null)
 				return false;
-		} else if (!fecha.equals(other.fecha))
+		} else if (!descripcionParaCertificado.equals(other.descripcionParaCertificado))
+			return false;
+		if (fechaEnvioDeCerficado == null) {
+			if (other.fechaEnvioDeCerficado != null)
+				return false;
+		} else if (!fechaEnvioDeCerficado.equals(other.fechaEnvioDeCerficado))
 			return false;
 		if (idCertificado != other.idCertificado)
 			return false;
-		if (numDiaresp != other.numDiaresp)
+		if (numeroDiasDeReposoParaPaciente != other.numeroDiasDeReposoParaPaciente)
 			return false;
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Certificado [idCertificado=" + idCertificado + ", fecha=" + fecha + ", numDiaresp=" + numDiaresp
-				+ ", descripcion=" + descripcion + "]";
+		return "Certificado [idCertificado=" + idCertificado + ", fechaEnvioDeCerficado=" + fechaEnvioDeCerficado
+				+ ", numeroDiasDeReposoParaPaciente=" + numeroDiasDeReposoParaPaciente + ", descripcionParaCertificado="
+				+ descripcionParaCertificado + ", certificadoDeUnaConsulta=" + certificadoDeUnaConsulta + "]";
 	}
+	
+	
+	
+	
    
 }
