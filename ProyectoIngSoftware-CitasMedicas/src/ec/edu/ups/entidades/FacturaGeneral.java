@@ -65,10 +65,9 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @param total
 	 * @param tipoFactura
 	 */
-	public FacturaGeneral(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaGeneral(GregorianCalendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura) {
 		super();
-		this.idFactura = idFactura;
 		this.fecha = fecha;
 		this.descripcion = descripcion;
 		this.tipoTransaccion = tipoTransaccion;

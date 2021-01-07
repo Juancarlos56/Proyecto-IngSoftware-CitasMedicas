@@ -3,6 +3,7 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -17,19 +18,34 @@ public class Consulta implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idConsulta")
 	private int idConsulta;
+	
+	@Column(name = "fechaActualDeLaConsulta")
+	private GregorianCalendar fechaActualDeLaConsulta;
+	
+	@Column(name = "sintomasDelPaciente", length = 255, nullable = false)
+	private String sintomasDelPaciente;
+	
+	@Column(name = "diagnosticoDeLaConsulta", length = 255, nullable = false)
+	private String diagnosticoDeLaConsulta;
+	
+	@Column(name = "observacionesDeLaConsulta", length = 255, nullable = false)
+	private String observacionesDeLaConsulta;
+	
+	@Column(name = "medicinasRecetadasParaElPaciente", length = 255, nullable = false)
+	private String medicinasParaElPaciente;
+	
+	@Column(name = "dosisRecetadaParaElPaciente", length = 255, nullable = false)
+	private String dosis;
+	
+	
+	
 	private Paciente paciente;
 	private Medico medico;
-	private Date fechaactual;
-	private String sintomas;
-	private String observaciones;
-	private String medicinas;
-	private String dosis;
+	private ArrayList<OrdenMedica> oredenes;
 	private Certificado certificado;
-	private ArrayList<Orden> oredenes;
-	
-	
-	
 
 	public Consulta() {
 		super();
@@ -228,14 +244,14 @@ public class Consulta implements Serializable {
 
 
 
-	public ArrayList<Orden> getOredenes() {
+	public ArrayList<OrdenMedica> getOredenes() {
 		return oredenes;
 	}
 
 
 
 
-	public void setOredenes(ArrayList<Orden> oredenes) {
+	public void setOredenes(ArrayList<OrdenMedica> oredenes) {
 		this.oredenes = oredenes;
 	}
    

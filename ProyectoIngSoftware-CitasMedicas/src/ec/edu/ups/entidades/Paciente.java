@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -16,10 +17,23 @@ public class Paciente implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idPaciente")
 	private int idPaciente;
+	
+	@Column(name = "tipoSangrePaciente", nullable = true)
 	private String tipoSangre;
-	private ArrayList<HistorialMedico> historialMedico;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "historialDelPaciente")
+	private List<HistorialMedico> historialesDePaciente = new ArrayList<HistorialMedico>();
 
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteCitaMedica")
+    private List<AgendaCitaMedica> citasDeUnPaciente=new ArrayList<AgendaCitaMedica>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pacienteConsulta")
+    private List<Consulta> consultasDeUnPaciente=new ArrayList<Consulta>();
+	
 	public Paciente() {
 		super();
 	}
@@ -40,13 +54,19 @@ public class Paciente implements Serializable {
 		this.tipoSangre = tipoSangre;
 	}
 
-	public ArrayList<HistorialMedico> getHistorialMedico() {
-		return historialMedico;
+	public List<HistorialMedico> getHistorialMedico() {
+		return historialesDePaciente;
 	}
 
-	public void setHistorialMedico(ArrayList<HistorialMedico> historialMedico) {
-		this.historialMedico = historialMedico;
+	public void setHistorialMedico(List<HistorialMedico> historialMedico) {
+		this.historialesDePaciente = historialMedico;
 	}
+	
+	public void agregarHistoralMedico(HistorialMedico historialMedico) {
+		this.historialesDePaciente.add(historialMedico);
+	}
+	
+	
 
 	@Override
 	public int hashCode() {

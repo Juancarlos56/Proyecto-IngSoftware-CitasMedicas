@@ -18,7 +18,7 @@ public class Certificado implements Serializable {
 	@Id
 	private int idCertificado;
 	private Date fecha;
-	private int numDiaresp;
+	private int numeroDiasDeReposo;
 	private String descripcion;
 	
 	
@@ -46,15 +46,14 @@ public class Certificado implements Serializable {
 	}
 
 
-
-	public int getNumDiaresp() {
-		return numDiaresp;
+	public int getNumeroDiasDeReposo() {
+		return numeroDiasDeReposo;
 	}
 
 
 
-	public void setNumDiaresp(int numDiaresp) {
-		this.numDiaresp = numDiaresp;
+	public void setNumeroDiasDeReposo(int numeroDiasDeReposo) {
+		this.numeroDiasDeReposo = numeroDiasDeReposo;
 	}
 
 
@@ -84,7 +83,7 @@ public class Certificado implements Serializable {
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
 		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
 		result = prime * result + idCertificado;
-		result = prime * result + numDiaresp;
+		result = prime * result + numeroDiasDeReposo;
 		return result;
 	}
 
@@ -111,7 +110,7 @@ public class Certificado implements Serializable {
 			return false;
 		if (idCertificado != other.idCertificado)
 			return false;
-		if (numDiaresp != other.numDiaresp)
+		if (numeroDiasDeReposo != other.numeroDiasDeReposo)
 			return false;
 		return true;
 	}

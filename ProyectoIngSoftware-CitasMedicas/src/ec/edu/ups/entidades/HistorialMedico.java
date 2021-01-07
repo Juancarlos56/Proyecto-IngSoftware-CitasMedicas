@@ -11,30 +11,83 @@ import javax.persistence.*;
  */
 @Entity
 
-public class HistoralMedico implements Serializable {
+public class HistorialMedico implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idHistorial")
 	private int idHistorial;
+	
+	@Column(name = "anamnesisDeUnPaciente", length = 255, nullable = true)
 	private String anamnesis;
+	
+	@Column(name = "examenFisicoDeUnPaciente", length = 255, nullable = true)
 	private String examenFisico;
+	
+	@Column(name = "examenSemiologicoDeUnPaciente", length = 255, nullable = true)
 	private String examenSemiologico;
+	
+	@Column(name = "diagnosticoPresuntivoDeUnPaciente", length = 255, nullable = true)
 	private String diagnosticoPresuntivo;
+	
+	@Column(name = "metodosComplementariosDeUnPaciente", length = 255, nullable = true)
 	private String metodosComplementarios;
+	
+	@Column(name = "evolucionDiariaDeUnPaciente", length = 255, nullable = true)
 	private String evolucionDiaria;
+	
+	@Column(name = "epicrisisDeUnPaciente", length = 255, nullable = true)
 	private String epicrisis;
+	
+	@Column(name = "FechaDeHistoriaMedica", length = 255, nullable = true)
 	private Date fecha;
+	
+	@Column(name = "medicacionActualDeUnPaciente", length = 255, nullable = true)
 	private String medicacionActual;
+	
+	@Column(name = "enfermedadesActualesDeUnPaciente", length = 255, nullable = true)
 	private String enfermedadesActuales;
+	
+	@Column(name = "pesoDeUnPaciente", nullable = false)
 	private float peso;
+	
+	@Column(name = "IMC_DeUnPaciente", nullable = false)
 	private float IMC;
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_Paciente_Historial")
+	private Paciente historialDelPaciente;
 
-	public HistoralMedico() {
+
+	public HistorialMedico() {
 		super();
 	}
 
+	
+
+	public HistorialMedico(String anamnesis, String examenFisico, String examenSemiologico,
+			String diagnosticoPresuntivo, String metodosComplementarios, String evolucionDiaria, String epicrisis,
+			Date fecha, String medicacionActual, String enfermedadesActuales, float peso, float iMC,
+			Paciente historialDelPaciente) {
+		super();
+		this.anamnesis = anamnesis;
+		this.examenFisico = examenFisico;
+		this.examenSemiologico = examenSemiologico;
+		this.diagnosticoPresuntivo = diagnosticoPresuntivo;
+		this.metodosComplementarios = metodosComplementarios;
+		this.evolucionDiaria = evolucionDiaria;
+		this.epicrisis = epicrisis;
+		this.fecha = fecha;
+		this.medicacionActual = medicacionActual;
+		this.enfermedadesActuales = enfermedadesActuales;
+		this.peso = peso;
+		IMC = iMC;
+		this.historialDelPaciente = historialDelPaciente;
+	}
 
 	public int getIdHistorial() {
 		return idHistorial;
@@ -195,7 +248,7 @@ public class HistoralMedico implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		HistoralMedico other = (HistoralMedico) obj;
+		HistorialMedico other = (HistorialMedico) obj;
 		if (Float.floatToIntBits(IMC) != Float.floatToIntBits(other.IMC))
 			return false;
 		if (anamnesis == null) {
@@ -254,6 +307,19 @@ public class HistoralMedico implements Serializable {
 			return false;
 		return true;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "HistorialMedico [idHistorial=" + idHistorial + ", anamnesis=" + anamnesis + ", examenFisico="
+				+ examenFisico + ", examenSemiologico=" + examenSemiologico + ", diagnosticoPresuntivo="
+				+ diagnosticoPresuntivo + ", metodosComplementarios=" + metodosComplementarios + ", evolucionDiaria="
+				+ evolucionDiaria + ", epicrisis=" + epicrisis + ", fecha=" + fecha + ", medicacionActual="
+				+ medicacionActual + ", enfermedadesActuales=" + enfermedadesActuales + ", peso=" + peso + ", IMC="
+				+ IMC + ", historialDelPaciente=" + historialDelPaciente + "]";
+	}
    
+	
 }
 

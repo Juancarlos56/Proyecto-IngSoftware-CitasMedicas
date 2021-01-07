@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Orden implements Serializable {
+public class OrdenMedica implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class Orden implements Serializable {
 	private Paciente paciente;
 	private Date fecha;
 	
-	public Orden() {
+	public OrdenMedica() {
 		super();
 	}
 
@@ -94,7 +94,7 @@ public class Orden implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Orden other = (Orden) obj;
+		OrdenMedica other = (OrdenMedica) obj;
 		if (descripcion == null) {
 			if (other.descripcion != null)
 				return false;
