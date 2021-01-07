@@ -17,10 +17,10 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Column(name="cantidadFacturaCompra",nullable=false)
+	@Column(name="fact_com_cantidad",nullable=false)
 	private int cantidadFacturaCompra;
 	
-	@Column(name="subtotalFacturaCompra",nullable=false)
+	@Column(name="fact_com_subtotal",nullable=false)
 	private double precioUnitario;
 	
 	public FacturaCompra() {
@@ -37,6 +37,14 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 		this.precioUnitario = precioUnitario;
 	}
 
+	public FacturaCompra(int idfactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			int cantidadFacturaCompra, double precioUnitario) {
+		
+		super(idfactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
+		this.cantidadFacturaCompra = cantidadFacturaCompra;
+		this.precioUnitario = precioUnitario;
+	}
 
 	
    

@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -18,44 +18,44 @@ public class HistorialMedico implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idHistorial")
+	@Column(name = "his_id")
 	private int idHistorial;
 	
-	@Column(name = "anamnesisDeUnPaciente", length = 255, nullable = true)
-	private String anamnesis;
+	@Column(name = "his_anamnesis", length = 255, nullable = true)
+	private String anamnesisDeUnPaciente;
 	
-	@Column(name = "examenFisicoDeUnPaciente", length = 255, nullable = true)
-	private String examenFisico;
+	@Column(name = "his_examenFisico", length = 255, nullable = true)
+	private String examenFisicoDeUnPaciente;
 	
-	@Column(name = "examenSemiologicoDeUnPaciente", length = 255, nullable = true)
-	private String examenSemiologico;
+	@Column(name = "his_examenSemiologico", length = 255, nullable = true)
+	private String examenSemiologicoDeUnPaciente;
 	
-	@Column(name = "diagnosticoPresuntivoDeUnPaciente", length = 255, nullable = true)
-	private String diagnosticoPresuntivo;
+	@Column(name = "his_diagnosticoPresuntivo", length = 255, nullable = true)
+	private String diagnosticoPresuntivoDeUnPaciente;
 	
-	@Column(name = "metodosComplementariosDeUnPaciente", length = 255, nullable = true)
-	private String metodosComplementarios;
+	@Column(name = "his_metodosComplementarios", length = 255, nullable = true)
+	private String metodosComplementariosDeUnPaciente;
 	
-	@Column(name = "evolucionDiariaDeUnPaciente", length = 255, nullable = true)
-	private String evolucionDiaria;
+	@Column(name = "his_evolucionDiaria", length = 255, nullable = true)
+	private String evolucionDiariaDeUnPaciente;
 	
-	@Column(name = "epicrisisDeUnPaciente", length = 255, nullable = true)
-	private String epicrisis;
+	@Column(name = "his_epicrisis", length = 255, nullable = true)
+	private String epicrisisDeUnPaciente;
 	
-	@Column(name = "FechaDeHistoriaMedica", length = 255, nullable = true)
-	private Date fecha;
+	@Column(name = "his_FechaDeHistoriaMedica", length = 255, nullable = true)
+	private GregorianCalendar fechaHistoriaMedica;
 	
-	@Column(name = "medicacionActualDeUnPaciente", length = 255, nullable = true)
-	private String medicacionActual;
+	@Column(name = "his_medicacionActualDeUnPaciente", length = 255, nullable = true)
+	private String medicacionActualDeUnPaciente;
 	
-	@Column(name = "enfermedadesActualesDeUnPaciente", length = 255, nullable = true)
-	private String enfermedadesActuales;
+	@Column(name = "his_enfermedadesActualesDeUnPaciente", length = 255, nullable = true)
+	private String enfermedadesActualesDeUnPaciente;
 	
-	@Column(name = "pesoDeUnPaciente", nullable = false)
-	private float peso;
+	@Column(name = "his_pesoDeUnPaciente", nullable = false)
+	private float pesoDeUnPaciente;
 	
-	@Column(name = "IMC_DeUnPaciente", nullable = false)
-	private float IMC;
+	@Column(name = "his_IMC_DeUnPaciente", nullable = false)
+	private float IMCDeUnPaciente;
 	
 	
 	@ManyToOne
@@ -66,206 +66,188 @@ public class HistorialMedico implements Serializable {
 	public HistorialMedico() {
 		super();
 	}
-
 	
-	//Contructor sin codigo por autogeneracion
-	public HistorialMedico(String anamnesis, String examenFisico, String examenSemiologico,
-			String diagnosticoPresuntivo, String metodosComplementarios, String evolucionDiaria, String epicrisis,
-			Date fecha, String medicacionActual, String enfermedadesActuales, float peso, float iMC,
-			Paciente historialDelPaciente) {
+	public HistorialMedico(String anamnesis, String examenFisicoDeUnPaciente, String examenSemiologicoDeUnPaciente,
+			String diagnosticoPresuntivoDeUnPaciente, String metodosComplementariosDeUnPaciente,
+			String evolucionDiariaDeUnPaciente, String epicrisisDeUnPaciente, GregorianCalendar fechaHistoriaMedica,
+			String medicacionActualDeUnPaciente, String enfermedadesActualesDeUnPaciente, float pesoDeUnPaciente,
+			float iMCDeUnPaciente, Paciente historialDelPaciente) {
 		super();
-		this.anamnesis = anamnesis;
-		this.examenFisico = examenFisico;
-		this.examenSemiologico = examenSemiologico;
-		this.diagnosticoPresuntivo = diagnosticoPresuntivo;
-		this.metodosComplementarios = metodosComplementarios;
-		this.evolucionDiaria = evolucionDiaria;
-		this.epicrisis = epicrisis;
-		this.fecha = fecha;
-		this.medicacionActual = medicacionActual;
-		this.enfermedadesActuales = enfermedadesActuales;
-		this.peso = peso;
-		IMC = iMC;
+		this.anamnesisDeUnPaciente = anamnesis;
+		this.examenFisicoDeUnPaciente = examenFisicoDeUnPaciente;
+		this.examenSemiologicoDeUnPaciente = examenSemiologicoDeUnPaciente;
+		this.diagnosticoPresuntivoDeUnPaciente = diagnosticoPresuntivoDeUnPaciente;
+		this.metodosComplementariosDeUnPaciente = metodosComplementariosDeUnPaciente;
+		this.evolucionDiariaDeUnPaciente = evolucionDiariaDeUnPaciente;
+		this.epicrisisDeUnPaciente = epicrisisDeUnPaciente;
+		this.fechaHistoriaMedica = fechaHistoriaMedica;
+		this.medicacionActualDeUnPaciente = medicacionActualDeUnPaciente;
+		this.enfermedadesActualesDeUnPaciente = enfermedadesActualesDeUnPaciente;
+		this.pesoDeUnPaciente = pesoDeUnPaciente;
+		IMCDeUnPaciente = iMCDeUnPaciente;
 		this.historialDelPaciente = historialDelPaciente;
 	}
-	
-	
-	
-	
 
-	public HistorialMedico(int idHistorial, String anamnesis, String examenFisico, String examenSemiologico,
-			String diagnosticoPresuntivo, String metodosComplementarios, String evolucionDiaria, String epicrisis,
-			Date fecha, String medicacionActual, String enfermedadesActuales, float peso, float iMC,
+	public HistorialMedico(int idHistorial, String anamnesis, String examenFisicoDeUnPaciente,
+			String examenSemiologicoDeUnPaciente, String diagnosticoPresuntivoDeUnPaciente,
+			String metodosComplementariosDeUnPaciente, String evolucionDiariaDeUnPaciente, String epicrisisDeUnPaciente,
+			GregorianCalendar fechaHistoriaMedica, String medicacionActualDeUnPaciente,
+			String enfermedadesActualesDeUnPaciente, float pesoDeUnPaciente, float iMCDeUnPaciente,
 			Paciente historialDelPaciente) {
 		super();
 		this.idHistorial = idHistorial;
-		this.anamnesis = anamnesis;
-		this.examenFisico = examenFisico;
-		this.examenSemiologico = examenSemiologico;
-		this.diagnosticoPresuntivo = diagnosticoPresuntivo;
-		this.metodosComplementarios = metodosComplementarios;
-		this.evolucionDiaria = evolucionDiaria;
-		this.epicrisis = epicrisis;
-		this.fecha = fecha;
-		this.medicacionActual = medicacionActual;
-		this.enfermedadesActuales = enfermedadesActuales;
-		this.peso = peso;
-		IMC = iMC;
+		this.anamnesisDeUnPaciente = anamnesis;
+		this.examenFisicoDeUnPaciente = examenFisicoDeUnPaciente;
+		this.examenSemiologicoDeUnPaciente = examenSemiologicoDeUnPaciente;
+		this.diagnosticoPresuntivoDeUnPaciente = diagnosticoPresuntivoDeUnPaciente;
+		this.metodosComplementariosDeUnPaciente = metodosComplementariosDeUnPaciente;
+		this.evolucionDiariaDeUnPaciente = evolucionDiariaDeUnPaciente;
+		this.epicrisisDeUnPaciente = epicrisisDeUnPaciente;
+		this.fechaHistoriaMedica = fechaHistoriaMedica;
+		this.medicacionActualDeUnPaciente = medicacionActualDeUnPaciente;
+		this.enfermedadesActualesDeUnPaciente = enfermedadesActualesDeUnPaciente;
+		this.pesoDeUnPaciente = pesoDeUnPaciente;
+		IMCDeUnPaciente = iMCDeUnPaciente;
 		this.historialDelPaciente = historialDelPaciente;
 	}
-
-
 
 	public int getIdHistorial() {
 		return idHistorial;
 	}
 
-
 	public void setIdHistorial(int idHistorial) {
 		this.idHistorial = idHistorial;
 	}
 
-
-	public String getAnamnesis() {
-		return anamnesis;
+	public String getAnamnesisDeUnPaciente() {
+		return anamnesisDeUnPaciente;
 	}
 
-
-	public void setAnamnesis(String anamnesis) {
-		this.anamnesis = anamnesis;
+	public void setAnamnesisDeUnPaciente(String anamnesisDeUnPaciente) {
+		this.anamnesisDeUnPaciente = anamnesisDeUnPaciente;
 	}
 
-
-	public String getExamenFisico() {
-		return examenFisico;
+	public String getExamenFisicoDeUnPaciente() {
+		return examenFisicoDeUnPaciente;
 	}
 
-
-	public void setExamenFisico(String examenFisico) {
-		this.examenFisico = examenFisico;
+	public void setExamenFisicoDeUnPaciente(String examenFisicoDeUnPaciente) {
+		this.examenFisicoDeUnPaciente = examenFisicoDeUnPaciente;
 	}
 
-
-	public String getExamenSemiologico() {
-		return examenSemiologico;
+	public String getExamenSemiologicoDeUnPaciente() {
+		return examenSemiologicoDeUnPaciente;
 	}
 
-
-	public void setExamenSemiologico(String examenSemiologico) {
-		this.examenSemiologico = examenSemiologico;
+	public void setExamenSemiologicoDeUnPaciente(String examenSemiologicoDeUnPaciente) {
+		this.examenSemiologicoDeUnPaciente = examenSemiologicoDeUnPaciente;
 	}
 
-
-	public String getDiagnosticoPresuntivo() {
-		return diagnosticoPresuntivo;
+	public String getDiagnosticoPresuntivoDeUnPaciente() {
+		return diagnosticoPresuntivoDeUnPaciente;
 	}
 
-
-	public void setDiagnosticoPresuntivo(String diagnosticoPresuntivo) {
-		this.diagnosticoPresuntivo = diagnosticoPresuntivo;
+	public void setDiagnosticoPresuntivoDeUnPaciente(String diagnosticoPresuntivoDeUnPaciente) {
+		this.diagnosticoPresuntivoDeUnPaciente = diagnosticoPresuntivoDeUnPaciente;
 	}
 
-
-	public String getMetodosComplementarios() {
-		return metodosComplementarios;
+	public String getMetodosComplementariosDeUnPaciente() {
+		return metodosComplementariosDeUnPaciente;
 	}
 
-
-	public void setMetodosComplementarios(String metodosComplementarios) {
-		this.metodosComplementarios = metodosComplementarios;
+	public void setMetodosComplementariosDeUnPaciente(String metodosComplementariosDeUnPaciente) {
+		this.metodosComplementariosDeUnPaciente = metodosComplementariosDeUnPaciente;
 	}
 
-
-	public String getEvolucionDiaria() {
-		return evolucionDiaria;
+	public String getEvolucionDiariaDeUnPaciente() {
+		return evolucionDiariaDeUnPaciente;
 	}
 
-
-	public void setEvolucionDiaria(String evolucionDiaria) {
-		this.evolucionDiaria = evolucionDiaria;
+	public void setEvolucionDiariaDeUnPaciente(String evolucionDiariaDeUnPaciente) {
+		this.evolucionDiariaDeUnPaciente = evolucionDiariaDeUnPaciente;
 	}
 
-
-	public String getEpicrisis() {
-		return epicrisis;
+	public String getEpicrisisDeUnPaciente() {
+		return epicrisisDeUnPaciente;
 	}
 
-
-	public void setEpicrisis(String epicrisis) {
-		this.epicrisis = epicrisis;
+	public void setEpicrisisDeUnPaciente(String epicrisisDeUnPaciente) {
+		this.epicrisisDeUnPaciente = epicrisisDeUnPaciente;
 	}
 
-
-	public Date getFecha() {
-		return fecha;
+	public GregorianCalendar getFechaHistoriaMedica() {
+		return fechaHistoriaMedica;
 	}
 
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setFechaHistoriaMedica(GregorianCalendar fechaHistoriaMedica) {
+		this.fechaHistoriaMedica = fechaHistoriaMedica;
 	}
 
-
-	public String getMedicacionActual() {
-		return medicacionActual;
+	public String getMedicacionActualDeUnPaciente() {
+		return medicacionActualDeUnPaciente;
 	}
 
-
-	public void setMedicacionActual(String medicacionActual) {
-		this.medicacionActual = medicacionActual;
+	public void setMedicacionActualDeUnPaciente(String medicacionActualDeUnPaciente) {
+		this.medicacionActualDeUnPaciente = medicacionActualDeUnPaciente;
 	}
 
-
-	public String getEnfermedadesActuales() {
-		return enfermedadesActuales;
+	public String getEnfermedadesActualesDeUnPaciente() {
+		return enfermedadesActualesDeUnPaciente;
 	}
 
-
-	public void setEnfermedadesActuales(String enfermedadesActuales) {
-		this.enfermedadesActuales = enfermedadesActuales;
+	public void setEnfermedadesActualesDeUnPaciente(String enfermedadesActualesDeUnPaciente) {
+		this.enfermedadesActualesDeUnPaciente = enfermedadesActualesDeUnPaciente;
 	}
 
-
-	public float getPeso() {
-		return peso;
+	public float getPesoDeUnPaciente() {
+		return pesoDeUnPaciente;
 	}
 
-
-	public void setPeso(float peso) {
-		this.peso = peso;
+	public void setPesoDeUnPaciente(float pesoDeUnPaciente) {
+		this.pesoDeUnPaciente = pesoDeUnPaciente;
 	}
 
-
-	public float getIMC() {
-		return IMC;
+	public float getIMCDeUnPaciente() {
+		return IMCDeUnPaciente;
 	}
 
-
-	public void setIMC(float iMC) {
-		IMC = iMC;
+	public void setIMCDeUnPaciente(float iMCDeUnPaciente) {
+		IMCDeUnPaciente = iMCDeUnPaciente;
 	}
 
+	public Paciente getHistorialDelPaciente() {
+		return historialDelPaciente;
+	}
+
+	public void setHistorialDelPaciente(Paciente historialDelPaciente) {
+		this.historialDelPaciente = historialDelPaciente;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + Float.floatToIntBits(IMC);
-		result = prime * result + ((anamnesis == null) ? 0 : anamnesis.hashCode());
-		result = prime * result + ((diagnosticoPresuntivo == null) ? 0 : diagnosticoPresuntivo.hashCode());
-		result = prime * result + ((enfermedadesActuales == null) ? 0 : enfermedadesActuales.hashCode());
-		result = prime * result + ((epicrisis == null) ? 0 : epicrisis.hashCode());
-		result = prime * result + ((evolucionDiaria == null) ? 0 : evolucionDiaria.hashCode());
-		result = prime * result + ((examenFisico == null) ? 0 : examenFisico.hashCode());
-		result = prime * result + ((examenSemiologico == null) ? 0 : examenSemiologico.hashCode());
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
+		result = prime * result + Float.floatToIntBits(IMCDeUnPaciente);
+		result = prime * result + ((anamnesisDeUnPaciente == null) ? 0 : anamnesisDeUnPaciente.hashCode());
+		result = prime * result
+				+ ((diagnosticoPresuntivoDeUnPaciente == null) ? 0 : diagnosticoPresuntivoDeUnPaciente.hashCode());
+		result = prime * result
+				+ ((enfermedadesActualesDeUnPaciente == null) ? 0 : enfermedadesActualesDeUnPaciente.hashCode());
+		result = prime * result + ((epicrisisDeUnPaciente == null) ? 0 : epicrisisDeUnPaciente.hashCode());
+		result = prime * result + ((evolucionDiariaDeUnPaciente == null) ? 0 : evolucionDiariaDeUnPaciente.hashCode());
+		result = prime * result + ((examenFisicoDeUnPaciente == null) ? 0 : examenFisicoDeUnPaciente.hashCode());
+		result = prime * result
+				+ ((examenSemiologicoDeUnPaciente == null) ? 0 : examenSemiologicoDeUnPaciente.hashCode());
+		result = prime * result + ((fechaHistoriaMedica == null) ? 0 : fechaHistoriaMedica.hashCode());
+		result = prime * result + ((historialDelPaciente == null) ? 0 : historialDelPaciente.hashCode());
 		result = prime * result + idHistorial;
-		result = prime * result + ((medicacionActual == null) ? 0 : medicacionActual.hashCode());
-		result = prime * result + ((metodosComplementarios == null) ? 0 : metodosComplementarios.hashCode());
-		result = prime * result + Float.floatToIntBits(peso);
+		result = prime * result
+				+ ((medicacionActualDeUnPaciente == null) ? 0 : medicacionActualDeUnPaciente.hashCode());
+		result = prime * result
+				+ ((metodosComplementariosDeUnPaciente == null) ? 0 : metodosComplementariosDeUnPaciente.hashCode());
+		result = prime * result + Float.floatToIntBits(pesoDeUnPaciente);
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -276,77 +258,87 @@ public class HistorialMedico implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		HistorialMedico other = (HistorialMedico) obj;
-		if (Float.floatToIntBits(IMC) != Float.floatToIntBits(other.IMC))
+		if (Float.floatToIntBits(IMCDeUnPaciente) != Float.floatToIntBits(other.IMCDeUnPaciente))
 			return false;
-		if (anamnesis == null) {
-			if (other.anamnesis != null)
+		if (anamnesisDeUnPaciente == null) {
+			if (other.anamnesisDeUnPaciente != null)
 				return false;
-		} else if (!anamnesis.equals(other.anamnesis))
+		} else if (!anamnesisDeUnPaciente.equals(other.anamnesisDeUnPaciente))
 			return false;
-		if (diagnosticoPresuntivo == null) {
-			if (other.diagnosticoPresuntivo != null)
+		if (diagnosticoPresuntivoDeUnPaciente == null) {
+			if (other.diagnosticoPresuntivoDeUnPaciente != null)
 				return false;
-		} else if (!diagnosticoPresuntivo.equals(other.diagnosticoPresuntivo))
+		} else if (!diagnosticoPresuntivoDeUnPaciente.equals(other.diagnosticoPresuntivoDeUnPaciente))
 			return false;
-		if (enfermedadesActuales == null) {
-			if (other.enfermedadesActuales != null)
+		if (enfermedadesActualesDeUnPaciente == null) {
+			if (other.enfermedadesActualesDeUnPaciente != null)
 				return false;
-		} else if (!enfermedadesActuales.equals(other.enfermedadesActuales))
+		} else if (!enfermedadesActualesDeUnPaciente.equals(other.enfermedadesActualesDeUnPaciente))
 			return false;
-		if (epicrisis == null) {
-			if (other.epicrisis != null)
+		if (epicrisisDeUnPaciente == null) {
+			if (other.epicrisisDeUnPaciente != null)
 				return false;
-		} else if (!epicrisis.equals(other.epicrisis))
+		} else if (!epicrisisDeUnPaciente.equals(other.epicrisisDeUnPaciente))
 			return false;
-		if (evolucionDiaria == null) {
-			if (other.evolucionDiaria != null)
+		if (evolucionDiariaDeUnPaciente == null) {
+			if (other.evolucionDiariaDeUnPaciente != null)
 				return false;
-		} else if (!evolucionDiaria.equals(other.evolucionDiaria))
+		} else if (!evolucionDiariaDeUnPaciente.equals(other.evolucionDiariaDeUnPaciente))
 			return false;
-		if (examenFisico == null) {
-			if (other.examenFisico != null)
+		if (examenFisicoDeUnPaciente == null) {
+			if (other.examenFisicoDeUnPaciente != null)
 				return false;
-		} else if (!examenFisico.equals(other.examenFisico))
+		} else if (!examenFisicoDeUnPaciente.equals(other.examenFisicoDeUnPaciente))
 			return false;
-		if (examenSemiologico == null) {
-			if (other.examenSemiologico != null)
+		if (examenSemiologicoDeUnPaciente == null) {
+			if (other.examenSemiologicoDeUnPaciente != null)
 				return false;
-		} else if (!examenSemiologico.equals(other.examenSemiologico))
+		} else if (!examenSemiologicoDeUnPaciente.equals(other.examenSemiologicoDeUnPaciente))
 			return false;
-		if (fecha == null) {
-			if (other.fecha != null)
+		if (fechaHistoriaMedica == null) {
+			if (other.fechaHistoriaMedica != null)
 				return false;
-		} else if (!fecha.equals(other.fecha))
+		} else if (!fechaHistoriaMedica.equals(other.fechaHistoriaMedica))
+			return false;
+		if (historialDelPaciente == null) {
+			if (other.historialDelPaciente != null)
+				return false;
+		} else if (!historialDelPaciente.equals(other.historialDelPaciente))
 			return false;
 		if (idHistorial != other.idHistorial)
 			return false;
-		if (medicacionActual == null) {
-			if (other.medicacionActual != null)
+		if (medicacionActualDeUnPaciente == null) {
+			if (other.medicacionActualDeUnPaciente != null)
 				return false;
-		} else if (!medicacionActual.equals(other.medicacionActual))
+		} else if (!medicacionActualDeUnPaciente.equals(other.medicacionActualDeUnPaciente))
 			return false;
-		if (metodosComplementarios == null) {
-			if (other.metodosComplementarios != null)
+		if (metodosComplementariosDeUnPaciente == null) {
+			if (other.metodosComplementariosDeUnPaciente != null)
 				return false;
-		} else if (!metodosComplementarios.equals(other.metodosComplementarios))
+		} else if (!metodosComplementariosDeUnPaciente.equals(other.metodosComplementariosDeUnPaciente))
 			return false;
-		if (Float.floatToIntBits(peso) != Float.floatToIntBits(other.peso))
+		if (Float.floatToIntBits(pesoDeUnPaciente) != Float.floatToIntBits(other.pesoDeUnPaciente))
 			return false;
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "HistorialMedico [idHistorial=" + idHistorial + ", anamnesis=" + anamnesis + ", examenFisico="
-				+ examenFisico + ", examenSemiologico=" + examenSemiologico + ", diagnosticoPresuntivo="
-				+ diagnosticoPresuntivo + ", metodosComplementarios=" + metodosComplementarios + ", evolucionDiaria="
-				+ evolucionDiaria + ", epicrisis=" + epicrisis + ", fecha=" + fecha + ", medicacionActual="
-				+ medicacionActual + ", enfermedadesActuales=" + enfermedadesActuales + ", peso=" + peso + ", IMC="
-				+ IMC + ", historialDelPaciente=" + historialDelPaciente + "]";
+		return "HistorialMedico [idHistorial=" + idHistorial + ", anamnesisDeUnPaciente=" + anamnesisDeUnPaciente
+				+ ", examenFisicoDeUnPaciente=" + examenFisicoDeUnPaciente + ", examenSemiologicoDeUnPaciente="
+				+ examenSemiologicoDeUnPaciente + ", diagnosticoPresuntivoDeUnPaciente="
+				+ diagnosticoPresuntivoDeUnPaciente + ", metodosComplementariosDeUnPaciente="
+				+ metodosComplementariosDeUnPaciente + ", evolucionDiariaDeUnPaciente=" + evolucionDiariaDeUnPaciente
+				+ ", epicrisisDeUnPaciente=" + epicrisisDeUnPaciente + ", fechaHistoriaMedica=" + fechaHistoriaMedica
+				+ ", medicacionActualDeUnPaciente=" + medicacionActualDeUnPaciente
+				+ ", enfermedadesActualesDeUnPaciente=" + enfermedadesActualesDeUnPaciente + ", pesoDeUnPaciente="
+				+ pesoDeUnPaciente + ", IMCDeUnPaciente=" + IMCDeUnPaciente + ", historialDelPaciente="
+				+ historialDelPaciente + "]";
 	}
-   
+
 	
+	
+	
+		
 }
 

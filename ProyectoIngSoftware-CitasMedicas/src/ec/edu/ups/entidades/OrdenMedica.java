@@ -15,14 +15,21 @@ public class OrdenMedica implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	@Id
-	private int idOrden;
-	private String descripcion;
-	private Diagnostico diagnostico;
-	private Medico medico;
-	private Paciente paciente;
-	private Date fecha;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ord_med_id")
+	private int idOrdenMedica;
+	
+	@Column(name="ord_med_descripcion", length=20, nullable=false)
+	private String descripcion;
+	
+	@Column(name="ord_med_diagnostico", length=20, nullable=false)
+	private String diagnostico;
+	
+	
+	@Column(name="ord_med_fecha", length=20, nullable=false)
+	private Date fechaOrdenMedica;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_OrdenMedica_Consulta")
@@ -33,64 +40,88 @@ public class OrdenMedica implements Serializable {
 		super();
 	}
 
-	public int getIdOrden() {
-		return idOrden;
+	public OrdenMedica(int idOrdenMedica, String descripcion, String diagnostico, Date fechaOrdenMedica,
+			Paciente ordenesMedicasDeUnaConsulta) {
+		super();
+		this.idOrdenMedica = idOrdenMedica;
+		this.descripcion = descripcion;
+		this.diagnostico = diagnostico;
+		this.fechaOrdenMedica = fechaOrdenMedica;
+		this.ordenesMedicasDeUnaConsulta = ordenesMedicasDeUnaConsulta;
+	}
+	
+	//Constructor para orden medica sin codigo por autogeneracion
+	public OrdenMedica(String descripcion, String diagnostico, Date fechaOrdenMedica,
+			Paciente ordenesMedicasDeUnaConsulta) {
+		super();
+		this.descripcion = descripcion;
+		this.diagnostico = diagnostico;
+		this.fechaOrdenMedica = fechaOrdenMedica;
+		this.ordenesMedicasDeUnaConsulta = ordenesMedicasDeUnaConsulta;
 	}
 
-	public void setIdOrden(int idOrden) {
-		this.idOrden = idOrden;
+	public int getIdOrdenMedica() {
+		return idOrdenMedica;
 	}
+
+
+	public void setIdOrdenMedica(int idOrdenMedica) {
+		this.idOrdenMedica = idOrdenMedica;
+	}
+
 
 	public String getDescripcion() {
 		return descripcion;
 	}
 
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
-	public Diagnostico getDiagnostico() {
+
+	public String getDiagnostico() {
 		return diagnostico;
 	}
 
-	public void setDiagnostico(Diagnostico diagnostico) {
+
+	public void setDiagnostico(String diagnostico) {
 		this.diagnostico = diagnostico;
 	}
 
-	public Medico getMedico() {
-		return medico;
+
+	public Date getFechaOrdenMedica() {
+		return fechaOrdenMedica;
 	}
 
-	public void setMedico(Medico medico) {
-		this.medico = medico;
+
+	public void setFechaOrdenMedica(Date fechaOrdenMedica) {
+		this.fechaOrdenMedica = fechaOrdenMedica;
 	}
 
-	public Paciente getPaciente() {
-		return paciente;
+
+	public Paciente getOrdenesMedicasDeUnaConsulta() {
+		return ordenesMedicasDeUnaConsulta;
 	}
 
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
+
+	public void setOrdenesMedicasDeUnaConsulta(Paciente ordenesMedicasDeUnaConsulta) {
+		this.ordenesMedicasDeUnaConsulta = ordenesMedicasDeUnaConsulta;
 	}
 
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
-		result = prime * result + ((fecha == null) ? 0 : fecha.hashCode());
-		result = prime * result + idOrden;
-		result = prime * result + ((paciente == null) ? 0 : paciente.hashCode());
+		result = prime * result + ((diagnostico == null) ? 0 : diagnostico.hashCode());
+		result = prime * result + ((fechaOrdenMedica == null) ? 0 : fechaOrdenMedica.hashCode());
+		result = prime * result + idOrdenMedica;
+		result = prime * result + ((ordenesMedicasDeUnaConsulta == null) ? 0 : ordenesMedicasDeUnaConsulta.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -106,19 +137,34 @@ public class OrdenMedica implements Serializable {
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
 			return false;
-		if (fecha == null) {
-			if (other.fecha != null)
+		if (diagnostico == null) {
+			if (other.diagnostico != null)
 				return false;
-		} else if (!fecha.equals(other.fecha))
+		} else if (!diagnostico.equals(other.diagnostico))
 			return false;
-		if (idOrden != other.idOrden)
-			return false;
-		if (paciente == null) {
-			if (other.paciente != null)
+		if (fechaOrdenMedica == null) {
+			if (other.fechaOrdenMedica != null)
 				return false;
-		} else if (!paciente.equals(other.paciente))
+		} else if (!fechaOrdenMedica.equals(other.fechaOrdenMedica))
+			return false;
+		if (idOrdenMedica != other.idOrdenMedica)
+			return false;
+		if (ordenesMedicasDeUnaConsulta == null) {
+			if (other.ordenesMedicasDeUnaConsulta != null)
+				return false;
+		} else if (!ordenesMedicasDeUnaConsulta.equals(other.ordenesMedicasDeUnaConsulta))
 			return false;
 		return true;
 	}
+
+
+	@Override
+	public String toString() {
+		return "OrdenMedica [idOrdenMedica=" + idOrdenMedica + ", descripcion=" + descripcion + ", diagnostico="
+				+ diagnostico + ", fechaOrdenMedica=" + fechaOrdenMedica + ", ordenesMedicasDeUnaConsulta="
+				+ ordenesMedicasDeUnaConsulta + "]";
+	}
+	
+	
    
 }

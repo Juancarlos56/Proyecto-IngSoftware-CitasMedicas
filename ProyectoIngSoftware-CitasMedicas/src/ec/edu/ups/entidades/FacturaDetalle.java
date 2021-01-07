@@ -1,8 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,10 +22,10 @@ public class FacturaDetalle implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idFacturaDetalle;
 	
-	@Column(name="cantidadFacturaDetalle",nullable=false)
+	@Column(name="fact_det_cantidad",nullable=false)
 	private int cantidadFacturaDetalle;
 	
-	@Column(name="subtotalFacturaDetalle",nullable=false)
+	@Column(name="fact_det_cantidad",nullable=false)
 	private double subtotalFacturaDetalle;
 	
 	@ManyToOne 
@@ -51,7 +51,15 @@ public class FacturaDetalle implements Serializable {
 		this.detallesDeFacturaCabecera = detallesDeFacturaCabecera;
 	}
 
-	
+	public FacturaDetalle(int cantidadFacturaDetalle, double subtotalFacturaDetalle,
+			FacturaCabecera detallesDeFacturaCabecera) {
+		super();
+		this.cantidadFacturaDetalle = cantidadFacturaDetalle;
+		this.subtotalFacturaDetalle = subtotalFacturaDetalle;
+		this.detallesDeFacturaCabecera = detallesDeFacturaCabecera;
+	}
+
+
 
 	public void calcularSubtotalFacturaDetalle() {
 		
@@ -121,6 +129,9 @@ public class FacturaDetalle implements Serializable {
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
 
+	public void agregarFacturaDetalle(AgendaCitaMedica facturaDetalle) {
+		this.citasDeFacturaDetalle.add(facturaDetalle);
+	}
 
 
 	@Override

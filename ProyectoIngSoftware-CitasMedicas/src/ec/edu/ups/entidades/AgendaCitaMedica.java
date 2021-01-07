@@ -18,50 +18,50 @@ public class AgendaCitaMedica implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idAgendaCitaMedica")
+	@Column(name = "age_cit_med_id")
 	private int idAgendaCitaMedica;
 	
-	@Column(name = "fechaActualDeAgendaCitaMedica")
+	@Column(name = "age_cit_med_fechaActual")
 	private GregorianCalendar fechaActualDeAgendaCitaMedica;
 	
-	@Column(name = "fechaReservaDeAgendaCitaMedica")
+	@Column(name = "age_cit_med_fechaReserva")
 	private GregorianCalendar fechaReservaDeAgendaCitaMedica;
 	
-	@Column(name = "tipoCitaDeAgendaCitaMedica")
+	@Column(name = "age_cit_med_tipoCita")
 	private String tipoCitaDeAgendaCitaMedica;
 	
-	@Column(name = "estadoDeAgendaCitaMedica")
+	@Column(name = "age_cit_med_estado")
 	private String estadoDeAgendaCitaMedica;
 	
-	@Column(name = "precioDeAgendaCitaMedica")
+	@Column(name = "age_cit_med_precio")
 	private float precioDeAgendaCitaMedica;
 	
 	@ManyToOne
-	@JoinColumn(name = "FK_Secretaria")
-	private Secretaria secretaria;
+	@JoinColumn(name = "FK_Secretaria_AgendaCita")
+	private Secretaria secretariaAgendaCita;
 	
 	@ManyToOne
-	@JoinColumn(name = "FK_Medico")
+	@JoinColumn(name = "FK_Medico_AgendaCita")
 	private Medico medico;
 	
 	@ManyToOne
-	@JoinColumn(name = "FK_Paciente")
+	@JoinColumn(name = "FK_Paciente_AgendaCita")
 	private Paciente pacienteCitaMedica;
 	
-	
-	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaDetalle_AgendaCita")
+	private FacturaDetalle citasDeFacturaDetalle;
 	
 	public AgendaCitaMedica() {
 		super();
 	}
 
 	
-	
-	
+
 	public AgendaCitaMedica(int idAgendaCitaMedica, GregorianCalendar fechaActualDeAgendaCitaMedica,
 			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
-			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
-			Paciente pacienteCitaMedica) {
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
+			Medico medico, Paciente pacienteCitaMedica, FacturaDetalle citasDeFacturaDetalle) {
 		super();
 		this.idAgendaCitaMedica = idAgendaCitaMedica;
 		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
@@ -69,31 +69,31 @@ public class AgendaCitaMedica implements Serializable {
 		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
 		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
 		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
-		this.secretaria = secretaria;
+		this.secretariaAgendaCita = secretariaAgendaCita;
 		this.medico = medico;
 		this.pacienteCitaMedica = pacienteCitaMedica;
+		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
 
 
-	
 
 	//Contructor sin ID por autogeneracion del codigo 
+
 	public AgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica,
 			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
-			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretaria, Medico medico,
-			Paciente pacienteCitaMedica) {
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
+			Medico medico, Paciente pacienteCitaMedica, FacturaDetalle citasDeFacturaDetalle) {
 		super();
 		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
 		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
 		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
 		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
 		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
-		this.secretaria = secretaria;
+		this.secretariaAgendaCita = secretariaAgendaCita;
 		this.medico = medico;
 		this.pacienteCitaMedica = pacienteCitaMedica;
+		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
-
-
 
 
 	public int getIdAgendaCitaMedica() {
@@ -146,11 +146,11 @@ public class AgendaCitaMedica implements Serializable {
 
 	
 	public Secretaria getSecretaria() {
-		return secretaria;
+		return secretariaAgendaCita;
 	}
 
 	public void setSecretaria(Secretaria secretaria) {
-		this.secretaria = secretaria;
+		this.secretariaAgendaCita = secretaria;
 	}
 
 	public Medico getMedico() {

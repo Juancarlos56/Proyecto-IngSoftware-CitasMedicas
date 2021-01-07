@@ -18,10 +18,10 @@ public class Paciente implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPaciente")
+	@Column(name = "pac_id")
 	private int idPaciente;
 	
-	@Column(name = "tipoSangrePaciente", nullable = true)
+	@Column(name = "pac_tipoSangre", nullable = true)
 	private String tipoSangre;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "historialDelPaciente")
