@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="ProyectoIngSoftware-CitasMedicas" transaction-type="RESOURCE_LOCAL">
-	
+		<class>ec.edu.ups.entidades.CajaDiaria</class>
+		<class>ec.edu.ups.entidades.FacturaCompra</class>
+		<class>ec.edu.ups.entidades.FacturaCabecera</class>
+		<class>ec.edu.ups.entidades.FacturaSalario</class>
+		<class>ec.edu.ups.entidades.FacturaDetalle</class>
+		<class>ec.edu.ups.entidades.FacturaGeneral</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />			
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/citasMedicas?serverTimezone=UTC" />
