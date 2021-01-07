@@ -40,7 +40,7 @@ public class CajaDiaria implements Serializable {
 	/*Relacion de mucho a uno con la entidad LibroDiario, atributo registroCajasDiarias */
     @ManyToOne
 	@JoinColumn
-	private LibroDario registroCajasDiarias;    
+	private LibroDiario registroCajasDiarias;    
     
 	public CajaDiaria() {
 		super();
@@ -49,7 +49,7 @@ public class CajaDiaria implements Serializable {
 	
 	
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
-			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria, LibroDario registroCajasDiarias) {
+			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria, LibroDiario registroCajasDiarias) {
 		super();
 		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
 		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
@@ -170,13 +170,13 @@ public class CajaDiaria implements Serializable {
 
 
 
-	public LibroDario getRegistroCajasDiarias() {
+	public LibroDiario getRegistroCajasDiarias() {
 		return registroCajasDiarias;
 	}
 
 
 
-	public void setRegistroCajasDiarias(LibroDario registroCajasDiarias) {
+	public void setRegistroCajasDiarias(LibroDiario registroCajasDiarias) {
 		this.registroCajasDiarias = registroCajasDiarias;
 	}
 

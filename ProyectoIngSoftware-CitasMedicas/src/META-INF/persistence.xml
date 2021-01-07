@@ -7,6 +7,13 @@
 		<class>ec.edu.ups.entidades.FacturaSalario</class>
 		<class>ec.edu.ups.entidades.FacturaDetalle</class>
 		<class>ec.edu.ups.entidades.FacturaGeneral</class>
+		<class>ec.edu.ups.entidades.LibroDiario</class>
+		<class>ec.edu.ups.entidades.AgendaCitaMedica</class>
+		<class>ec.edu.ups.entidades.Consulta</class>
+		<class>ec.edu.ups.entidades.Paciente</class>
+		<class>ec.edu.ups.entidades.HistoralMedico</class>
+		<class>ec.edu.ups.entidades.Certificado</class>
+		<class>ec.edu.ups.entidades.Orden</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />			
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/citasMedicas?serverTimezone=UTC" />
