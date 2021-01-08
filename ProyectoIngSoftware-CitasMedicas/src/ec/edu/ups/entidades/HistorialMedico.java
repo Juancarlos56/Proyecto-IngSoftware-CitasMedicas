@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -43,7 +43,7 @@ public class HistorialMedico implements Serializable {
 	private String epicrisisDeUnPaciente;
 	
 	@Column(name = "fechaHistoriaMedica", length = 255, nullable = true)
-	private GregorianCalendar fechaHistoriaMedica;
+	private Calendar fechaHistoriaMedica;
 	
 	@Column(name = "medicacionActualDeUnPaciente", length = 255, nullable = true)
 	private String medicacionActualDeUnPaciente;
@@ -69,7 +69,7 @@ public class HistorialMedico implements Serializable {
 	
 	public HistorialMedico(String anamnesis, String examenFisicoDeUnPaciente, String examenSemiologicoDeUnPaciente,
 			String diagnosticoPresuntivoDeUnPaciente, String metodosComplementariosDeUnPaciente,
-			String evolucionDiariaDeUnPaciente, String epicrisisDeUnPaciente, GregorianCalendar fechaHistoriaMedica,
+			String evolucionDiariaDeUnPaciente, String epicrisisDeUnPaciente, Calendar fechaHistoriaMedica,
 			String medicacionActualDeUnPaciente, String enfermedadesActualesDeUnPaciente, float pesoDeUnPaciente,
 			float iMCDeUnPaciente, Paciente historialDelPaciente) {
 		super();
@@ -91,7 +91,7 @@ public class HistorialMedico implements Serializable {
 	public HistorialMedico(int idHistorial, String anamnesis, String examenFisicoDeUnPaciente,
 			String examenSemiologicoDeUnPaciente, String diagnosticoPresuntivoDeUnPaciente,
 			String metodosComplementariosDeUnPaciente, String evolucionDiariaDeUnPaciente, String epicrisisDeUnPaciente,
-			GregorianCalendar fechaHistoriaMedica, String medicacionActualDeUnPaciente,
+			Calendar fechaHistoriaMedica, String medicacionActualDeUnPaciente,
 			String enfermedadesActualesDeUnPaciente, float pesoDeUnPaciente, float iMCDeUnPaciente,
 			Paciente historialDelPaciente) {
 		super();
@@ -175,11 +175,11 @@ public class HistorialMedico implements Serializable {
 		this.epicrisisDeUnPaciente = epicrisisDeUnPaciente;
 	}
 
-	public GregorianCalendar getFechaHistoriaMedica() {
+	public Calendar getFechaHistoriaMedica() {
 		return fechaHistoriaMedica;
 	}
 
-	public void setFechaHistoriaMedica(GregorianCalendar fechaHistoriaMedica) {
+	public void setFechaHistoriaMedica(Calendar fechaHistoriaMedica) {
 		this.fechaHistoriaMedica = fechaHistoriaMedica;
 	}
 

@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	private int idFactura;
 	
 	@Column(name="fechaFactura",nullable=false)
-	private GregorianCalendar fecha;
+	private Calendar fecha;
 	
 	
 	@Column(name="descripcionFactura", length=255)
@@ -66,7 +66,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @param total
 	 * @param tipoFactura
 	 */
-	public FacturaGeneral(GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaGeneral(Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura) {
 		super();
 		this.fecha = fecha;
@@ -82,7 +82,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	
 	
 
-	public FacturaGeneral(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaGeneral(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura) {
 		super();
 		this.idFactura = idFactura;
@@ -132,7 +132,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @param cajaDiaria
 	 * @return
 	 */
-	public abstract boolean actualizarCajaDiaria(T factura, CajaDiaria cajaDiaria);
+	public abstract LibroDiario actualizarLibroDiario(T factura, LibroDiario libroDiario);
 
 
 
@@ -152,13 +152,13 @@ public abstract class FacturaGeneral<T> implements Serializable{
 
 
 
-	public GregorianCalendar getFecha() {
+	public Calendar getFecha() {
 		return fecha;
 	}
 
 
 
-	public void setFecha(GregorianCalendar fecha) {
+	public void setFecha(Calendar fecha) {
 		this.fecha = fecha;
 	}
 

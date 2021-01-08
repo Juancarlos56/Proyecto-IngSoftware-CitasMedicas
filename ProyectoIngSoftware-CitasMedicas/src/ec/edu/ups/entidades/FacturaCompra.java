@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -23,27 +23,33 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	@Column(name="precioUnitarioFacturaCompra",nullable=false)
 	private double precioUnitario;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaCompra_Activo")
+	private Activo activoCompra;
+	
 	public FacturaCompra() {
 		super();
 	}
 
 
-	public FacturaCompra(GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaCompra(Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura, 
-			int cantidadFacturaCompra, double precioUnitario) {
+			int cantidadFacturaCompra, double precioUnitario, Activo activoCompra) {
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
 		this.cantidadFacturaCompra = cantidadFacturaCompra;
 		this.precioUnitario = precioUnitario;
+		this.activoCompra = activoCompra;
 	}
 
-	public FacturaCompra(int idfactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaCompra(int idfactura, Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura, 
-			int cantidadFacturaCompra, double precioUnitario) {
+			int cantidadFacturaCompra, double precioUnitario, Activo activoCompra) {
 		
 		super(idfactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
 		this.cantidadFacturaCompra = cantidadFacturaCompra;
 		this.precioUnitario = precioUnitario;
+		this.activoCompra = activoCompra;
 	}
 
 	
@@ -63,7 +69,7 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	}
 
 	@Override
-	public boolean actualizarCajaDiaria(FacturaCompra factura, CajaDiaria cajaDiaria) {
+	public LibroDiario actualizarLibroDiario(FacturaCompra factura, LibroDiario libroDiario) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -86,6 +92,18 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 
 	public void setPrecioUnitario(double precioUnitario) {
 		this.precioUnitario = precioUnitario;
+	}
+	
+	
+
+
+	public Activo getActivoCompra() {
+		return activoCompra;
+	}
+
+
+	public void setActivoCompra(Activo activoCompra) {
+		this.activoCompra = activoCompra;
 	}
 
 
@@ -121,7 +139,7 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	@Override
 	public String toString() {
 		return "FacturaCompra [cantidadFacturaCompra=" + cantidadFacturaCompra + ", precioUnitario=" + precioUnitario
-				+ "]";
+				+ ", activoCompra=" + activoCompra + "]";
 	}
 
 

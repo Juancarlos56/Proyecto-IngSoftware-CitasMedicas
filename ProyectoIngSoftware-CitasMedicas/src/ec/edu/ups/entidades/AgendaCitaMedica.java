@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -94,6 +95,31 @@ public class AgendaCitaMedica implements Serializable {
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
 
+	
+	//Metodos propios para la clase AgendaCitaMedica
+	
+	public boolean modificarHorarioMedico(HorarioMedico horarioParaReserva) {
+		
+		List<HorarioMedico> horariosMedico = getMedico().getHorariosDeUnMedico();
+		
+		for (HorarioMedico horarioMedico : horariosMedico) {
+			
+			if (horarioMedico.getId_horarioMedico() == horarioParaReserva.getId_horarioMedico()) {
+			
+				if (horarioMedico.getEstadoHorarioMedico().equals("Libre")) {
+					horarioMedico.setEstadoHorarioMedico("Ocupado");
+					return true;
+				}
+				
+			}
+		}
+		
+		return false;
+	}
+	
+	
+	
+	//Metodos getters and setters 
 
 	public int getIdAgendaCitaMedica() {
 		return idAgendaCitaMedica;

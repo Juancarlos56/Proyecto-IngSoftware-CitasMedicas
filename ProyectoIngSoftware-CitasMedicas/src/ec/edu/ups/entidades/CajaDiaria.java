@@ -2,7 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -37,7 +37,7 @@ public class CajaDiaria implements Serializable {
     private int totalDineroPatrimonioCajaDiaria;
 	
 	@Column(name = "fechaCajaDiaria")
-	private GregorianCalendar fechaCajaDiaria;
+	private Calendar fechaCajaDiaria;
 	
 	/*Relacion de mucho a uno con la entidad LibroDiario, mapeado por libroDiario */
    
@@ -51,7 +51,7 @@ public class CajaDiaria implements Serializable {
 	
 	
 	public CajaDiaria(int codigoCajaDiaria, int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria,
-			int totalDineroDeudaCajaDiaria, int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria,
+			int totalDineroDeudaCajaDiaria, int totalDineroPatrimonioCajaDiaria, Calendar fechaCajaDiaria,
 			List<LibroDiario> registroLibroDiario) {
 		super();
 		this.codigoCajaDiaria = codigoCajaDiaria;
@@ -66,7 +66,7 @@ public class CajaDiaria implements Serializable {
 
 	//Constructor sin codigo por autogeneracion
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
-			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria) {
+			int totalDineroPatrimonioCajaDiaria, Calendar fechaCajaDiaria) {
 		super();
 		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
 		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
@@ -81,32 +81,45 @@ public class CajaDiaria implements Serializable {
 	 * Metodos propios de la clase CajaDiaria
 	 */
 	
-	public double calcularEntradas() {
-		return 0.0;
-	}
-	
-	public double calcularSalidas() {
-		return 0.0;
-	}
-	
-	public double calcularTotalDineroSalario() {
-		return 0.0;
-	}
-	
-	public double calcularTotalDineroActivo() {
-		return 0.0;
-	}
-	
-	public double calcularTotalDineroDeuda() {
-		return 0.0;
-	}
-	
 	public double calcularTotalPatrimonio() {
-		return 0.0;
+		double totalPatriminio = 0.0;
+		totalPatriminio = calcularTotalEntradas()-calcularSalidasPorPagoSalario();
+		return totalPatriminio;
 	}
 	
-	public double calcularResumenFacturas() {
-		return 0.0;
+	public double calcularTotalEntradas() {
+		double totalEntradaEmpresa = calcularEntradasPorCitaMedica()+calcularEntradasPorCompra();
+		return totalEntradaEmpresa;
+	}
+	
+	public double calcularEntradasPorCitaMedica() {
+		List<LibroDiario> registrosDiarios = getRegistroLibroDiario();
+		double entradaPorCita = 0.0;
+		
+		for (LibroDiario registroDiario : registrosDiarios) {
+			entradaPorCita = entradaPorCita + registroDiario.calcularTotalActivosCitas();
+		}
+		return entradaPorCita;
+	}
+	
+	public double calcularEntradasPorCompra() {
+		List<LibroDiario> registrosDiarios = getRegistroLibroDiario();
+		double entradaPorCompra = 0.0;
+		
+		for (LibroDiario registroDiario : registrosDiarios) {
+			entradaPorCompra = entradaPorCompra + registroDiario.calcularTotalActivosCompras();
+		}
+		return entradaPorCompra;
+	}
+	
+	public double calcularSalidasPorPagoSalario() {
+		List<LibroDiario> registrosDiarios = getRegistroLibroDiario();
+		double salidaPorSalario = 0.0;
+		
+		for (LibroDiario registroDiario : registrosDiarios) {
+			salidaPorSalario = salidaPorSalario + registroDiario.calcularTotalPasivos();
+		}
+		return salidaPorSalario;
 	}
 	
 	
@@ -174,13 +187,13 @@ public class CajaDiaria implements Serializable {
 
 
 
-	public GregorianCalendar getFechaCajaDiaria() {
+	public Calendar getFechaCajaDiaria() {
 		return fechaCajaDiaria;
 	}
 
 
 
-	public void setFechaCajaDiaria(GregorianCalendar fechaCajaDiaria) {
+	public void setFechaCajaDiaria(Calendar fechaCajaDiaria) {
 		this.fechaCajaDiaria = fechaCajaDiaria;
 	}
 

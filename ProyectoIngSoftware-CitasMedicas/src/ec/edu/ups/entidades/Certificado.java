@@ -1,7 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.Date;
+
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -21,7 +22,7 @@ public class Certificado implements Serializable {
 	private int idCertificado;
 	
 	@Column(name = "fechaEnvioDeCerficado")
-	private Date fechaEnvioDeCerficado;
+	private Calendar fechaEnvioDeCerficado;
 	
 	@Column(name = "numeroDiasDeReposoParaPaciente")
 	private int numeroDiasDeReposoParaPaciente;
@@ -37,7 +38,7 @@ public class Certificado implements Serializable {
 		super();
 	}
 
-	public Certificado(int idCertificado, Date fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+	public Certificado(int idCertificado, Calendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
 			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
 		super();
 		this.idCertificado = idCertificado;
@@ -48,7 +49,7 @@ public class Certificado implements Serializable {
 	}
 
 	//Contructor sin codigo por autogeneracion
-	public Certificado(Date fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+	public Certificado(Calendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
 			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
 		super();
 		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
@@ -57,6 +58,17 @@ public class Certificado implements Serializable {
 		this.certificadoDeUnaConsulta = certificadoDeUnaConsulta;
 	}
 
+	//Metodos propios de la clase Certificado
+	
+	public Calendar calcularFechaFinal() {
+		Calendar fechaEnvio = getFechaEnvioDeCerficado();
+		Calendar fechafinal = Calendar.getInstance(); 
+		fechafinal.add(fechaEnvio.get(Calendar.DATE), getNumeroDiasDeReposoParaPaciente());
+		return fechafinal;
+	}
+	
+	
+	//Metodos getters y setters
 	public int getIdCertificado() {
 		return idCertificado;
 	}
@@ -65,11 +77,11 @@ public class Certificado implements Serializable {
 		this.idCertificado = idCertificado;
 	}
 
-	public Date getFechaEnvioDeCerficado() {
+	public Calendar getFechaEnvioDeCerficado() {
 		return fechaEnvioDeCerficado;
 	}
 
-	public void setFechaEnvioDeCerficado(Date fechaEnvioDeCerficado) {
+	public void setFechaEnvioDeCerficado(Calendar fechaEnvioDeCerficado) {
 		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
 	}
 

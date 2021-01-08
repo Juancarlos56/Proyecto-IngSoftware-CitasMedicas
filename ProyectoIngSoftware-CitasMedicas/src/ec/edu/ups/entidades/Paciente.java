@@ -2,7 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -38,7 +38,7 @@ public class Paciente extends Persona implements Serializable {
 	
 	
 	public Paciente(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado, int idPaciente, String tipoSangre) {
 		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
 				estado);
@@ -48,7 +48,7 @@ public class Paciente extends Persona implements Serializable {
 
 
 	public Paciente(String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado, int idPaciente, String tipoSangre) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);
 		this.tipoSangre = tipoSangre;
@@ -161,12 +161,12 @@ public class Paciente extends Persona implements Serializable {
 	}
 
 
-	public GregorianCalendar getFechaDeNacimiento() {
+	public Calendar getFechaDeNacimiento() {
 		return super.getFechaDeNacimiento();
 	}
 
 
-	public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
+	public void setFechaDeNacimiento(Calendar fechaDeNacimiento) {
 		super.setFechaDeNacimiento(fechaDeNacimiento);
 	}
 

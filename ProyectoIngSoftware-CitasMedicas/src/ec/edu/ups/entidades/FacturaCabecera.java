@@ -2,7 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,6 +21,9 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "detallesDeFacturaCabecera")
     private List<FacturaDetalle> detallesDeFacturaCabecera=new ArrayList<FacturaDetalle>();
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaCabecera_Activo")
+	private Activo activoCobroCitaMedica;
 	
 	public FacturaCabecera() {
 		super();
@@ -28,18 +31,20 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	
 	
 	
-	public FacturaCabecera(GregorianCalendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura) {
+	public FacturaCabecera(Calendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura,
+			Activo activoCobroCitaMedica) {
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
-	
+		this.activoCobroCitaMedica = activoCobroCitaMedica;
 	}
 	
-	public FacturaCabecera(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura) {
+	public FacturaCabecera(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
+			char estado, double subtotal, double iva, double total, String tipoFactura,
+			Activo activoCobroCitaMedica) {
 		
 		super(idFactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
-	
+		this.activoCobroCitaMedica = activoCobroCitaMedica;
 	}
 
 
@@ -58,11 +63,15 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 		return super.calcularValorFactura();
 	}
 
+
+
 	@Override
-	public boolean actualizarCajaDiaria(FacturaCabecera factura, CajaDiaria cajaDiaria) {
-		// TODO Auto-generated method stub
-		return false;
+	public LibroDiario actualizarLibroDiario(FacturaCabecera factura, LibroDiario libroDiario) {
+		//Activo activoPorCobroCita = getActivoCobroCitaMedica();
+		//activoPorCobroCita.get
+		return null;
 	}
+
 
 
 
@@ -78,6 +87,17 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
    
 	public void addDetalleDeFacturaCabecera(FacturaDetalle detalleDeFacturaCabecera) {
 		this.detallesDeFacturaCabecera.add(detalleDeFacturaCabecera);
+	}
+
+
+	public Activo getActivoCobroCitaMedica() {
+		return activoCobroCitaMedica;
+	}
+
+
+
+	public void setActivoCobroCitaMedica(Activo activoCobroCitaMedica) {
+		this.activoCobroCitaMedica = activoCobroCitaMedica;
 	}
 
 
@@ -113,8 +133,15 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 
 	@Override
 	public String toString() {
-		return "FacturaCabecera [detallesDeFacturaCabecera=" + detallesDeFacturaCabecera + "]";
+		return "FacturaCabecera [detallesDeFacturaCabecera=" + detallesDeFacturaCabecera + ", activoCobroCitaMedica="
+				+ activoCobroCitaMedica + "]";
 	}
-	
+
+
+
+
+
+
+
 	
 }
