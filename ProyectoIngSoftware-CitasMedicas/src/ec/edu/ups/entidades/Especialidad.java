@@ -40,7 +40,6 @@ public class Especialidad implements Serializable {
 		super();
 		this.id_Especialidad = id_Especialidad;
 		this.nombre_Especialidad = nombre_Especialidad;
-		this.especialidadDeEstudio = especialidadDeEstudio;
 	}
 
 
