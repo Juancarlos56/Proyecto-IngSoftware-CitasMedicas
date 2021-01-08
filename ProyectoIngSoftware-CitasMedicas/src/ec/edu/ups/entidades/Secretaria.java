@@ -66,7 +66,15 @@ public class Secretaria extends Persona implements Serializable {
 		this.secretariaAgendaCita = secretariaAgendaCita;
 		
 	}
-	
+	public Secretaria(String cedula, String nombre, String apellido, String lugarNacimiento,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			String estado,String user,String password) {
+		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
+				estado);
+		
+		this.userSecretaria = user;
+		this.passwordSecretaria = password;
+	}
 	public String getUserSecretaria() {
 		return userSecretaria;
 	}
