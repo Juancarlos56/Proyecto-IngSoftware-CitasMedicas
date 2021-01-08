@@ -12,5 +12,5 @@ public class LibroDiarioControlador {
 		LibroDiario nuevoLibro=new LibroDiario(0, new GregorianCalendar(), caja, secretaria);
 		return "Ingresado";
 	}
-	
+
 }

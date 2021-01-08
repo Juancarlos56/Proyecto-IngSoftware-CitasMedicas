@@ -22,25 +22,28 @@ public class Especialidad implements Serializable {
 	private int id_Especialidad;
 
 	@Column(name = "nombre_Especialidad")
-	private int nombre_Especialidad;
+	private String nombre_Especialidad;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "especialidadDeEstudio")
 	private List<EstudioMedico> especialidadDeEstudio = new ArrayList<EstudioMedico>();
 	
 	
 	
-	public Especialidad() {
+	public Especialidad(String nombre) {
 		super();
+		this.nombre_Especialidad=nombre;
 	}   
 	
+	public Especialidad() {
+		super();		
+	}	
 	
-	
-	
-	public Especialidad(int id_Especialidad, int nombre_Especialidad, List<EstudioMedico> especialidadPorEstudio) {
+	public Especialidad(int id_Especialidad, String nombre_Especialidad, List<EstudioMedico> especialidadPorEstudio) {
 		super();
 		this.id_Especialidad = id_Especialidad;
 		this.nombre_Especialidad = nombre_Especialidad;
-	}
+	}	
+	
 
 
 
@@ -59,14 +62,14 @@ public class Especialidad implements Serializable {
 
 
 
-	public int getNombre_Especialidad() {
+	public String getNombre_Especialidad() {
 		return nombre_Especialidad;
 	}
 
 
 
 
-	public void setNombre_Especialidad(int nombre_Especialidad) {
+	public void setNombre_Especialidad(String nombre_Especialidad) {
 		this.nombre_Especialidad = nombre_Especialidad;
 	}
 
@@ -94,7 +97,7 @@ public class Especialidad implements Serializable {
 		int result = 1;
 		result = prime * result + ((especialidadDeEstudio == null) ? 0 : especialidadDeEstudio.hashCode());
 		result = prime * result + id_Especialidad;
-		result = prime * result + nombre_Especialidad;
+		result = prime * result + ((nombre_Especialidad == null) ? 0 : nombre_Especialidad.hashCode());
 		return result;
 	}
 
@@ -117,7 +120,10 @@ public class Especialidad implements Serializable {
 			return false;
 		if (id_Especialidad != other.id_Especialidad)
 			return false;
-		if (nombre_Especialidad != other.nombre_Especialidad)
+		if (nombre_Especialidad == null) {
+			if (other.nombre_Especialidad != null)
+				return false;
+		} else if (!nombre_Especialidad.equals(other.nombre_Especialidad))
 			return false;
 		return true;
 	}
@@ -130,6 +136,14 @@ public class Especialidad implements Serializable {
 		return "Especialidad [id_Especialidad=" + id_Especialidad + ", nombre_Especialidad=" + nombre_Especialidad
 				+ ", especialidadDeEstudio=" + especialidadDeEstudio + "]";
 	}
+
+
+
+
+
+
+
+
 	
 
 
