@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -23,10 +23,10 @@ public class AgendaCitaMedica implements Serializable {
 	private int idAgendaCitaMedica;
 	
 	@Column(name = "fechaActualDeAgendaCitaMedica")
-	private GregorianCalendar fechaActualDeAgendaCitaMedica;
+	private Calendar fechaActualDeAgendaCitaMedica;
 	
 	@Column(name = "fechaReservaDeAgendaCitaMedica")
-	private GregorianCalendar fechaReservaDeAgendaCitaMedica;
+	private Calendar fechaReservaDeAgendaCitaMedica;
 	
 	@Column(name = "tipoCitaDeAgendaCitaMedica")
 	private String tipoCitaDeAgendaCitaMedica;
@@ -58,8 +58,8 @@ public class AgendaCitaMedica implements Serializable {
 	}
 
 	
-	public AgendaCitaMedica(int idAgendaCitaMedica, GregorianCalendar fechaActualDeAgendaCitaMedica,
-			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+	public AgendaCitaMedica(int idAgendaCitaMedica, Calendar fechaActualDeAgendaCitaMedica,
+			Calendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
 			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
 			Medico medico, Paciente pacienteCitaMedica, FacturaDetalle citasDeFacturaDetalle) {
 		super();
@@ -79,8 +79,8 @@ public class AgendaCitaMedica implements Serializable {
 
 	//Contructor sin ID por autogeneracion del codigo 
 
-	public AgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica,
-			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+	public AgendaCitaMedica(Calendar fechaActualDeAgendaCitaMedica,
+			Calendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
 			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
 			Medico medico, Paciente pacienteCitaMedica, FacturaDetalle citasDeFacturaDetalle) {
 		super();
@@ -129,19 +129,19 @@ public class AgendaCitaMedica implements Serializable {
 		this.idAgendaCitaMedica = idAgendaCitaMedica;
 	}
 
-	public GregorianCalendar getFechaActualDeAgendaCitaMedica() {
+	public Calendar getFechaActualDeAgendaCitaMedica() {
 		return fechaActualDeAgendaCitaMedica;
 	}
 
-	public void setFechaActualDeAgendaCitaMedica(GregorianCalendar fechaActualDeAgendaCitaMedica) {
+	public void setFechaActualDeAgendaCitaMedica(Calendar fechaActualDeAgendaCitaMedica) {
 		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
 	}
 
-	public GregorianCalendar getFechaReservaDeAgendaCitaMedica() {
+	public Calendar getFechaReservaDeAgendaCitaMedica() {
 		return fechaReservaDeAgendaCitaMedica;
 	}
 
-	public void setFechaReservaDeAgendaCitaMedica(GregorianCalendar fechaReservaDeAgendaCitaMedica) {
+	public void setFechaReservaDeAgendaCitaMedica(Calendar fechaReservaDeAgendaCitaMedica) {
 		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
 	}
 
