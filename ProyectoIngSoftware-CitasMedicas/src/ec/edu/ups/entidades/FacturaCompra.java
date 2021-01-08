@@ -71,7 +71,7 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	@Override
 	public LibroDiario actualizarLibroDiario(FacturaCompra factura, LibroDiario libroDiario) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 

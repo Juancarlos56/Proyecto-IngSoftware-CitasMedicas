@@ -83,7 +83,7 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	@Override
 	public LibroDiario actualizarLibroDiario(FacturaSalario factura, LibroDiario libroDiario) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 
