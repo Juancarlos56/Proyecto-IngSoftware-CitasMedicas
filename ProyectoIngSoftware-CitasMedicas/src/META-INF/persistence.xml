@@ -18,7 +18,7 @@
 		<class>ec.edu.ups.entidades.Medico</class>
 		<class>ec.edu.ups.entidades.EstudioMedico</class>
 		<class>ec.edu.ups.entidades.Especialidad</class>
-		<class>ec.edu.ups.entidades.Horario_Medico</class>
+		<class>ec.edu.ups.entidades.HorarioMedico</class>
 		<class>ec.edu.ups.entidades.Persona</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />			

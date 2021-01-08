@@ -223,7 +223,7 @@ public class Medico extends Persona implements Serializable {
 
 	
 	public void agregarEstudioMedico(EstudioMedico estudioMedico) {
-		this.estudiosDeUnMedico.add(estudiosDeUnMedico);
+		this.estudiosDeUnMedico.add(estudioMedico);
 	}
 
 	

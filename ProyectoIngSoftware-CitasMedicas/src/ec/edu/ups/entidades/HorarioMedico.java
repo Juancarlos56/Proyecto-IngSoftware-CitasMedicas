@@ -11,7 +11,7 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Horario_Medico implements Serializable {
+public class HorarioMedico implements Serializable {
 
 	 
 	private static final long serialVersionUID = 1L;
@@ -40,14 +40,14 @@ public class Horario_Medico implements Serializable {
 	
 
 	
-	public Horario_Medico() {
+	public HorarioMedico() {
 		super();
 	}   
 
 	
 	
 	
-	public Horario_Medico(int id_horarioMedico, GregorianCalendar diaHorarioMedico,
+	public HorarioMedico(int id_horarioMedico, GregorianCalendar diaHorarioMedico,
 			GregorianCalendar horaInicioHorarioMedico, GregorianCalendar horaFinHorarioMedico,
 			String estadoHorarioMedico, Medico horarioDisponiblePorMedico) {
 		super();
@@ -62,7 +62,7 @@ public class Horario_Medico implements Serializable {
 
 	
 
-	public Horario_Medico obtenerHorarioPorDia() {
+	public HorarioMedico obtenerHorarioPorDia() {
 		return null;
 	}
 
@@ -144,7 +144,7 @@ public class Horario_Medico implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Horario_Medico other = (Horario_Medico) obj;
+		HorarioMedico other = (HorarioMedico) obj;
 		if (diaHorarioMedico == null) {
 			if (other.diaHorarioMedico != null)
 				return false;
