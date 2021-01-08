@@ -57,7 +57,6 @@ public class AgendaCitaMedica implements Serializable {
 	}
 
 	
-
 	public AgendaCitaMedica(int idAgendaCitaMedica, GregorianCalendar fechaActualDeAgendaCitaMedica,
 			GregorianCalendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
 			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
