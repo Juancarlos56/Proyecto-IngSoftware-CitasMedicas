@@ -18,22 +18,22 @@ public class AgendaCitaMedica implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "age_cit_med_id")
+	@Column(name = "idAgendaCitaMedica")
 	private int idAgendaCitaMedica;
 	
-	@Column(name = "age_cit_med_fechaActual")
+	@Column(name = "fechaActualDeAgendaCitaMedica")
 	private GregorianCalendar fechaActualDeAgendaCitaMedica;
 	
-	@Column(name = "age_cit_med_fechaReserva")
+	@Column(name = "fechaReservaDeAgendaCitaMedica")
 	private GregorianCalendar fechaReservaDeAgendaCitaMedica;
 	
-	@Column(name = "age_cit_med_tipoCita")
+	@Column(name = "tipoCitaDeAgendaCitaMedica")
 	private String tipoCitaDeAgendaCitaMedica;
 	
-	@Column(name = "age_cit_med_estado")
+	@Column(name = "estadoDeAgendaCitaMedica")
 	private String estadoDeAgendaCitaMedica;
 	
-	@Column(name = "age_cit_med_precio")
+	@Column(name = "precioDeAgendaCitaMedica")
 	private float precioDeAgendaCitaMedica;
 	
 	@ManyToOne

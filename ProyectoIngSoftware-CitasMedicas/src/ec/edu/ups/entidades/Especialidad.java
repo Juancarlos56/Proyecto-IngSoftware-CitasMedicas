@@ -18,10 +18,10 @@ public class Especialidad implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "esp_id")
+	@Column(name = "id_Especialidad")
 	private int id_Especialidad;
 
-	@Column(name = "esp_nom")
+	@Column(name = "nombre_Especialidad")
 	private int nombre_Especialidad;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "especialidadDeEstudio")

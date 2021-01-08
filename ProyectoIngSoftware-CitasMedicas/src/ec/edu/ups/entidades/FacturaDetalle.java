@@ -22,10 +22,10 @@ public class FacturaDetalle implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int idFacturaDetalle;
 	
-	@Column(name="fact_det_cantidad",nullable=false)
+	@Column(name="cantidadFacturaDetalle",nullable=false)
 	private int cantidadFacturaDetalle;
 	
-	@Column(name="fact_det_cantidad",nullable=false)
+	@Column(name="subtotalFacturaDetalle",nullable=false)
 	private double subtotalFacturaDetalle;
 	
 	@ManyToOne 

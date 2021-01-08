@@ -20,23 +20,23 @@ public class CajaDiaria implements Serializable {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "caj_dia_codigo")
+	@Column(name = "codigoCajaDiaria")
     private int codigoCajaDiaria;
 	
-	@Column(name = "caj_dia_totalDineroSalario")
+	@Column(name = "totalDineroSalarioCajaDiaria")
     private int totalDineroSalarioCajaDiaria;
 	
 	
-	@Column(name = "caj_dia_totalDineroActivo")
+	@Column(name = "totalDineroActivoCajaDiaria")
     private int totalDineroActivoCajaDiaria;
 	
-	@Column(name = "caj_dia_totalDineroDeuda")
+	@Column(name = "totalDineroDeudaCajaDiaria")
     private int totalDineroDeudaCajaDiaria;
 	
-	@Column(name = "caj_dia_totalDineroPatrimonio")
+	@Column(name = "totalDineroPatrimonioCajaDiaria")
     private int totalDineroPatrimonioCajaDiaria;
 	
-	@Column(name = "caj_dia_fecha")
+	@Column(name = "fechaCajaDiaria")
 	private GregorianCalendar fechaCajaDiaria;
 	
 	/*Relacion de mucho a uno con la entidad LibroDiario, mapeado por libroDiario */

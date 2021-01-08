@@ -20,25 +20,25 @@ public class Consulta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "con_id")
+	@Column(name = "idConsulta")
 	private int idConsulta;
 	
-	@Column(name = "con_fechaActual")
+	@Column(name = "fechaActualDeLaConsulta")
 	private GregorianCalendar fechaActualDeLaConsulta;
 	
-	@Column(name = "con_sintomas", length = 255, nullable = false)
+	@Column(name = "sintomasDelPaciente", length = 255, nullable = false)
 	private String sintomasDelPaciente;
 	
-	@Column(name = "con_diagnostico", length = 255, nullable = false)
+	@Column(name = "diagnosticoDeLaConsulta", length = 255, nullable = false)
 	private String diagnosticoDeLaConsulta;
 	
-	@Column(name = "con_observacion", length = 255, nullable = false)
+	@Column(name = "observacionesDeLaConsulta", length = 255, nullable = false)
 	private String observacionesDeLaConsulta;
 	
-	@Column(name = "con_medicinas", length = 255, nullable = false)
+	@Column(name = "medicinasParaElPaciente", length = 255, nullable = false)
 	private String medicinasParaElPaciente;
 	
-	@Column(name = "con_dosis", length = 255, nullable = false)
+	@Column(name = "dosisParaUnPaciente", length = 255, nullable = false)
 	private String dosis;
 	
 	

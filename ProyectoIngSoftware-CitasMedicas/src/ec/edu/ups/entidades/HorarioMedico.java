@@ -19,19 +19,19 @@ public class HorarioMedico implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "horario_medico_id")
+	@Column(name = "id_horarioMedico")
 	private int id_horarioMedico;
 	
-	@Column(name = "horario_medico_dia")
+	@Column(name = "diaHorarioMedico")
 	private GregorianCalendar diaHorarioMedico;
 	
-	@Column(name = "horario_medico_horaInicio")
+	@Column(name = "horaInicioHorarioMedico")
 	private GregorianCalendar horaInicioHorarioMedico;
 	
-	@Column(name = "horario_medico_horaFin")
+	@Column(name = "horaFinHorarioMedico")
 	private GregorianCalendar horaFinHorarioMedico;
 	
-	@Column(name = "horario_medico_estado")
+	@Column(name = "estadoHorarioMedico")
 	private String estadoHorarioMedico;
 	
 	@ManyToOne 

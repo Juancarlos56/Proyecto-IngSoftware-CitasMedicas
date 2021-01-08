@@ -18,10 +18,10 @@ public class EstudioMedico implements Serializable {
 	   
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "estudio_medico_id")
+	@Column(name = "id_estudioMedico")
 	private int id_estudioMedico;
 	
-	@Column(name = "estudio_medico_fecha_titulo")
+	@Column(name = "fechaTituloMedico")
 	private GregorianCalendar  fechaTituloMedico;
 	
 	@ManyToOne

@@ -17,10 +17,10 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	private static final long serialVersionUID = 1L;
 	
 	
-	@Column(name="fact_com_cantidad",nullable=false)
+	@Column(name="cantidadFacturaCompra",nullable=false)
 	private int cantidadFacturaCompra;
 	
-	@Column(name="fact_com_subtotal",nullable=false)
+	@Column(name="precioUnitarioFacturaCompra",nullable=false)
 	private double precioUnitario;
 	
 	public FacturaCompra() {

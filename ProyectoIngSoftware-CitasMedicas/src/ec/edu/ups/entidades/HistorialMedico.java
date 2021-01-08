@@ -18,43 +18,43 @@ public class HistorialMedico implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "his_id")
+	@Column(name = "idHistorial")
 	private int idHistorial;
 	
-	@Column(name = "his_anamnesis", length = 255, nullable = true)
+	@Column(name = "anamnesisDeUnPaciente", length = 255, nullable = true)
 	private String anamnesisDeUnPaciente;
 	
-	@Column(name = "his_examenFisico", length = 255, nullable = true)
+	@Column(name = "examenFisicoDeUnPaciente", length = 255, nullable = true)
 	private String examenFisicoDeUnPaciente;
 	
-	@Column(name = "his_examenSemiologico", length = 255, nullable = true)
+	@Column(name = "examenSemiologicoDeUnPaciente", length = 255, nullable = true)
 	private String examenSemiologicoDeUnPaciente;
 	
-	@Column(name = "his_diagnosticoPresuntivo", length = 255, nullable = true)
+	@Column(name = "diagnosticoPresuntivoDeUnPaciente", length = 255, nullable = true)
 	private String diagnosticoPresuntivoDeUnPaciente;
 	
-	@Column(name = "his_metodosComplementarios", length = 255, nullable = true)
+	@Column(name = "metodosComplementariosDeUnPaciente", length = 255, nullable = true)
 	private String metodosComplementariosDeUnPaciente;
 	
-	@Column(name = "his_evolucionDiaria", length = 255, nullable = true)
+	@Column(name = "evolucionDiariaDeUnPaciente", length = 255, nullable = true)
 	private String evolucionDiariaDeUnPaciente;
 	
-	@Column(name = "his_epicrisis", length = 255, nullable = true)
+	@Column(name = "epicrisisDeUnPaciente", length = 255, nullable = true)
 	private String epicrisisDeUnPaciente;
 	
-	@Column(name = "his_FechaDeHistoriaMedica", length = 255, nullable = true)
+	@Column(name = "fechaHistoriaMedica", length = 255, nullable = true)
 	private GregorianCalendar fechaHistoriaMedica;
 	
-	@Column(name = "his_medicacionActualDeUnPaciente", length = 255, nullable = true)
+	@Column(name = "medicacionActualDeUnPaciente", length = 255, nullable = true)
 	private String medicacionActualDeUnPaciente;
 	
-	@Column(name = "his_enfermedadesActualesDeUnPaciente", length = 255, nullable = true)
+	@Column(name = "enfermedadesActualesDeUnPaciente", length = 255, nullable = true)
 	private String enfermedadesActualesDeUnPaciente;
 	
-	@Column(name = "his_pesoDeUnPaciente", nullable = false)
+	@Column(name = "pesoDeUnPaciente", nullable = false)
 	private float pesoDeUnPaciente;
 	
-	@Column(name = "his_IMC_DeUnPaciente", nullable = false)
+	@Column(name = "IMCDeUnPaciente", nullable = false)
 	private float IMCDeUnPaciente;
 	
 	
