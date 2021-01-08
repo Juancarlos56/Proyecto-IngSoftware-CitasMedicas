@@ -18,7 +18,7 @@ public class Paciente extends Persona implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "pac_tipoSangre", nullable = true)
+	@Column(name = "tipoSangrePaciente", nullable = true)
 	private String tipoSangre;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "historialDelPaciente")

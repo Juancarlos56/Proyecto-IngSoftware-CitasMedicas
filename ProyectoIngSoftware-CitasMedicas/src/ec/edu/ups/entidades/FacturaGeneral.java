@@ -21,32 +21,32 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * */
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "fact_gen_id")
+	@Column(name = "idFactura")
 	private int idFactura;
 	
-	@Column(name="fact_gen_fecha",nullable=false)
+	@Column(name="fechaFactura",nullable=false)
 	private GregorianCalendar fecha;
 	
 	
-	@Column(name="fact_gen_descripcion", length=255)
+	@Column(name="descripcionFactura", length=255)
 	private String descripcion;
 	
-	@Column(name="fact_gen_tipoTransaccion", length=20, nullable=false)
+	@Column(name="tipoTransaccionFactura", length=20, nullable=false)
 	private String tipoTransaccion;
 	
-	@Column(name="fact_gen_estado", length=20, nullable=false)
+	@Column(name="estadoFactura", length=20, nullable=false)
 	private char estado;
 	
-	@Column(name = "fact_gen_subtotal")
-	private double Subtotal;
+	@Column(name = "subtotalFactura")
+	private double subtotal;
 	
-	@Column(name = "fact_gen_iva")
+	@Column(name = "ivaFactura")
 	private double iva;
 	
-	@Column(name = "fact_gen_total")
+	@Column(name = "totalFactura")
 	private double total;
 	
-	@Column(name="fact_gen_tipoFactura", length=20, nullable=false)
+	@Column(name="tipoFacturaFactura", length=20, nullable=false)
 	private String  tipoFactura;
 	
 	public FacturaGeneral() {
@@ -73,7 +73,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 		this.descripcion = descripcion;
 		this.tipoTransaccion = tipoTransaccion;
 		this.estado = estado;
-		Subtotal = subtotal;
+		this.subtotal = subtotal;
 		this.iva = iva;
 		this.total = total;
 		this.tipoFactura = tipoFactura;
@@ -90,7 +90,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 		this.descripcion = descripcion;
 		this.tipoTransaccion = tipoTransaccion;
 		this.estado = estado;
-		Subtotal = subtotal;
+		this.subtotal = subtotal;
 		this.iva = iva;
 		this.total = total;
 		this.tipoFactura = tipoFactura;
@@ -201,13 +201,13 @@ public abstract class FacturaGeneral<T> implements Serializable{
 
 
 	public double getSubtotal() {
-		return Subtotal;
+		return subtotal;
 	}
 
 
 
 	public void setSubtotal(double subtotal) {
-		Subtotal = subtotal;
+		this.subtotal = subtotal;
 	}
 
 
@@ -250,7 +250,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	@Override
 	public String toString() {
 		return "FacturaGeneral [idFactura=" + idFactura + ", fecha=" + fecha + ", descripcion=" + descripcion
-				+ ", tipoTransaccion=" + tipoTransaccion + ", estado=" + estado + ", Subtotal=" + Subtotal + ", iva="
+				+ ", tipoTransaccion=" + tipoTransaccion + ", estado=" + estado + ", Subtotal=" + subtotal + ", iva="
 				+ iva + ", total=" + total + ", tipoFactura=" + tipoFactura + "]";
 	} 
 	

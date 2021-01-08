@@ -20,10 +20,10 @@ public class Secretaria extends Persona implements Serializable {
 	private static final long serialVersionUID = 1L;  
 	
 	
-	@Column(name = "sec_user")
+	@Column(name = "userSecretaria")
 	private String userSecretaria;
 	
-	@Column(name = "sec_password")
+	@Column(name = "passwordSecretaria")
 	private String passwordSecretaria;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsableLibroDiario")

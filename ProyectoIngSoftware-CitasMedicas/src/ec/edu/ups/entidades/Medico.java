@@ -17,13 +17,13 @@ public class Medico extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
-	@Column(name = "med_user")
+	@Column(name = "userMedico")
 	private String userMedico;
 	
-	@Column(name = "med_password")
+	@Column(name = "passwordMedico")
 	private String passwordMedico;
 	
-	@Column(name = "med_foto")
+	@Column(name = "urlFotoMedico")
 	private String urlFotoMedico;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "estudioRealizadoPorMedico")

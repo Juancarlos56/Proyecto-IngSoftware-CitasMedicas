@@ -18,13 +18,13 @@ public class LibroDiario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "lib_id")
+	@Column(name = "libroId")
 	private int libroId;
 	
-	@Column(name = "lib_dia_total")
+	@Column(name = "totalLibroDiario")
 	private float totalLibroDiario;	
 	
-	@Column(name = "lib_dia_fecha")
+	@Column(name = "fechaLibroDiario")
 	private GregorianCalendar fechaLibroDiario;
 	
 	@ManyToOne

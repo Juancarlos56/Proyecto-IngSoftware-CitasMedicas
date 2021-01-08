@@ -17,16 +17,16 @@ public class Certificado implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cer_id")
+	@Column(name = "idCertificado")
 	private int idCertificado;
 	
-	@Column(name = "cer_fechaEnvio")
+	@Column(name = "fechaEnvioDeCerficado")
 	private Date fechaEnvioDeCerficado;
 	
-	@Column(name = "cer_numeroDiasDeReposo")
+	@Column(name = "numeroDiasDeReposoParaPaciente")
 	private int numeroDiasDeReposoParaPaciente;
 	
-	@Column(name = "cer_descripcion")
+	@Column(name = "descripcionParaCertificado")
 	private String descripcionParaCertificado;
 	
 	@OneToOne

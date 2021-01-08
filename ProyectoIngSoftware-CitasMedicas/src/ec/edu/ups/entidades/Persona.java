@@ -18,37 +18,37 @@ public class Persona implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "per_id")
+	@Column(name = "idFactura")
 	private int idFactura;
 	
-	@Column(name = "per_cedula") 
+	@Column(name = "persona_cedula", length = 255, nullable = false, unique = true) 
 	private String cedula;
 	
-	@Column(name = "per_nombre") 
+	@Column(name = "persona_nombre", length = 255, nullable = false) 
 	private String nombre; 
 	
-	@Column(name = "per_apellido") 
+	@Column(name = "persona_apellido", length = 255, nullable = false) 
 	private String apellido;
 	
-	@Column(name = "per_lugarNacimiento") 
+	@Column(name = "persona_lugarNacimiento", length = 255, nullable = false) 
 	private String lugarNacimiento;
 	
-	@Column(name = "per_fechaNacimiento") 
+	@Column(name = "persona_fechaNacimiento", length = 255, nullable = false) 
 	private GregorianCalendar fechaDeNacimiento;
 	
-	@Column(name = "per_nacionalidad") 
+	@Column(name = "persona_nacionalidad", length = 255, nullable = false) 
 	private String nacionalidad;
 	
-	@Column(name = "per_sexo") 
+	@Column(name = "persona_sexo", length = 255, nullable = false) 
 	private String sexo;
 	
-	@Column(name = "per_email") 
+	@Column(name = "persona_email", length = 255, nullable = false, unique = true) 
 	private String email;
 	
-	@Column(name = "per_tipoUsuario") 
+	@Column(name = "persona_tipoUsuario", length = 255, nullable = false) 
 	private String tipoUsuario;
 
-	@Column(name = "per_estado") 
+	@Column(name = "persona_estado", length = 10, nullable = false) 
 	private String estado;
 	
 	

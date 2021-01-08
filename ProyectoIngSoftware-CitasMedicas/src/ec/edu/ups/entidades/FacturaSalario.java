@@ -16,10 +16,10 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "fact_sal_totalPagoMedico")
+	@Column(name = "totalPagoMedicoFacturaSalario")
 	private double totalPagoMedicoFacturaSalario;
 	
-	@Column(name = "fact_sal_comisionEmpresa")
+	@Column(name = "comisionEmpresaFacturaSalario")
 	private double comisionEmpresaFacturaSalario;
 	
 	@ManyToOne 

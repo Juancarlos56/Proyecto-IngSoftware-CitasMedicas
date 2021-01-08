@@ -18,17 +18,17 @@ public class OrdenMedica implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ord_med_id")
+	@Column(name = "idOrdenMedica")
 	private int idOrdenMedica;
 	
-	@Column(name="ord_med_descripcion", length=20, nullable=false)
+	@Column(name="descripcionOrdenMedica", length=20, nullable=false)
 	private String descripcion;
 	
-	@Column(name="ord_med_diagnostico", length=20, nullable=false)
+	@Column(name="diagnosticoOrdenMedica", length=20, nullable=false)
 	private String diagnostico;
 	
 	
-	@Column(name="ord_med_fecha", length=20, nullable=false)
+	@Column(name="fechaOrdenMedica", length=20, nullable=false)
 	private Date fechaOrdenMedica;
 	
 	@ManyToOne
