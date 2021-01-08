@@ -42,7 +42,7 @@ public class AgendaCitaMedica implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_Medico_AgendaCita")
-	private Medico medico;
+	private Medico medicoParaCitaMedica;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_Paciente_AgendaCita")
@@ -70,7 +70,7 @@ public class AgendaCitaMedica implements Serializable {
 		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
 		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
 		this.secretariaAgendaCita = secretariaAgendaCita;
-		this.medico = medico;
+		this.medicoParaCitaMedica = medico;
 		this.pacienteCitaMedica = pacienteCitaMedica;
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
@@ -90,7 +90,7 @@ public class AgendaCitaMedica implements Serializable {
 		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
 		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
 		this.secretariaAgendaCita = secretariaAgendaCita;
-		this.medico = medico;
+		this.medicoParaCitaMedica = medico;
 		this.pacienteCitaMedica = pacienteCitaMedica;
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
@@ -154,11 +154,11 @@ public class AgendaCitaMedica implements Serializable {
 	}
 
 	public Medico getMedico() {
-		return medico;
+		return medicoParaCitaMedica;
 	}
 
 	public void setMedico(Medico medico) {
-		this.medico = medico;
+		this.medicoParaCitaMedica = medico;
 	}
 
 	public Paciente getPacienteCitaMedica() {

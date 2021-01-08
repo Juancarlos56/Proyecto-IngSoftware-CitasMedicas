@@ -21,31 +21,32 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * */
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "fact_gen_id")
 	private int idFactura;
 	
-	@Column(name="facGen_fecha",nullable=false)
+	@Column(name="fact_gen_fecha",nullable=false)
 	private GregorianCalendar fecha;
 	
 	
-	@Column(name="facGen_descripcion", length=255)
+	@Column(name="fact_gen_descripcion", length=255)
 	private String descripcion;
 	
-	@Column(name="facGen_tipoTransaccion", length=20, nullable=false)
+	@Column(name="fact_gen_tipoTransaccion", length=20, nullable=false)
 	private String tipoTransaccion;
 	
-	@Column(name="facGen_estado", length=20, nullable=false)
+	@Column(name="fact_gen_estado", length=20, nullable=false)
 	private char estado;
 	
-	@Column(name = "facGen_subtotal")
+	@Column(name = "fact_gen_subtotal")
 	private double Subtotal;
 	
-	@Column(name = "facGen_iva")
+	@Column(name = "fact_gen_iva")
 	private double iva;
 	
-	@Column(name = "facGen_total")
+	@Column(name = "fact_gen_total")
 	private double total;
 	
-	@Column(name="facGen_tipoFactura", length=20, nullable=false)
+	@Column(name="fact_gen_tipoFactura", length=20, nullable=false)
 	private String  tipoFactura;
 	
 	public FacturaGeneral() {

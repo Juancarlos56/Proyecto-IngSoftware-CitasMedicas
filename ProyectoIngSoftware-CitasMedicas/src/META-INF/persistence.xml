@@ -16,6 +16,7 @@
 		<class>ec.edu.ups.entidades.OrdenMedica</class>
 		<class>ec.edu.ups.entidades.Secretaria</class>
 		<class>ec.edu.ups.entidades.Medico</class>
+		<class>ec.edu.ups.entidades.Persona</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />			
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/citasMedicas?serverTimezone=UTC" />

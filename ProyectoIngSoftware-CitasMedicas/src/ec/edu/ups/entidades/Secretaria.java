@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -14,14 +15,10 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Secretaria implements Serializable {
+public class Secretaria extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sec_id")
-	private int idSecretaria;
 	
 	@Column(name = "sec_user")
 	private String userSecretaria;
@@ -35,36 +32,41 @@ public class Secretaria implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "secretariaAgendaCita")
 	private List<AgendaCitaMedica> secretariaAgendaCita = new ArrayList<AgendaCitaMedica>();
 	
+	
 	public Secretaria() {
 		super();
 	}  
 	
 	
-	
-	public Secretaria(int idSecretaria, String userSecretaria, String passwordSecretaria,
+	public Secretaria(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
+			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria,
 			List<LibroDiario> responsableLibroDiario, List<AgendaCitaMedica> secretariaAgendaCita) {
-		super();
-		this.idSecretaria = idSecretaria;
+		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
+				estado);
+		
 		this.userSecretaria = userSecretaria;
 		this.passwordSecretaria = passwordSecretaria;
 		this.responsableLibroDiario = responsableLibroDiario;
 		this.secretariaAgendaCita = secretariaAgendaCita;
+		
 	}
 
-
-
-	public int getIdSecretaria() {
-		return idSecretaria;
+	
+	public Secretaria(String cedula, String nombre, String apellido, String lugarNacimiento,
+			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria,
+			List<LibroDiario> responsableLibroDiario, List<AgendaCitaMedica> secretariaAgendaCita) {
+		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
+				estado);
+		
+		this.userSecretaria = userSecretaria;
+		this.passwordSecretaria = passwordSecretaria;
+		this.responsableLibroDiario = responsableLibroDiario;
+		this.secretariaAgendaCita = secretariaAgendaCita;
+		
 	}
-
-
-
-	public void setIdSecretaria(int idSecretaria) {
-		this.idSecretaria = idSecretaria;
-	}
-
-
-
+	
 	public String getUserSecretaria() {
 		return userSecretaria;
 	}
@@ -111,13 +113,122 @@ public class Secretaria implements Serializable {
 		this.secretariaAgendaCita = secretariaAgendaCita;
 	}
 
+	public int getIdFactura() {
+		return super.getIdFactura();
+	}
 
 
+	public void setIdFactura(int idFactura) {
+		super.setIdFactura(idFactura);
+	}
+
+	
+	public String getCedula() {
+		return super.getCedula();
+	}
+
+
+	public void setCedula(String cedula) {
+		super.setCedula(cedula);
+	}
+
+
+	public String getNombre() {
+		return super.getNombre();
+	}
+
+
+	public void setNombre(String nombre) {
+		super.setNombre(nombre);
+	}
+
+
+	public String getApellido() {
+		return getApellido();
+	}
+
+
+	public void setApellido(String apellido) {
+		super.setApellido(apellido);
+	}
+
+
+	public String getLugarNacimiento() {
+		return super.getLugarNacimiento();
+	}
+
+
+	public void setLugarNacimiento(String lugarNacimiento) {
+		super.setLugarNacimiento(lugarNacimiento);
+	}
+
+
+	public GregorianCalendar getFechaDeNacimiento() {
+		return super.getFechaDeNacimiento();
+	}
+
+
+	public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
+		super.setFechaDeNacimiento(fechaDeNacimiento);
+	}
+
+
+	public String getNacionalidad() {
+		return super.getNacionalidad();
+	}
+
+
+	public void setNacionalidad(String nacionalidad) {
+		super.setNacionalidad(nacionalidad);
+	}
+
+
+	public String getSexo() {
+		return super.getSexo();
+	}
+
+
+	public void setSexo(String sexo) {
+		super.setSexo(sexo);
+	}
+
+
+	public String getEmail() {
+		return super.getEmail();
+	}
+
+
+	public void setEmail(String email) {
+		super.setEmail(email);
+	}
+
+
+	public String getTipoUsuario() {
+		return super.getTipoUsuario();
+	}
+
+
+	public void setTipoUsuario(String tipoUsuario) {
+		super.setTipoUsuario(tipoUsuario);
+	}
+
+
+	public String getEstado() {
+		return super.getEstado();
+	}
+
+
+	public void setEstado(String estado) {
+		super.setEstado(estado);
+	}
+
+	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + idSecretaria;
+		int result = super.hashCode();
 		result = prime * result + ((passwordSecretaria == null) ? 0 : passwordSecretaria.hashCode());
 		result = prime * result + ((responsableLibroDiario == null) ? 0 : responsableLibroDiario.hashCode());
 		result = prime * result + ((secretariaAgendaCita == null) ? 0 : secretariaAgendaCita.hashCode());
@@ -126,18 +237,15 @@ public class Secretaria implements Serializable {
 	}
 
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Secretaria other = (Secretaria) obj;
-		if (idSecretaria != other.idSecretaria)
-			return false;
 		if (passwordSecretaria == null) {
 			if (other.passwordSecretaria != null)
 				return false;
@@ -162,15 +270,12 @@ public class Secretaria implements Serializable {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "Secretaria [idSecretaria=" + idSecretaria + ", userSecretaria=" + userSecretaria
-				+ ", passwordSecretaria=" + passwordSecretaria + ", responsableLibroDiario=" + responsableLibroDiario
-				+ ", secretariaAgendaCita=" + secretariaAgendaCita + "]";
+		return "Secretaria [userSecretaria=" + userSecretaria + ", passwordSecretaria=" + passwordSecretaria
+				+ ", responsableLibroDiario=" + responsableLibroDiario + ", secretariaAgendaCita="
+				+ secretariaAgendaCita + "]";
 	}
 
-
 	
-
 }
