@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -12,16 +13,12 @@ import javax.persistence.*;
  */
 @Entity
 
-public class Paciente implements Serializable {
+public class Paciente extends Persona implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idPaciente")
-	private int idPaciente;
 	
-	@Column(name = "tipoSangrePaciente", nullable = true)
+	@Column(name = "pac_tipoSangre", nullable = true)
 	private String tipoSangre;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "historialDelPaciente")
@@ -38,22 +35,27 @@ public class Paciente implements Serializable {
 		super();
 	}
 	
-	public Paciente(int idPaciente, String tipoSangre) {
-		super();
-		this.idPaciente = idPaciente;
+	
+	
+	public Paciente(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
+			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			String estado, int idPaciente, String tipoSangre) {
+		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
+				estado);
 		this.tipoSangre = tipoSangre;
 	}
 
+
+
+	public Paciente(String cedula, String nombre, String apellido, String lugarNacimiento,
+			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			String estado, int idPaciente, String tipoSangre) {
+		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);
+		this.tipoSangre = tipoSangre;
+	}
 	
 
-	public int getIdPaciente() {
-		return idPaciente;
-	}
-
-	public void setIdPaciente(int idPaciente) {
-		this.idPaciente = idPaciente;
-	}
-
+	
 	public String getTipoSangre() {
 		return tipoSangre;
 	}
@@ -62,39 +64,200 @@ public class Paciente implements Serializable {
 		this.tipoSangre = tipoSangre;
 	}
 
-	public List<HistorialMedico> getHistorialMedico() {
+
+
+	public List<HistorialMedico> getHistorialesDePaciente() {
 		return historialesDePaciente;
 	}
 
-	public void setHistorialMedico(List<HistorialMedico> historialMedico) {
-		this.historialesDePaciente = historialMedico;
+
+
+	public void setHistorialesDePaciente(List<HistorialMedico> historialesDePaciente) {
+		this.historialesDePaciente = historialesDePaciente;
+	}
+
+	
+	public void agregarHistorialDePaciente(HistorialMedico historialDePaciente) {
+		this.historialesDePaciente.add(historialDePaciente);
+	}
+
+
+	public List<AgendaCitaMedica> getCitasDeUnPaciente() {
+		return citasDeUnPaciente;
+	}
+
+
+	public void setCitasDeUnPaciente(List<AgendaCitaMedica> citasDeUnPaciente) {
+		this.citasDeUnPaciente = citasDeUnPaciente;
+	}
+
+
+	public void agregarCitaPaciente(AgendaCitaMedica citaPaciente) {
+		this.citasDeUnPaciente.add(citaPaciente);
 	}
 	
-	public void agregarHistoralMedico(HistorialMedico historialMedico) {
-		this.historialesDePaciente.add(historialMedico);
+	public List<Consulta> getConsultasDeUnPaciente() {
+		return consultasDeUnPaciente;
+	}
+
+
+
+	public void setConsultasDeUnPaciente(List<Consulta> consultasDeUnPaciente) {
+		this.consultasDeUnPaciente = consultasDeUnPaciente;
+	}
+
+	public void agregarConsultaDeUnPaciente(Consulta consultaPaciente) {
+		this.consultasDeUnPaciente.add(consultaPaciente);
 	}
 	
 	
+	public int getIdFactura() {
+		return super.getIdFactura();
+	}
+
+
+	public void setIdFactura(int idFactura) {
+		super.setIdFactura(idFactura);
+	}
+
+	
+	public String getCedula() {
+		return super.getCedula();
+	}
+
+
+	public void setCedula(String cedula) {
+		super.setCedula(cedula);
+	}
+
+
+	public String getNombre() {
+		return super.getNombre();
+	}
+
+
+	public void setNombre(String nombre) {
+		super.setNombre(nombre);
+	}
+
+
+	public String getApellido() {
+		return getApellido();
+	}
+
+
+	public void setApellido(String apellido) {
+		super.setApellido(apellido);
+	}
+
+
+	public String getLugarNacimiento() {
+		return super.getLugarNacimiento();
+	}
+
+
+	public void setLugarNacimiento(String lugarNacimiento) {
+		super.setLugarNacimiento(lugarNacimiento);
+	}
+
+
+	public GregorianCalendar getFechaDeNacimiento() {
+		return super.getFechaDeNacimiento();
+	}
+
+
+	public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
+		super.setFechaDeNacimiento(fechaDeNacimiento);
+	}
+
+
+	public String getNacionalidad() {
+		return super.getNacionalidad();
+	}
+
+
+	public void setNacionalidad(String nacionalidad) {
+		super.setNacionalidad(nacionalidad);
+	}
+
+
+	public String getSexo() {
+		return super.getSexo();
+	}
+
+
+	public void setSexo(String sexo) {
+		super.setSexo(sexo);
+	}
+
+
+	public String getEmail() {
+		return super.getEmail();
+	}
+
+
+	public void setEmail(String email) {
+		super.setEmail(email);
+	}
+
+
+	public String getTipoUsuario() {
+		return super.getTipoUsuario();
+	}
+
+
+	public void setTipoUsuario(String tipoUsuario) {
+		super.setTipoUsuario(tipoUsuario);
+	}
+
+
+	public String getEstado() {
+		return super.getEstado();
+	}
+
+
+	public void setEstado(String estado) {
+		super.setEstado(estado);
+	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + idPaciente;
+		int result = super.hashCode();
+		result = prime * result + ((citasDeUnPaciente == null) ? 0 : citasDeUnPaciente.hashCode());
+		result = prime * result + ((consultasDeUnPaciente == null) ? 0 : consultasDeUnPaciente.hashCode());
+		result = prime * result + ((historialesDePaciente == null) ? 0 : historialesDePaciente.hashCode());
 		result = prime * result + ((tipoSangre == null) ? 0 : tipoSangre.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Paciente other = (Paciente) obj;
-		if (idPaciente != other.idPaciente)
+		if (citasDeUnPaciente == null) {
+			if (other.citasDeUnPaciente != null)
+				return false;
+		} else if (!citasDeUnPaciente.equals(other.citasDeUnPaciente))
+			return false;
+		if (consultasDeUnPaciente == null) {
+			if (other.consultasDeUnPaciente != null)
+				return false;
+		} else if (!consultasDeUnPaciente.equals(other.consultasDeUnPaciente))
+			return false;
+		if (historialesDePaciente == null) {
+			if (other.historialesDePaciente != null)
+				return false;
+		} else if (!historialesDePaciente.equals(other.historialesDePaciente))
 			return false;
 		if (tipoSangre == null) {
 			if (other.tipoSangre != null)
@@ -104,10 +267,15 @@ public class Paciente implements Serializable {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Paciente [idPaciente=" + idPaciente + ", tipoSangre=" + tipoSangre + "]";
+		return "Paciente [tipoSangre=" + tipoSangre + ", historialesDePaciente=" + historialesDePaciente
+				+ ", citasDeUnPaciente=" + citasDeUnPaciente + ", consultasDeUnPaciente=" + consultasDeUnPaciente + "]";
 	}
+
 	
-   
+	
+
 }

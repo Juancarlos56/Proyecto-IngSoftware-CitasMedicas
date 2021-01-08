@@ -1,8 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -20,25 +20,25 @@ public class Consulta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idConsulta")
+	@Column(name = "con_id")
 	private int idConsulta;
 	
-	@Column(name = "fechaActualDeLaConsulta")
+	@Column(name = "con_fechaActual")
 	private GregorianCalendar fechaActualDeLaConsulta;
 	
-	@Column(name = "sintomasDelPaciente", length = 255, nullable = false)
+	@Column(name = "con_sintomas", length = 255, nullable = false)
 	private String sintomasDelPaciente;
 	
-	@Column(name = "diagnosticoDeLaConsulta", length = 255, nullable = false)
+	@Column(name = "con_diagnostico", length = 255, nullable = false)
 	private String diagnosticoDeLaConsulta;
 	
-	@Column(name = "observacionesDeLaConsulta", length = 255, nullable = false)
+	@Column(name = "con_observacion", length = 255, nullable = false)
 	private String observacionesDeLaConsulta;
 	
-	@Column(name = "medicinasRecetadasParaElPaciente", length = 255, nullable = false)
+	@Column(name = "con_medicinas", length = 255, nullable = false)
 	private String medicinasParaElPaciente;
 	
-	@Column(name = "dosisRecetadaParaElPaciente", length = 255, nullable = false)
+	@Column(name = "con_dosis", length = 255, nullable = false)
 	private String dosis;
 	
 	

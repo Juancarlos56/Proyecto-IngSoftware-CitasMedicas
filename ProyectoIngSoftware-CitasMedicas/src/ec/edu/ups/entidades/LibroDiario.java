@@ -1,9 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -19,20 +17,14 @@ public class LibroDiario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-<<<<<<< HEAD
-	private int id;
-	private float total;	
-	private GregorianCalendar fecha;
-	private Secretaria responsableLibroDiario;
-=======
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "libroId")
+	@Column(name = "lib_id")
 	private int libroId;
 	
-	@Column(name = "totalLibroDiario")
+	@Column(name = "lib_dia_total")
 	private float totalLibroDiario;	
 	
-	@Column(name = "fechaLibroDiario")
+	@Column(name = "lib_dia_fecha")
 	private GregorianCalendar fechaLibroDiario;
 	
 	@ManyToOne
@@ -42,8 +34,7 @@ public class LibroDiario implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_libroDiario_Secretaria")
-	private Secretaria responsable;
->>>>>>> refs/heads/master
+	private Secretaria responsableLibroDiario;
 	
 	public LibroDiario() {
 		super();
@@ -56,7 +47,7 @@ public class LibroDiario implements Serializable {
 		this.totalLibroDiario = totalLibroDiario;
 		this.fechaLibroDiario = fechaLibroDiario;
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
-		this.responsable = responsable;
+		this.responsableLibroDiario = responsable;
 	}
 
 	//Contructor sin codigo por autogeneracion
@@ -66,7 +57,7 @@ public class LibroDiario implements Serializable {
 		this.totalLibroDiario = totalLibroDiario;
 		this.fechaLibroDiario = fechaLibroDiario;
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
-		this.responsable = responsable;
+		this.responsableLibroDiario = responsable;
 	}
 
 	public int getLibroId() {
@@ -102,11 +93,11 @@ public class LibroDiario implements Serializable {
 	}
 
 	public Secretaria getResponsable() {
-		return responsable;
+		return responsableLibroDiario;
 	}
 
 	public void setResponsable(Secretaria responsable) {
-		this.responsable = responsable;
+		this.responsableLibroDiario = responsable;
 	}
 
 	@Override
