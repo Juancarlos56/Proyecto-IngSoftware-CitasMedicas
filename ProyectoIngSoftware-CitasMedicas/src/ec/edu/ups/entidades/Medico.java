@@ -15,7 +15,7 @@ import javax.persistence.*;
 
 public class Medico extends Persona implements Serializable {
 
-	private static final long serialVersionUID = 1L;  
+	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "userMedico")
 	private String userMedico;
