@@ -49,7 +49,7 @@ public class AgendaCitaMedica implements Serializable {
 	@JoinColumn(name = "FK_Paciente_AgendaCita")
 	private Paciente pacienteCitaMedica;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "FK_FacturaDetalle_AgendaCita")
 	private FacturaDetalle citasDeFacturaDetalle;
 	

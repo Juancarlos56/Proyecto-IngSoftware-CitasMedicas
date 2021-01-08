@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -33,7 +34,7 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 
 
 	public FacturaCompra(Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			String estado, double subtotal, double iva, double total, String tipoFactura, 
 			int cantidadFacturaCompra, double precioUnitario, Activo activoCompra) {
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
@@ -43,7 +44,7 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	}
 
 	public FacturaCompra(int idfactura, Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			String estado, double subtotal, double iva, double total, String tipoFactura, 
 			int cantidadFacturaCompra, double precioUnitario, Activo activoCompra) {
 		
 		super(idfactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
@@ -53,10 +54,11 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	}
 
 	
-   
+	@Override
 	public double calcularSubtotal() {
-		return super.calcularSubtotal();
+		return getPrecioUnitario() * getCantidadFacturaCompra();
 	}
+
 	
 	
 	public double calcularTotalFactura() {
@@ -142,6 +144,8 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 				+ ", activoCompra=" + activoCompra + "]";
 	}
 
+
+	
 
 	
 	

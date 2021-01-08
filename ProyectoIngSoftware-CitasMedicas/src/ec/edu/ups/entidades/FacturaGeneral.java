@@ -34,8 +34,8 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	@Column(name="tipoTransaccionFactura", length=20, nullable=false)
 	private String tipoTransaccion;
 	
-	@Column(name="estadoFactura", length=20, nullable=false)
-	private char estado;
+	@Column(name="estadoFactura", length=30, nullable=false)
+	private String estado;
 	
 	@Column(name = "subtotalFactura")
 	private double subtotal;
@@ -67,7 +67,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @param tipoFactura
 	 */
 	public FacturaGeneral(Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura) {
+			String estado, double subtotal, double iva, double total, String tipoFactura) {
 		super();
 		this.fecha = fecha;
 		this.descripcion = descripcion;
@@ -83,7 +83,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	
 
 	public FacturaGeneral(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura) {
+			String estado, double subtotal, double iva, double total, String tipoFactura) {
 		super();
 		this.idFactura = idFactura;
 		this.fecha = fecha;
@@ -101,10 +101,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * Metodo para calcular el subtotal de una factura
 	 * @return
 	 */
-	public double calcularSubtotal() {
-		return 0.0;
-	}
-	
+	public abstract double calcularSubtotal();	
 	/**
 	 * Metodo para calcular el total de una factura 
 	 * @param subtotal
@@ -112,7 +109,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @return
 	 */
 	public double calcularTotalFactura() {
-		return 0.0;
+		return getSubtotal()+getIva();
 	}
 	
 	/**
@@ -188,13 +185,13 @@ public abstract class FacturaGeneral<T> implements Serializable{
 
 
 
-	public char getEstado() {
+	public String getEstado() {
 		return estado;
 	}
 
 
 
-	public void setEstado(char estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
 

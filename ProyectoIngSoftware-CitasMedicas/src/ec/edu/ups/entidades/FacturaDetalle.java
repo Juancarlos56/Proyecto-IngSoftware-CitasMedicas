@@ -33,8 +33,8 @@ public class FacturaDetalle implements Serializable {
     private FacturaCabecera detallesDeFacturaCabecera;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "citasDeFacturaDetalle")
-    private List<AgendaCitaMedica> citasDeFacturaDetalle=new ArrayList<AgendaCitaMedica>();
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "citasDeFacturaDetalle")
+    private AgendaCitaMedica citasDeFacturaDetalle;
 	
 	public FacturaDetalle() {
 		super();
@@ -61,14 +61,12 @@ public class FacturaDetalle implements Serializable {
 
 
 
-	public void calcularSubtotalFacturaDetalle() {
-		
+	public double calcularSubtotalFacturaDetalle(double precioCitaMedica) {
+		double subtotal = getCantidadFacturaDetalle()*precioCitaMedica;
+		return subtotal;
 	}
 	
-	public void addCitaMedica(AgendaCitaMedica citaMedica) {
-		getCitasDeFacturaDetalle().add(citaMedica);
-	}
-
+	
 
 
 	public int getIdFacturaDetalle() {
@@ -119,20 +117,16 @@ public class FacturaDetalle implements Serializable {
 
 
 
-	public List<AgendaCitaMedica> getCitasDeFacturaDetalle() {
+	public AgendaCitaMedica getCitasDeFacturaDetalle() {
 		return citasDeFacturaDetalle;
 	}
 
 
 
-	public void setCitasDeFacturaDetalle(List<AgendaCitaMedica> citasDeFacturaDetalle) {
+	public void setCitasDeFacturaDetalle(AgendaCitaMedica citasDeFacturaDetalle) {
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
-
-	public void agregarFacturaDetalle(AgendaCitaMedica facturaDetalle) {
-		this.citasDeFacturaDetalle.add(facturaDetalle);
-	}
-
+	
 
 	@Override
 	public int hashCode() {

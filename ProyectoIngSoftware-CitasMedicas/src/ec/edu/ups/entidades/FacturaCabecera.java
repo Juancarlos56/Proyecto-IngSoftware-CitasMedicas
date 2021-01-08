@@ -25,6 +25,15 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	@JoinColumn(name = "FK_FacturaCabecera_Activo")
 	private Activo activoCobroCitaMedica;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaCabecera_Medico")
+	private Medico medico;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaCabecera_FacturaSalario")
+	private FacturaSalario cabeceraPagoSalario;
+	
 	public FacturaCabecera() {
 		super();
 	}
@@ -32,27 +41,38 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	
 	
 	public FacturaCabecera(Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura,
-			Activo activoCobroCitaMedica) {
+			String estado, double subtotal, double iva, double total, String tipoFactura,
+			Activo activoCobroCitaMedica, FacturaSalario cabeceraPagoSalario, Medico medico) {
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
 		this.activoCobroCitaMedica = activoCobroCitaMedica;
+		this.cabeceraPagoSalario = cabeceraPagoSalario;
+		this.medico = medico;
 	}
 	
 	public FacturaCabecera(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura,
-			Activo activoCobroCitaMedica) {
+			String estado, double subtotal, double iva, double total, String tipoFactura,
+			Activo activoCobroCitaMedica, FacturaSalario cabeceraPagoSalario, Medico medico) {
 		
 		super(idFactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
 		this.activoCobroCitaMedica = activoCobroCitaMedica;
+		this.cabeceraPagoSalario = cabeceraPagoSalario;
+		this.medico = medico;
 	}
 
-
-
-	public double calcularSubtotal() {
-		return super.calcularSubtotal();
-	}
 	
+	@Override
+	public double calcularSubtotal() {
+		double subtotalFacturaCabecera = 0.0; 
+		List<FacturaDetalle> destalles = getDetallesDeFacturaCabecera();
+		
+		for (FacturaDetalle facturaDetalle : destalles) {
+			subtotalFacturaCabecera = subtotalFacturaCabecera + facturaDetalle.getSubtotalFacturaDetalle();
+		}
+		
+		return subtotalFacturaCabecera;
+	}
+
 	
 	public double calcularTotalFactura() {
 		return super.calcularTotalFactura();
@@ -103,6 +123,30 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 
 
 
+	public FacturaSalario getCabeceraPagoSalario() {
+		return cabeceraPagoSalario;
+	}
+
+
+
+	public void setCabeceraPagoSalario(FacturaSalario cabeceraPagoSalario) {
+		this.cabeceraPagoSalario = cabeceraPagoSalario;
+	}
+
+
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -135,8 +179,10 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	@Override
 	public String toString() {
 		return "FacturaCabecera [detallesDeFacturaCabecera=" + detallesDeFacturaCabecera + ", activoCobroCitaMedica="
-				+ activoCobroCitaMedica + "]";
+				+ activoCobroCitaMedica + ", cabeceraPagoSalario=" + cabeceraPagoSalario + "]";
 	}
+
+
 
 
 

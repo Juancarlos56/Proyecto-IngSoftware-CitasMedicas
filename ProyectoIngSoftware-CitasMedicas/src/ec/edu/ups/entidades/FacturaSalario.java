@@ -22,6 +22,9 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	@Column(name = "comisionEmpresaFacturaSalario")
 	private double comisionEmpresaFacturaSalario;
 	
+	
+	
+	
 	@ManyToOne 
     @JoinColumn
     private Medico facturasSalarioDeMedico;
@@ -38,7 +41,7 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	
 
 	public FacturaSalario(Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			String estado, double subtotal, double iva, double total, String tipoFactura, 
 			double totalPagoMedicoFacturaSalario, double comisionEmpresaFacturaSalario, 
 			Medico facturasSalarioDeMedico, Pasivo pasivoPagoSalario) {
 		
@@ -52,7 +55,7 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	}
 	
 	public FacturaSalario(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
-			char estado, double subtotal, double iva, double total, String tipoFactura, 
+			String estado, double subtotal, double iva, double total, String tipoFactura, 
 			double totalPagoMedicoFacturaSalario, double comisionEmpresaFacturaSalario, 
 			Medico facturasSalarioDeMedico, Pasivo pasivoPagoSalario) {
 		
@@ -66,20 +69,24 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	}
 	
 	
+	@Override
 	public double calcularSubtotal() {
-		return super.calcularSubtotal();
-	}
-	
-	
-	public double calcularTotalFactura() {
-		return super.calcularTotalFactura();
-	}
-	
-	
-	public double calcularValorFactura() {
-		return super.calcularValorFactura();
+		Medico facturasMedico = getFacturasSalarioDeMedico();
+		double subtotalPagoMedico = 0.0;
+		for (FacturaCabecera facturaCabecera : facturasMedico.getFacturasCabeceraDeUnMedico()) {
+			if (facturaCabecera.getEstado().equals("PagarMedico")) {
+				subtotalPagoMedico = subtotalPagoMedico+facturaCabecera.getTotal();
+			}
+		} 
+		return subtotalPagoMedico;
 	}
 
+	
+	public double calcularSalarioTotalPagoMedico() {
+		return calcularSubtotal() - getComisionEmpresaFacturaSalario();
+	}
+	
+	
 	@Override
 	public LibroDiario actualizarLibroDiario(FacturaSalario factura, LibroDiario libroDiario) {
 		// TODO Auto-generated method stub
@@ -178,6 +185,9 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 				+ facturasSalarioDeMedico + ", pasivoPagoSalario=" + pasivoPagoSalario + "]";
 	}
 
+
+
+	
 
 
 	

@@ -41,6 +41,10 @@ public class Medico extends Persona implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "facturasSalarioDeMedico")
 	private List<FacturaSalario> facturasSalarioDeUnDoctor = new ArrayList<FacturaSalario>();
 
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "medico")
+    private List<FacturaCabecera> facturasCabeceraDeUnMedico=new ArrayList<FacturaCabecera>();
+	
 	public Medico() {
 		super();
 	}   
@@ -283,6 +287,28 @@ public class Medico extends Persona implements Serializable {
 	public void agregarFacturaSalarioADoctor(FacturaSalario facturaSalario) {
 		this.facturasSalarioDeUnDoctor.add(facturaSalario);
 	}
+
+	
+	public void setFacturasSalarioDeUnDoctor(List<FacturaSalario> facturasSalarioDeUnDoctor) {
+		this.facturasSalarioDeUnDoctor = facturasSalarioDeUnDoctor;
+	}
+
+	
+	public List<FacturaCabecera> getFacturasCabeceraDeUnMedico() {
+		return facturasCabeceraDeUnMedico;
+	}
+
+
+
+	public void setFacturasCabeceraDeUnMedico(List<FacturaCabecera> facturasCabeceraDeUnMedico) {
+		this.facturasCabeceraDeUnMedico = facturasCabeceraDeUnMedico;
+	}
+
+
+	public void agregarFacturaCabeceraAMedico(FacturaCabecera facturaCabecera) {
+		this.facturasCabeceraDeUnMedico.add(facturaCabecera);
+	}
+
 
 
 
