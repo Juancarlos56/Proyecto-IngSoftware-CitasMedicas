@@ -69,6 +69,7 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	public LibroDiario actualizarLibroDiario(FacturaCabecera factura, LibroDiario libroDiario) {
 		//Activo activoPorCobroCita = getActivoCobroCitaMedica();
 		//activoPorCobroCita.get
+		
 		return null;
 	}
 
