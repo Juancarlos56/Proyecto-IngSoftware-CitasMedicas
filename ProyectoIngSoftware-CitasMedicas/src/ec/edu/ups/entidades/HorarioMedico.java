@@ -59,15 +59,59 @@ public class HorarioMedico implements Serializable {
 		this.horarioDisponiblePorMedico = horarioDisponiblePorMedico;
 	}
 
-
+	
 	
 
-	public HorarioMedico obtenerHorarioPorDia() {
-		return null;
+	public HorarioMedico(Calendar diaHorarioMedico, Calendar horaInicioHorarioMedico, Calendar horaFinHorarioMedico,
+			String estadoHorarioMedico, Medico horarioDisponiblePorMedico) {
+		super();
+		this.diaHorarioMedico = diaHorarioMedico;
+		this.horaInicioHorarioMedico = horaInicioHorarioMedico;
+		this.horaFinHorarioMedico = horaFinHorarioMedico;
+		this.estadoHorarioMedico = estadoHorarioMedico;
+		this.horarioDisponiblePorMedico = horarioDisponiblePorMedico;
+	}
+
+
+
+	//Metodos propios de la clase HorarioMedico
+
+	public HorarioMedico obtenerHorarioPorDia(String dia) {
+		switch (dia) {
+		case "Lunes": {
+			
+		}
+		case "Martes": {
+			
+		
+		}
+		case "Miercoles": {
+			
+			
+		}
+		case "Jueves": {
+			
+			
+		}
+		case "Viernes": {
+			
+			
+		}
+		case "Sabado": {
+			
+			
+		}
+		case "Domingo": {
+			
+			
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + dia);
+		}
 	}
 
 	
-	
+	//Metodos getters and setters
 	
 	public int getId_horarioMedico() {
 		return id_horarioMedico;

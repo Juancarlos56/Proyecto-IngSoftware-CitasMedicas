@@ -111,6 +111,12 @@ public class HistorialMedico implements Serializable {
 		this.historialDelPaciente = historialDelPaciente;
 	}
 
+	//Metodos propios de la clase HistorialMedico
+	
+	
+	
+	//Metodos getters and setters
+	
 	public int getIdHistorial() {
 		return idHistorial;
 	}
