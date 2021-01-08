@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -34,7 +34,7 @@ public class Persona implements Serializable {
 	private String lugarNacimiento;
 	
 	@Column(name = "persona_fechaNacimiento", length = 255, nullable = false) 
-	private GregorianCalendar fechaDeNacimiento;
+	private Calendar fechaDeNacimiento;
 	
 	@Column(name = "persona_nacionalidad", length = 255, nullable = false) 
 	private String nacionalidad;
@@ -58,7 +58,7 @@ public class Persona implements Serializable {
 
 
 	public Persona(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado) {
 		super();
 		this.idFactura = idFactura;
@@ -75,7 +75,7 @@ public class Persona implements Serializable {
 	}
 
 	public Persona(String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado) {
 		super();
 		this.cedula = cedula;
@@ -141,12 +141,12 @@ public class Persona implements Serializable {
 	}
 
 
-	public GregorianCalendar getFechaDeNacimiento() {
+	public Calendar getFechaDeNacimiento() {
 		return fechaDeNacimiento;
 	}
 
 
-	public void setFechaDeNacimiento(GregorianCalendar fechaDeNacimiento) {
+	public void setFechaDeNacimiento(Calendar fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 

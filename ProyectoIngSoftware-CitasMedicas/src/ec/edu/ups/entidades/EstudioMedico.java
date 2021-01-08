@@ -1,6 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class EstudioMedico implements Serializable {
 	private int id_estudioMedico;
 	
 	@Column(name = "fechaTituloMedico")
-	private GregorianCalendar  fechaTituloMedico;
+	private Calendar  fechaTituloMedico;
 	
 	@ManyToOne
 	@JoinColumn (name = "FK_Estudio_Medico") 
@@ -37,14 +38,8 @@ public class EstudioMedico implements Serializable {
 		super();
 	} 
 	
-	
-	
 
-	
-
-
-
-	public EstudioMedico(int id_estudioMedico, GregorianCalendar fechaTituloMedico, Medico estudioRealizadoPorMedico,
+	public EstudioMedico(int id_estudioMedico, Calendar fechaTituloMedico, Medico estudioRealizadoPorMedico,
 			Especialidad especialidadDeEstudio) {
 		super();
 		this.id_estudioMedico = id_estudioMedico;
@@ -55,27 +50,32 @@ public class EstudioMedico implements Serializable {
 
 
 
-	public int obtenerAniosExperiencia() {
-		
-		return 6;
+	public EstudioMedico(Calendar fechaTituloMedico, Medico estudioRealizadoPorMedico,
+			Especialidad especialidadDeEstudio) {
+		super();
+		this.fechaTituloMedico = fechaTituloMedico;
+		this.estudioRealizadoPorMedico = estudioRealizadoPorMedico;
+		this.especialidadDeEstudio = especialidadDeEstudio;
 	}
 
 
+	public int obtenerAniosExperiencia() {
 
-
-
-
+		Calendar fechaTituloDelDoctor = getFechaTituloMedico();
+		int anioTitulo = fechaTituloDelDoctor.get(Calendar.YEAR);
+		
+		Calendar fecha = new GregorianCalendar();
+		int anioActual = fecha.get(Calendar.YEAR); 
+		
+		int aniosExperiencia = anioActual - anioTitulo;
+		
+		return aniosExperiencia;
+	}
 
 
 	public int getId_estudioMedico() {
 		return id_estudioMedico;
 	}
-
-
-
-
-
-
 
 
 	public void setId_estudioMedico(int id_estudioMedico) {
@@ -84,31 +84,14 @@ public class EstudioMedico implements Serializable {
 
 
 
-
-
-
-
-
-	public GregorianCalendar getFechaTituloMedico() {
+	public Calendar getFechaTituloMedico() {
 		return fechaTituloMedico;
 	}
 
 
-
-
-
-
-
-
-	public void setFechaTituloMedico(GregorianCalendar fechaTituloMedico) {
+	public void setFechaTituloMedico(Calendar fechaTituloMedico) {
 		this.fechaTituloMedico = fechaTituloMedico;
 	}
-
-
-
-
-
-
 
 
 	public Medico getEstudioRealizadoPorMedico() {
@@ -116,21 +99,9 @@ public class EstudioMedico implements Serializable {
 	}
 
 
-
-
-
-
-
-
 	public void setEstudioRealizadoPorMedico(Medico estudioRealizadoPorMedico) {
 		this.estudioRealizadoPorMedico = estudioRealizadoPorMedico;
 	}
-
-
-
-
-
-
 
 
 	public Especialidad getEspecialidadDeEstudio() {
@@ -138,23 +109,11 @@ public class EstudioMedico implements Serializable {
 	}
 
 
-
-
-
-
-
-
 	public void setEspecialidadDeEstudio(Especialidad especialidadDeEstudio) {
 		this.especialidadDeEstudio = especialidadDeEstudio;
 	}
 
-
-
-
-
-
-
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -165,12 +124,6 @@ public class EstudioMedico implements Serializable {
 		result = prime * result + id_estudioMedico;
 		return result;
 	}
-
-
-
-
-
-
 
 
 	@Override
@@ -204,11 +157,6 @@ public class EstudioMedico implements Serializable {
 
 
 
-
-
-
-
-
 	@Override
 	public String toString() {
 		return "EstudioMedico [id_estudioMedico=" + id_estudioMedico + ", fechaTituloMedico=" + fechaTituloMedico
@@ -216,9 +164,5 @@ public class EstudioMedico implements Serializable {
 				+ especialidadDeEstudio + "]";
 	}
 
-
-	
-	
-	
    
 }

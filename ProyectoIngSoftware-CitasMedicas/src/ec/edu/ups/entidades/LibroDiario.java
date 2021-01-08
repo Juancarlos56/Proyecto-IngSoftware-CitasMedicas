@@ -1,7 +1,9 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -22,10 +24,11 @@ public class LibroDiario implements Serializable {
 	private int libroId;
 	
 	@Column(name = "totalLibroDiario")
-	private float totalLibroDiario;	
+	private double totalLibroDiario;	
 	
 	@Column(name = "fechaLibroDiario")
-	private GregorianCalendar fechaLibroDiario;
+	private Calendar fechaLibroDiario;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_libroDiario_CajaDiaria")
@@ -36,11 +39,17 @@ public class LibroDiario implements Serializable {
 	@JoinColumn(name = "FK_libroDiario_Secretaria")
 	private Secretaria responsableLibroDiario;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "activoDelibroDiario")
+    private List<Activo> activosDeLibroDiario=new ArrayList<Activo>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pasivoDelibroDiario")
+	private List<Pasivo> pasivosDeLibroDiario = new ArrayList<Pasivo>(); 
+	
 	public LibroDiario() {
 		super();
 	}
 
-	public LibroDiario(int libroId, float totalLibroDiario, GregorianCalendar fechaLibroDiario,
+	public LibroDiario(int libroId, float totalLibroDiario, Calendar fechaLibroDiario,
 			CajaDiaria libroDiarioDeCajaDiaria, Secretaria responsable) {
 		super();
 		this.libroId = libroId;
@@ -51,7 +60,7 @@ public class LibroDiario implements Serializable {
 	}
 
 	//Contructor sin codigo por autogeneracion
-	public LibroDiario(float totalLibroDiario, GregorianCalendar fechaLibroDiario, CajaDiaria libroDiarioDeCajaDiaria,
+	public LibroDiario(float totalLibroDiario, Calendar fechaLibroDiario, CajaDiaria libroDiarioDeCajaDiaria,
 			Secretaria responsable) {
 		super();
 		this.totalLibroDiario = totalLibroDiario;
@@ -59,6 +68,65 @@ public class LibroDiario implements Serializable {
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
 		this.responsableLibroDiario = responsable;
 	}
+	
+	//Metodos propios de la clase LibroDiario
+	
+	
+	public double calcularTotal() {
+		double totalPasivos = 0.0;
+		double totalActivos = 0.0;
+		double totalPatrimonio = 0.0;
+		
+		totalActivos = calcularTotalActivos();
+		totalPasivos = calcularTotalPasivos();
+		totalPatrimonio = totalActivos - totalPasivos;
+		
+		return totalPatrimonio;
+	}
+	
+	public double calcularTotalPasivos() {
+		List<Pasivo> pasivos = getPasivosDeLibroDiario();
+		double totalPasivos = 0.0;
+		for (Pasivo pasivo : pasivos) {
+			totalPasivos = totalPasivos + pasivo.getValorPasivo();
+		}
+		
+		return totalPasivos;
+	}
+	
+	
+	public double calcularTotalActivos() {
+		double totalActivo = 0.0;
+		totalActivo = totalActivo + calcularTotalActivosCitas() + calcularTotalActivosCompras();
+		return totalActivo;
+	}
+	
+	
+	
+	public double calcularTotalActivosCitas() {
+		List<Activo> activos = getActivosDeLibroDiario();
+		double totalActivoCitas = 0.0;
+		
+		for (Activo activo : activos) {
+			totalActivoCitas = totalActivoCitas + activo.getValorActivoCitas();
+		}
+		
+		return totalActivoCitas;
+	}
+	
+	public double calcularTotalActivosCompras() {
+		List<Activo> activos = getActivosDeLibroDiario();
+		double totalActivoCompras = 0.0;
+		
+		for (Activo activo : activos) {
+			totalActivoCompras = totalActivoCompras + activo.getValorActivoCompras();
+		}
+		
+		return totalActivoCompras;
+	}
+	
+	
+
 
 	public int getLibroId() {
 		return libroId;
@@ -68,19 +136,19 @@ public class LibroDiario implements Serializable {
 		this.libroId = libroId;
 	}
 
-	public float getTotalLibroDiario() {
+	public double getTotalLibroDiario() {
 		return totalLibroDiario;
 	}
 
-	public void setTotalLibroDiario(float totalLibroDiario) {
+	public void setTotalLibroDiario(double totalLibroDiario) {
 		this.totalLibroDiario = totalLibroDiario;
 	}
 
-	public GregorianCalendar getFechaLibroDiario() {
+	public Calendar getFechaLibroDiario() {
 		return fechaLibroDiario;
 	}
 
-	public void setFechaLibroDiario(GregorianCalendar fechaLibroDiario) {
+	public void setFechaLibroDiario(Calendar fechaLibroDiario) {
 		this.fechaLibroDiario = fechaLibroDiario;
 	}
 
@@ -92,22 +160,51 @@ public class LibroDiario implements Serializable {
 		this.libroDiarioDeCajaDiaria = libroDiarioDeCajaDiaria;
 	}
 
-	public Secretaria getResponsable() {
+	public Secretaria getResponsableLibroDiario() {
 		return responsableLibroDiario;
 	}
 
-	public void setResponsable(Secretaria responsable) {
-		this.responsableLibroDiario = responsable;
+	public void setResponsableLibroDiario(Secretaria responsableLibroDiario) {
+		this.responsableLibroDiario = responsableLibroDiario;
+	}
+
+	public List<Activo> getActivosDeLibroDiario() {
+		return activosDeLibroDiario;
+	}
+
+	public void setActivosDeLibroDiario(List<Activo> activosDeLibroDiario) {
+		this.activosDeLibroDiario = activosDeLibroDiario;
+	}
+	
+	public void agregarActivoALibroDiario(Activo activo) {
+		this.activosDeLibroDiario.add(activo);
+	}
+
+	public List<Pasivo> getPasivosDeLibroDiario() {
+		return pasivosDeLibroDiario;
+	}
+
+	public void setPasivosDeLibroDiario(List<Pasivo> pasivosDeLibroDiario) {
+		this.pasivosDeLibroDiario = pasivosDeLibroDiario;
+	}
+	
+	public void agregarPasivoDeLibroDiario(Pasivo pasivo) {
+		this.pasivosDeLibroDiario.add(pasivo);
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((activosDeLibroDiario == null) ? 0 : activosDeLibroDiario.hashCode());
 		result = prime * result + ((fechaLibroDiario == null) ? 0 : fechaLibroDiario.hashCode());
 		result = prime * result + ((libroDiarioDeCajaDiaria == null) ? 0 : libroDiarioDeCajaDiaria.hashCode());
 		result = prime * result + libroId;
-		result = prime * result + Float.floatToIntBits(totalLibroDiario);
+		result = prime * result + ((pasivosDeLibroDiario == null) ? 0 : pasivosDeLibroDiario.hashCode());
+		result = prime * result + ((responsableLibroDiario == null) ? 0 : responsableLibroDiario.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(totalLibroDiario);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -120,6 +217,11 @@ public class LibroDiario implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		LibroDiario other = (LibroDiario) obj;
+		if (activosDeLibroDiario == null) {
+			if (other.activosDeLibroDiario != null)
+				return false;
+		} else if (!activosDeLibroDiario.equals(other.activosDeLibroDiario))
+			return false;
 		if (fechaLibroDiario == null) {
 			if (other.fechaLibroDiario != null)
 				return false;
@@ -132,7 +234,17 @@ public class LibroDiario implements Serializable {
 			return false;
 		if (libroId != other.libroId)
 			return false;
-		if (Float.floatToIntBits(totalLibroDiario) != Float.floatToIntBits(other.totalLibroDiario))
+		if (pasivosDeLibroDiario == null) {
+			if (other.pasivosDeLibroDiario != null)
+				return false;
+		} else if (!pasivosDeLibroDiario.equals(other.pasivosDeLibroDiario))
+			return false;
+		if (responsableLibroDiario == null) {
+			if (other.responsableLibroDiario != null)
+				return false;
+		} else if (!responsableLibroDiario.equals(other.responsableLibroDiario))
+			return false;
+		if (Double.doubleToLongBits(totalLibroDiario) != Double.doubleToLongBits(other.totalLibroDiario))
 			return false;
 		return true;
 	}
@@ -140,8 +252,13 @@ public class LibroDiario implements Serializable {
 	@Override
 	public String toString() {
 		return "LibroDiario [libroId=" + libroId + ", totalLibroDiario=" + totalLibroDiario + ", fechaLibroDiario="
-				+ fechaLibroDiario + ", libroDiarioDeCajaDiaria=" + libroDiarioDeCajaDiaria + "]";
+				+ fechaLibroDiario + ", libroDiarioDeCajaDiaria=" + libroDiarioDeCajaDiaria
+				+ ", responsableLibroDiario=" + responsableLibroDiario + ", activosDeLibroDiario="
+				+ activosDeLibroDiario + ", pasivosDeLibroDiario=" + pasivosDeLibroDiario + "]";
 	}
 
+	
+
+	
 
 }

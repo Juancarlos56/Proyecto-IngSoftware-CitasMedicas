@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -23,13 +23,13 @@ public class HorarioMedico implements Serializable {
 	private int id_horarioMedico;
 	
 	@Column(name = "diaHorarioMedico")
-	private GregorianCalendar diaHorarioMedico;
+	private Calendar diaHorarioMedico;
 	
 	@Column(name = "horaInicioHorarioMedico")
-	private GregorianCalendar horaInicioHorarioMedico;
+	private Calendar horaInicioHorarioMedico;
 	
 	@Column(name = "horaFinHorarioMedico")
-	private GregorianCalendar horaFinHorarioMedico;
+	private Calendar horaFinHorarioMedico;
 	
 	@Column(name = "estadoHorarioMedico")
 	private String estadoHorarioMedico;
@@ -47,8 +47,8 @@ public class HorarioMedico implements Serializable {
 	
 	
 	
-	public HorarioMedico(int id_horarioMedico, GregorianCalendar diaHorarioMedico,
-			GregorianCalendar horaInicioHorarioMedico, GregorianCalendar horaFinHorarioMedico,
+	public HorarioMedico(int id_horarioMedico, Calendar diaHorarioMedico,
+			Calendar horaInicioHorarioMedico, Calendar horaFinHorarioMedico,
 			String estadoHorarioMedico, Medico horarioDisponiblePorMedico) {
 		super();
 		this.id_horarioMedico = id_horarioMedico;
@@ -77,27 +77,27 @@ public class HorarioMedico implements Serializable {
 		this.id_horarioMedico = id_horarioMedico;
 	}
 
-	public GregorianCalendar getDiaHorarioMedico() {
+	public Calendar getDiaHorarioMedico() {
 		return diaHorarioMedico;
 	}
 
-	public void setDiaHorarioMedico(GregorianCalendar diaHorarioMedico) {
+	public void setDiaHorarioMedico(Calendar diaHorarioMedico) {
 		this.diaHorarioMedico = diaHorarioMedico;
 	}
 
-	public GregorianCalendar getHoraInicioHorarioMedico() {
+	public Calendar getHoraInicioHorarioMedico() {
 		return horaInicioHorarioMedico;
 	}
 
-	public void setHoraInicioHorarioMedico(GregorianCalendar horaInicioHorarioMedico) {
+	public void setHoraInicioHorarioMedico(Calendar horaInicioHorarioMedico) {
 		this.horaInicioHorarioMedico = horaInicioHorarioMedico;
 	}
 
-	public GregorianCalendar getHoraFinHorarioMedico() {
+	public Calendar getHoraFinHorarioMedico() {
 		return horaFinHorarioMedico;
 	}
 
-	public void setHoraFinHorarioMedico(GregorianCalendar horaFinHorarioMedico) {
+	public void setHoraFinHorarioMedico(Calendar horaFinHorarioMedico) {
 		this.horaFinHorarioMedico = horaFinHorarioMedico;
 	}
 

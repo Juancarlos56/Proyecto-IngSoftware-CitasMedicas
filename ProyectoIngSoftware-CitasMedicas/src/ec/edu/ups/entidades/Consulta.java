@@ -3,7 +3,7 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,7 +24,7 @@ public class Consulta implements Serializable {
 	private int idConsulta;
 	
 	@Column(name = "fechaActualDeLaConsulta")
-	private GregorianCalendar fechaActualDeLaConsulta;
+	private Calendar fechaActualDeLaConsulta;
 	
 	@Column(name = "sintomasDelPaciente", length = 255, nullable = false)
 	private String sintomasDelPaciente;
@@ -63,7 +63,7 @@ public class Consulta implements Serializable {
 
 	
 	
-	public Consulta(int idConsulta, GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+	public Consulta(int idConsulta, Calendar fechaActualDeLaConsulta, String sintomasDelPaciente,
 			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
 			String dosis, Paciente pacienteConsulta, Medico medicoConsulta, Certificado certificadoMedicoParaConsulta,
 			List<OrdenMedica> ordenesMedicasDeConsulta) {
@@ -84,7 +84,7 @@ public class Consulta implements Serializable {
 
 
 	//Contructor sin codigo por autogeneracion
-	public Consulta(GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+	public Consulta(Calendar fechaActualDeLaConsulta, String sintomasDelPaciente,
 			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
 			String dosis, Paciente pacienteConsulta, Medico medicoConsulta, Certificado certificadoMedicoParaConsulta) {
 		super();
@@ -111,12 +111,12 @@ public class Consulta implements Serializable {
 	}
 
 
-	public GregorianCalendar getFechaActualDeLaConsulta() {
+	public Calendar getFechaActualDeLaConsulta() {
 		return fechaActualDeLaConsulta;
 	}
 
 
-	public void setFechaActualDeLaConsulta(GregorianCalendar fechaActualDeLaConsulta) {
+	public void setFechaActualDeLaConsulta(Calendar fechaActualDeLaConsulta) {
 		this.fechaActualDeLaConsulta = fechaActualDeLaConsulta;
 	}
 

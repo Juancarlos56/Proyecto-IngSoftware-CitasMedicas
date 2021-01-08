@@ -1,7 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.GregorianCalendar;
+import java.util.Calendar;
 
 import javax.persistence.*;
 
@@ -26,6 +26,10 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
     @JoinColumn
     private Medico facturasSalarioDeMedico;
 	
+	@ManyToOne
+	@JoinColumn(name = "FK_FacturaSalario_Pasivo")
+	private Pasivo pasivoPagoSalario;
+	
 	
 	public FacturaSalario() {
 		super();
@@ -33,10 +37,10 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	
 	
 
-	public FacturaSalario(GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaSalario(Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura, 
 			double totalPagoMedicoFacturaSalario, double comisionEmpresaFacturaSalario, 
-			Medico facturasSalarioDeMedico) {
+			Medico facturasSalarioDeMedico, Pasivo pasivoPagoSalario) {
 		
 		
 		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
@@ -44,12 +48,13 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 		this.totalPagoMedicoFacturaSalario = totalPagoMedicoFacturaSalario;
 		this.comisionEmpresaFacturaSalario = comisionEmpresaFacturaSalario;
 		this.facturasSalarioDeMedico = facturasSalarioDeMedico;
+		this.pasivoPagoSalario = pasivoPagoSalario;
 	}
 	
-	public FacturaSalario(int idFactura, GregorianCalendar fecha, String descripcion, String tipoTransaccion,
+	public FacturaSalario(int idFactura, Calendar fecha, String descripcion, String tipoTransaccion,
 			char estado, double subtotal, double iva, double total, String tipoFactura, 
 			double totalPagoMedicoFacturaSalario, double comisionEmpresaFacturaSalario, 
-			Medico facturasSalarioDeMedico) {
+			Medico facturasSalarioDeMedico, Pasivo pasivoPagoSalario) {
 		
 		
 		super(idFactura, fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
@@ -57,6 +62,7 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 		this.totalPagoMedicoFacturaSalario = totalPagoMedicoFacturaSalario;
 		this.comisionEmpresaFacturaSalario = comisionEmpresaFacturaSalario;
 		this.facturasSalarioDeMedico = facturasSalarioDeMedico;
+		this.pasivoPagoSalario = pasivoPagoSalario;
 	}
 	
 	
@@ -75,7 +81,7 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	}
 
 	@Override
-	public boolean actualizarCajaDiaria(FacturaSalario factura, CajaDiaria cajaDiaria) {
+	public LibroDiario actualizarLibroDiario(FacturaSalario factura, LibroDiario libroDiario) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -117,6 +123,19 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	}
 
 
+	
+
+	public Pasivo getPasivoPagoSalario() {
+		return pasivoPagoSalario;
+	}
+
+
+
+	public void setPasivoPagoSalario(Pasivo pasivoPagoSalario) {
+		this.pasivoPagoSalario = pasivoPagoSalario;
+	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -155,9 +174,12 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	@Override
 	public String toString() {
 		return "FacturaSalario [totalPagoMedicoFacturaSalario=" + totalPagoMedicoFacturaSalario
-				+ ", comisionEmpresaFacturaSalario=" + comisionEmpresaFacturaSalario + "]";
+				+ ", comisionEmpresaFacturaSalario=" + comisionEmpresaFacturaSalario + ", facturasSalarioDeMedico="
+				+ facturasSalarioDeMedico + ", pasivoPagoSalario=" + pasivoPagoSalario + "]";
 	}
-	
+
+
+
 	
    
 }
