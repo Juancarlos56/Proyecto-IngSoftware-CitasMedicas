@@ -90,7 +90,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 		this.descripcion = descripcion;
 		this.tipoTransaccion = tipoTransaccion;
 		this.estado = estado;
-		subtotal = subtotal;
+		this.subtotal = subtotal;
 		this.iva = iva;
 		this.total = total;
 		this.tipoFactura = tipoFactura;
