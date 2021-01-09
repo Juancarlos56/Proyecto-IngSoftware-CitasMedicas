@@ -2,6 +2,7 @@ package ec.edu.ups.entidades;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -56,7 +57,7 @@ public class Persona implements Serializable {
 
 
 	public Persona(String cedula, String nombre, String apellido, String lugarNacimiento,
-			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado) {
 		super();
 		this.cedula = cedula;

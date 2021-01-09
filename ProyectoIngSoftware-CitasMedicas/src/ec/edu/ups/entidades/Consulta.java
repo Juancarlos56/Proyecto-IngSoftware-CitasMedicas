@@ -99,6 +99,20 @@ public class Consulta implements Serializable {
 		this.medicoConsulta = medicoConsulta;
 		this.certificadoMedicoParaConsulta = certificadoMedicoParaConsulta;
 	}
+	public Consulta(Calendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
+			String dosis, Paciente pacienteConsulta, Medico medicoConsulta) {
+		super();
+		
+		this.fechaActualDeLaConsulta = fechaActualDeLaConsulta;
+		this.sintomasDelPaciente = sintomasDelPaciente;
+		this.diagnosticoDeLaConsulta = diagnosticoDeLaConsulta;
+		this.observacionesDeLaConsulta = observacionesDeLaConsulta;
+		this.medicinasParaElPaciente = medicinasParaElPaciente;
+		this.dosis = dosis;
+		this.pacienteConsulta = pacienteConsulta;
+		this.medicoConsulta = medicoConsulta;		
+	}
 
 
 	public int getIdConsulta() {

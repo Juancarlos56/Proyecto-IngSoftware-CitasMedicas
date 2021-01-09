@@ -8,9 +8,10 @@ import ec.edu.ups.entidades.Medico;
 import ec.edu.ups.entidades.Paciente;
 
 public class ConsultaControlador {
-	public void nuevaConsulta(GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
+	public String nuevaConsulta(GregorianCalendar fechaActualDeLaConsulta, String sintomasDelPaciente,
 			String diagnosticoDeLaConsulta, String observacionesDeLaConsulta, String medicinasParaElPaciente,
-			String dosis, Paciente pacienteConsulta, Medico medicoConsulta, Certificado certificadoMedicoParaConsulta) {
-		Consulta consulta = new Consulta(fechaActualDeLaConsulta, sintomasDelPaciente, diagnosticoDeLaConsulta, observacionesDeLaConsulta, medicinasParaElPaciente, dosis, pacienteConsulta, medicoConsulta, certificadoMedicoParaConsulta);
+			String dosis, Paciente pacienteConsulta, Medico medicoConsulta) {
+		Consulta consulta = new Consulta(fechaActualDeLaConsulta, sintomasDelPaciente, diagnosticoDeLaConsulta, observacionesDeLaConsulta, medicinasParaElPaciente, dosis, pacienteConsulta, medicoConsulta);
+		return "Ingresado";
 	}
 }
