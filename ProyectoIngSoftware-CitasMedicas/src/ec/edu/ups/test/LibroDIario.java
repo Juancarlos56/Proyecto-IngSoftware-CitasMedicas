@@ -2,18 +2,45 @@ package ec.edu.ups.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+import java.util.GregorianCalendar;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import ec.edu.ups.controladores.LibroDiarioControlador;
+import ec.edu.ups.entidades.CajaDiaria;
+import ec.edu.ups.entidades.Secretaria;
 
 class LibroDIario {
+		private String respuesta="";
 
-	@BeforeEach
-	void setUp() throws Exception {
+		private LibroDiarioControlador libro= new LibroDiarioControlador();
+
+		@BeforeAll
+		static void setUpBeforeClass() throws Exception {
+		}
+
+		@AfterAll
+		static void tearDownAfterClass() throws Exception {
+		}
+
+		@BeforeEach
+		void setUp() throws Exception {
+			respuesta=libro.nuevoLibro(new Secretaria("0102286440", "Maria", "Alvarez", "Azogues", new GregorianCalendar(), "Ecuatoriana", "Femenino", "Malvarez@hotmail.com", "Secretaria", "Activo", 0, "sec1", "clave1"), new CajaDiaria(100, 200, 50, 10, new GregorianCalendar()));
+		}
+
+		@AfterEach
+		void tearDown() throws Exception {
+		}
+
+		@Test
+		@Tag("LibroDiario")
+		void test() {
+			assertEquals("Ingresado", respuesta);
+		}
+		
 	}
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
-
-}

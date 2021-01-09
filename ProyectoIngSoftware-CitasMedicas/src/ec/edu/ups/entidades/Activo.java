@@ -67,6 +67,12 @@ public class Activo implements Serializable {
 		this.tipoActivo = tipoActivo;
 		this.activoDelibroDiario = activoDelibroDiario;
 	}
+	public Activo(float valorActivoCompras, float valorActivoCitas, String tipoActivo) {
+		super();
+		this.valorActivoCompras = valorActivoCompras;
+		this.valorActivoCitas = valorActivoCitas;
+		this.tipoActivo = tipoActivo;		
+	}
 
 	//Metodos propios de la clase Activo
 	

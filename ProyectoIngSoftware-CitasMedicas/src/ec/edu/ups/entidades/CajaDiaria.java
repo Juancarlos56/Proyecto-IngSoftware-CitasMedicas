@@ -3,6 +3,7 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -66,7 +67,7 @@ public class CajaDiaria implements Serializable {
 
 	//Constructor sin codigo por autogeneracion
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
-			int totalDineroPatrimonioCajaDiaria, Calendar fechaCajaDiaria) {
+			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria) {
 		super();
 		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
 		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;
