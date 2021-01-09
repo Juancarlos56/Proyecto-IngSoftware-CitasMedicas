@@ -9,4 +9,7 @@ public class CajaDiariaControlador {
 			int totalDineroPatrimonioCajaDiaria, Calendar fechaCajaDiaria) {
 		CajaDiaria caja = new CajaDiaria(totalDineroSalarioCajaDiaria, totalDineroActivoCajaDiaria, totalDineroDeudaCajaDiaria, totalDineroPatrimonioCajaDiaria, fechaCajaDiaria);
 	}
+	public double calculartotalEntrada(CajaDiaria caja) {
+		return caja.calcularTotalEntradas();		
+	}
 }
