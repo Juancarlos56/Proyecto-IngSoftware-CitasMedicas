@@ -19,6 +19,10 @@ public class Secretaria extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_secretaria")
+	private int idSecretaria;
 	
 	@Column(name = "userSecretaria")
 	private String userSecretaria;
@@ -38,32 +42,14 @@ public class Secretaria extends Persona implements Serializable {
 	}  
 	
 	
-	public Secretaria(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria,
-			List<LibroDiario> responsableLibroDiario, List<AgendaCitaMedica> secretariaAgendaCita) {
-		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
-				estado);
-		
-		this.userSecretaria = userSecretaria;
-		this.passwordSecretaria = passwordSecretaria;
-		this.responsableLibroDiario = responsableLibroDiario;
-		this.secretariaAgendaCita = secretariaAgendaCita;
-		
-	}
-
-	
 	public Secretaria(String cedula, String nombre, String apellido, String lugarNacimiento,
 			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria,
-			List<LibroDiario> responsableLibroDiario, List<AgendaCitaMedica> secretariaAgendaCita) {
+			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
 				estado);
-		
+		this.idSecretaria = idSecretaria;
 		this.userSecretaria = userSecretaria;
 		this.passwordSecretaria = passwordSecretaria;
-		this.responsableLibroDiario = responsableLibroDiario;
-		this.secretariaAgendaCita = secretariaAgendaCita;
 		
 	}
 	
@@ -113,16 +99,18 @@ public class Secretaria extends Persona implements Serializable {
 		this.secretariaAgendaCita = secretariaAgendaCita;
 	}
 
-	public int getIdFactura() {
-		return super.getIdFactura();
-	}
-
-
-	public void setIdFactura(int idFactura) {
-		super.setIdFactura(idFactura);
-	}
-
 	
+	
+	public int getIdSecretaria() {
+		return idSecretaria;
+	}
+
+
+	public void setIdSecretaria(int idSecretaria) {
+		this.idSecretaria = idSecretaria;
+	}
+
+
 	public String getCedula() {
 		return super.getCedula();
 	}

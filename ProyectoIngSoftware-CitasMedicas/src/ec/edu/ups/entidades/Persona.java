@@ -9,46 +9,44 @@ import javax.persistence.*;
  * Entity implementation class for Entity: Persona
  *
  */
-@Entity
+//@Entity
 
 public class Persona implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "idFactura")
-	private int idFactura;
 	
-	@Column(name = "persona_cedula", length = 255, nullable = false, unique = true) 
+	
+	//@Column(name = "persona_cedula", length = 255, nullable = false, unique = true) 
 	private String cedula;
 	
-	@Column(name = "persona_nombre", length = 255, nullable = false) 
+	//@Column(name = "persona_nombre", length = 255, nullable = false) 
 	private String nombre; 
 	
-	@Column(name = "persona_apellido", length = 255, nullable = false) 
+	//@Column(name = "persona_apellido", length = 255, nullable = false) 
 	private String apellido;
 	
-	@Column(name = "persona_lugarNacimiento", length = 255, nullable = false) 
+	//@Column(name = "persona_lugarNacimiento", length = 255, nullable = false) 
 	private String lugarNacimiento;
 	
-	@Column(name = "persona_fechaNacimiento", length = 255, nullable = false) 
+	//@Temporal(TemporalType.DATE)
+	//(name = "persona_fechaNacimiento", length = 255, nullable = false) 
 	private Calendar fechaDeNacimiento;
 	
-	@Column(name = "persona_nacionalidad", length = 255, nullable = false) 
+	//@Column(name = "persona_nacionalidad", length = 255, nullable = false) 
 	private String nacionalidad;
 	
-	@Column(name = "persona_sexo", length = 255, nullable = false) 
+	//@Column(name = "persona_sexo", length = 255, nullable = false) 
 	private String sexo;
 	
-	@Column(name = "persona_email", length = 255, nullable = false, unique = true) 
+	//@Column(name = "persona_email", length = 255, nullable = false, unique = true) 
 	private String email;
 	
-	@Column(name = "persona_tipoUsuario", length = 255, nullable = false) 
+	//@Column(name = "persona_tipoUsuario", length = 255, nullable = false) 
 	private String tipoUsuario;
 
-	@Column(name = "persona_estado", length = 10, nullable = false) 
+	//@Column(name = "persona_estado", length = 10, nullable = false) 
 	private String estado;
 	
 	
@@ -56,23 +54,6 @@ public class Persona implements Serializable {
 		super();
 	}
 
-
-	public Persona(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado) {
-		super();
-		this.idFactura = idFactura;
-		this.cedula = cedula;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.lugarNacimiento = lugarNacimiento;
-		this.fechaDeNacimiento = fechaDeNacimiento;
-		this.nacionalidad = nacionalidad;
-		this.sexo = sexo;
-		this.email = email;
-		this.tipoUsuario = tipoUsuario;
-		this.estado = estado;
-	}
 
 	public Persona(String cedula, String nombre, String apellido, String lugarNacimiento,
 			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
@@ -88,16 +69,6 @@ public class Persona implements Serializable {
 		this.email = email;
 		this.tipoUsuario = tipoUsuario;
 		this.estado = estado;
-	}
-
-
-	public int getIdFactura() {
-		return idFactura;
-	}
-
-
-	public void setIdFactura(int idFactura) {
-		this.idFactura = idFactura;
 	}
 
 
@@ -213,7 +184,6 @@ public class Persona implements Serializable {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((fechaDeNacimiento == null) ? 0 : fechaDeNacimiento.hashCode());
-		result = prime * result + idFactura;
 		result = prime * result + ((lugarNacimiento == null) ? 0 : lugarNacimiento.hashCode());
 		result = prime * result + ((nacionalidad == null) ? 0 : nacionalidad.hashCode());
 		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
@@ -257,8 +227,6 @@ public class Persona implements Serializable {
 				return false;
 		} else if (!fechaDeNacimiento.equals(other.fechaDeNacimiento))
 			return false;
-		if (idFactura != other.idFactura)
-			return false;
 		if (lugarNacimiento == null) {
 			if (other.lugarNacimiento != null)
 				return false;
@@ -290,7 +258,7 @@ public class Persona implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Persona [idFactura=" + idFactura + ", cedula=" + cedula + ", nombre=" + nombre + ", apellido="
+		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", lugarNacimiento=" + lugarNacimiento + ", fechaDeNacimiento=" + fechaDeNacimiento
 				+ ", nacionalidad=" + nacionalidad + ", sexo=" + sexo + ", email=" + email + ", tipoUsuario="
 				+ tipoUsuario + ", estado=" + estado + "]";

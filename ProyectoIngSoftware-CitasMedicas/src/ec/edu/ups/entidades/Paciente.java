@@ -18,6 +18,11 @@ public class Paciente extends Persona implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_paciente")
+	private int idPaciente;
+	
 	@Column(name = "tipoSangrePaciente", nullable = true)
 	private String tipoSangre;
 	
@@ -36,26 +41,29 @@ public class Paciente extends Persona implements Serializable {
 	}
 	
 	
-	
-	public Paciente(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, int idPaciente, String tipoSangre) {
-		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
-				estado);
-		this.tipoSangre = tipoSangre;
-	}
-
-
 
 	public Paciente(String cedula, String nombre, String apellido, String lugarNacimiento,
 			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado, int idPaciente, String tipoSangre) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);
 		this.tipoSangre = tipoSangre;
+		this.idPaciente = idPaciente;
 	}
 	
 
 	
+	public int getIdPaciente() {
+		return idPaciente;
+	}
+
+
+
+	public void setIdPaciente(int idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+
+
 	public String getTipoSangre() {
 		return tipoSangre;
 	}
@@ -110,16 +118,6 @@ public class Paciente extends Persona implements Serializable {
 		this.consultasDeUnPaciente.add(consultaPaciente);
 	}
 	
-	
-	public int getIdFactura() {
-		return super.getIdFactura();
-	}
-
-
-	public void setIdFactura(int idFactura) {
-		super.setIdFactura(idFactura);
-	}
-
 	
 	public String getCedula() {
 		return super.getCedula();

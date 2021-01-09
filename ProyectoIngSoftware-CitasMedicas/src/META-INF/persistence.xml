@@ -9,8 +9,6 @@
 		<class>ec.edu.ups.entidades.FacturaGeneral</class>
 		<class>ec.edu.ups.entidades.LibroDiario</class>
 		<class>ec.edu.ups.entidades.AgendaCitaMedica</class>
-		<class>ec.edu.ups.entidades.Consulta</class>
-		<class>ec.edu.ups.entidades.Paciente</class>
 		<class>ec.edu.ups.entidades.HistorialMedico</class>
 		<class>ec.edu.ups.entidades.Certificado</class>
 		<class>ec.edu.ups.entidades.OrdenMedica</class>
@@ -19,9 +17,10 @@
 		<class>ec.edu.ups.entidades.EstudioMedico</class>
 		<class>ec.edu.ups.entidades.Especialidad</class>
 		<class>ec.edu.ups.entidades.HorarioMedico</class>
-		<class>ec.edu.ups.entidades.Persona</class>
 		<class>ec.edu.ups.entidades.Activo</class>
 		<class>ec.edu.ups.entidades.Pasivo</class>
+		<class>ec.edu.ups.entidades.Paciente</class>
+		<class>ec.edu.ups.entidades.Consulta</class>
 		<properties>
 			<property name="eclipselink.ddl-generation" value="create-tables" />			
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/citasMedicas?serverTimezone=UTC" />

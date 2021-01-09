@@ -109,7 +109,7 @@ public abstract class FacturaGeneral<T> implements Serializable{
 	 * @return
 	 */
 	public double calcularTotalFactura() {
-		return getSubtotal()+getIva();
+		return getSubtotal()+(getSubtotal()*getIva());
 	}
 	
 	/**

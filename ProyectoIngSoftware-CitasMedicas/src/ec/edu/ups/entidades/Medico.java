@@ -17,6 +17,11 @@ public class Medico extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "id_medico")
+	private int idMedico;
+	
 	@Column(name = "userMedico")
 	private String userMedico;
 	
@@ -49,18 +54,6 @@ public class Medico extends Persona implements Serializable {
 		super();
 	}   
 	
-	
-	
-	public Medico(int idFactura, String cedula, String nombre, String apellido, String lugarNacimiento,
-			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, String userMedico, String passwordMedico, String urlFotoMedico) {
-		super(idFactura, cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
-				estado);
-		
-		this.userMedico = userMedico;
-		this.passwordMedico = passwordMedico;
-		this.urlFotoMedico = urlFotoMedico;
-	}
 
 	public Medico(String cedula, String nombre, String apellido, String lugarNacimiento,
 			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
@@ -73,6 +66,16 @@ public class Medico extends Persona implements Serializable {
 		this.urlFotoMedico = urlFotoMedico;
 	}
 
+
+
+	public int getIdMedico() {
+		return idMedico;
+	}
+
+
+	public void setIdMedico(int idMedico) {
+		this.idMedico = idMedico;
+	}
 
 
 	public String getUserMedico() {
@@ -102,16 +105,6 @@ public class Medico extends Persona implements Serializable {
 
 	public void setUrlFotoMedico(String urlFotoMedico) {
 		this.urlFotoMedico = urlFotoMedico;
-	}
-
-
-	public int getIdFactura() {
-		return super.getIdFactura();
-	}
-
-
-	public void setIdFactura(int idFactura) {
-		super.setIdFactura(idFactura);
 	}
 
 	
@@ -375,7 +368,8 @@ public class Medico extends Persona implements Serializable {
 	public String toString() {
 		return "Medico [userMedico=" + userMedico + ", passwordMedico=" + passwordMedico + ", urlFotoMedico="
 				+ urlFotoMedico + ", consultasDeUnMedico=" + consultasDeUnMedico + ", citasMedicasDeUnDoctor="
-				+ citasMedicasDeUnDoctor + ", facturasSalarioDeUnDoctor=" + facturasSalarioDeUnDoctor + "]";
+				+ citasMedicasDeUnDoctor + ", facturasSalarioDeUnDoctor=" + facturasSalarioDeUnDoctor +
+				", facturasCabeceraDoctor=" + facturasCabeceraDeUnMedico +"]";
 	}
 	
 	

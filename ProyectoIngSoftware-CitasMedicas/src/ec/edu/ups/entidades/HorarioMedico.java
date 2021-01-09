@@ -23,7 +23,7 @@ public class HorarioMedico implements Serializable {
 	private int id_horarioMedico;
 	
 	@Column(name = "diaHorarioMedico")
-	private Calendar diaHorarioMedico;
+	private int diaHorarioMedico;
 	
 	@Column(name = "horaInicioHorarioMedico")
 	private Calendar horaInicioHorarioMedico;
@@ -47,7 +47,7 @@ public class HorarioMedico implements Serializable {
 	
 	
 	
-	public HorarioMedico(int id_horarioMedico, Calendar diaHorarioMedico,
+	public HorarioMedico(int id_horarioMedico, int diaHorarioMedico,
 			Calendar horaInicioHorarioMedico, Calendar horaFinHorarioMedico,
 			String estadoHorarioMedico, Medico horarioDisponiblePorMedico) {
 		super();
@@ -62,7 +62,7 @@ public class HorarioMedico implements Serializable {
 	
 	
 
-	public HorarioMedico(Calendar diaHorarioMedico, Calendar horaInicioHorarioMedico, Calendar horaFinHorarioMedico,
+	public HorarioMedico(int diaHorarioMedico, Calendar horaInicioHorarioMedico, Calendar horaFinHorarioMedico,
 			String estadoHorarioMedico, Medico horarioDisponiblePorMedico) {
 		super();
 		this.diaHorarioMedico = diaHorarioMedico;
@@ -121,11 +121,11 @@ public class HorarioMedico implements Serializable {
 		this.id_horarioMedico = id_horarioMedico;
 	}
 
-	public Calendar getDiaHorarioMedico() {
+	public int getDiaHorarioMedico() {
 		return diaHorarioMedico;
 	}
 
-	public void setDiaHorarioMedico(Calendar diaHorarioMedico) {
+	public void setDiaHorarioMedico(int diaHorarioMedico) {
 		this.diaHorarioMedico = diaHorarioMedico;
 	}
 
@@ -168,7 +168,6 @@ public class HorarioMedico implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((diaHorarioMedico == null) ? 0 : diaHorarioMedico.hashCode());
 		result = prime * result + ((estadoHorarioMedico == null) ? 0 : estadoHorarioMedico.hashCode());
 		result = prime * result + ((horaFinHorarioMedico == null) ? 0 : horaFinHorarioMedico.hashCode());
 		result = prime * result + ((horaInicioHorarioMedico == null) ? 0 : horaInicioHorarioMedico.hashCode());
@@ -189,11 +188,6 @@ public class HorarioMedico implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		HorarioMedico other = (HorarioMedico) obj;
-		if (diaHorarioMedico == null) {
-			if (other.diaHorarioMedico != null)
-				return false;
-		} else if (!diaHorarioMedico.equals(other.diaHorarioMedico))
-			return false;
 		if (estadoHorarioMedico == null) {
 			if (other.estadoHorarioMedico != null)
 				return false;
