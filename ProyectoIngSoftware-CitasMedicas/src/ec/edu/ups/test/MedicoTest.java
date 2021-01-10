@@ -21,7 +21,7 @@ class MedicoTest {
 
 	@Test
 	void test() {
-		fail("Not yet implemented");
+		assertEquals("Ingresado", null);
 	}
 
 }
