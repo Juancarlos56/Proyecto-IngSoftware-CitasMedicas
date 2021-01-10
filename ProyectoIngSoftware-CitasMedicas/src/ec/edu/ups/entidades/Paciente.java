@@ -19,10 +19,10 @@ public class Paciente extends Persona implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_paciente")
-	private int idPaciente;
+	//@Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name = "id_paciente")
+	//private int idPaciente;
 	
 	@Column(name = "tipoSangrePaciente", nullable = true)
 	private String tipoSangre;
@@ -45,22 +45,22 @@ public class Paciente extends Persona implements Serializable {
 
 	public Paciente(String cedula, String nombre, String apellido, String lugarNacimiento,
 			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, int idPaciente, String tipoSangre) {
+			String estado, String tipoSangre) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);
 		this.tipoSangre = tipoSangre;
-		this.idPaciente = idPaciente;
+		//this.idPaciente = idPaciente;
 	}
 	
 
 	
 	public int getIdPaciente() {
-		return idPaciente;
+		return super.getIdPersona();
 	}
 
 
 
 	public void setIdPaciente(int idPaciente) {
-		this.idPaciente = idPaciente;
+		super.setIdPersona(idPaciente);
 	}
 
 

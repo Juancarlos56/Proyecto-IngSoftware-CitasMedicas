@@ -20,10 +20,10 @@ public class Secretaria extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_secretaria")
-	private int idSecretaria;
+	//@Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name = "id_secretaria")
+	//private int idSecretaria;
 	
 	@Column(name = "userSecretaria")
 	private String userSecretaria;
@@ -45,10 +45,10 @@ public class Secretaria extends Persona implements Serializable {
 	
 	public Secretaria(String cedula, String nombre, String apellido, String lugarNacimiento,
 			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
-			String estado, int idSecretaria, String userSecretaria, String passwordSecretaria) {
+			String estado, String userSecretaria, String passwordSecretaria) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario,
 				estado);
-		this.idSecretaria = idSecretaria;
+		//this.idSecretaria = idSecretaria;
 		this.userSecretaria = userSecretaria;
 		this.passwordSecretaria = passwordSecretaria;
 		
@@ -103,12 +103,12 @@ public class Secretaria extends Persona implements Serializable {
 	
 	
 	public int getIdSecretaria() {
-		return idSecretaria;
+		return super.getIdPersona();
 	}
 
 
 	public void setIdSecretaria(int idSecretaria) {
-		this.idSecretaria = idSecretaria;
+		super.setIdPersona(idSecretaria);
 	}
 
 

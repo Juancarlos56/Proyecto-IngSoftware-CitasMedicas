@@ -18,10 +18,10 @@ public class Medico extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
 	
-	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "id_medico")
-	private int idMedico;
+	//@Id
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name = "id_medico")
+	//private int idMedico;
 	
 	@Column(name = "userMedico")
 	private String userMedico;
@@ -70,12 +70,12 @@ public class Medico extends Persona implements Serializable {
 
 
 	public int getIdMedico() {
-		return idMedico;
+		return super.getIdPersona();
 	}
 
 
 	public void setIdMedico(int idMedico) {
-		this.idMedico = idMedico;
+		super.setIdPersona(idMedico);
 	}
 
 
