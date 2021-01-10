@@ -37,6 +37,7 @@ public class CajaDiaria implements Serializable {
 	@Column(name = "totalDineroPatrimonioCajaDiaria")
     private int totalDineroPatrimonioCajaDiaria;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaCajaDiaria")
 	private Calendar fechaCajaDiaria;
 	
@@ -67,7 +68,7 @@ public class CajaDiaria implements Serializable {
 
 	//Constructor sin codigo por autogeneracion
 	public CajaDiaria(int totalDineroSalarioCajaDiaria, int totalDineroActivoCajaDiaria, int totalDineroDeudaCajaDiaria,
-			int totalDineroPatrimonioCajaDiaria, GregorianCalendar fechaCajaDiaria) {
+			int totalDineroPatrimonioCajaDiaria, Calendar fechaCajaDiaria) {
 		super();
 		this.totalDineroSalarioCajaDiaria = totalDineroSalarioCajaDiaria;
 		this.totalDineroActivoCajaDiaria = totalDineroActivoCajaDiaria;

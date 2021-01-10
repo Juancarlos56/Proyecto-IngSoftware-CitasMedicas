@@ -1,8 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import javax.persistence.*;
 
@@ -11,6 +11,16 @@ import javax.persistence.*;
  *
  */
 @Entity
+@Table
+
+//SINGLE_TABLE: para crear una sola tabla con identificadores unicos en una columna agregada esta contendra
+// a las clases que hereden las cuales van a tener un identificador unico 
+//@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
+//@DiscriminatorColumn(name = "type")
+
+//TABLE_PER_CLASS: Crea una tabla para cada de las tablas que hereden de esta clase, la entidad persona no va a tener registros 
+//solo las clases que heredan contendran registros. 
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 
 public class Persona implements Serializable {
 
@@ -60,7 +70,7 @@ public class Persona implements Serializable {
 
 
 	public Persona(String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado) {
 		super();
 		this.cedula = cedula;

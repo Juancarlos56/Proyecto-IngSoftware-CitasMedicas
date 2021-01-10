@@ -42,7 +42,8 @@ public class HistorialMedico implements Serializable {
 	@Column(name = "epicrisisDeUnPaciente", length = 255, nullable = true)
 	private String epicrisisDeUnPaciente;
 	
-	@Column(name = "fechaHistoriaMedica", length = 255, nullable = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "fechaHistoriaMedica")
 	private Calendar fechaHistoriaMedica;
 	
 	@Column(name = "medicacionActualDeUnPaciente", length = 255, nullable = true)

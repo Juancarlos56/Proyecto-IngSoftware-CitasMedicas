@@ -3,8 +3,6 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import javax.persistence.*;
 
 /**
@@ -22,8 +20,9 @@ public class Certificado implements Serializable {
 	@Column(name = "idCertificado")
 	private int idCertificado;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaEnvioDeCerficado")
-	private GregorianCalendar fechaEnvioDeCerficado;
+	private Calendar fechaEnvioDeCerficado;
 	
 	@Column(name = "numeroDiasDeReposoParaPaciente")
 	private int numeroDiasDeReposoParaPaciente;
@@ -39,7 +38,7 @@ public class Certificado implements Serializable {
 		super();
 	}
 
-	public Certificado(int idCertificado, GregorianCalendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+	public Certificado(int idCertificado, Calendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
 			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
 		super();
 		this.idCertificado = idCertificado;
@@ -50,7 +49,7 @@ public class Certificado implements Serializable {
 	}
 
 	//Contructor sin codigo por autogeneracion
-	public Certificado(GregorianCalendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
+	public Certificado(Calendar fechaEnvioDeCerficado, int numeroDiasDeReposoParaPaciente,
 			String descripcionParaCertificado, Consulta certificadoDeUnaConsulta) {
 		super();
 		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
@@ -82,7 +81,7 @@ public class Certificado implements Serializable {
 		return fechaEnvioDeCerficado;
 	}
 
-	public void setFechaEnvioDeCerficado(GregorianCalendar fechaEnvioDeCerficado) {
+	public void setFechaEnvioDeCerficado(Calendar fechaEnvioDeCerficado) {
 		this.fechaEnvioDeCerficado = fechaEnvioDeCerficado;
 	}
 

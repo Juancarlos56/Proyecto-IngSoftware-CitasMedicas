@@ -3,7 +3,6 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+//@DiscriminatorValue( value="Pac" )
 public class Paciente extends Persona implements Serializable {
 
 	
@@ -44,7 +43,7 @@ public class Paciente extends Persona implements Serializable {
 	
 
 	public Paciente(String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado, String tipoSangre) {
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);
 		this.tipoSangre = tipoSangre;

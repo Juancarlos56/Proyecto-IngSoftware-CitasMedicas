@@ -3,7 +3,6 @@ package ec.edu.ups.entidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import javax.persistence.*;
  *
  */
 @Entity
-
+//@DiscriminatorValue( value="Med" )
 public class Medico extends Persona implements Serializable {
 
 	private static final long serialVersionUID = 1L;  
@@ -57,7 +56,7 @@ public class Medico extends Persona implements Serializable {
 	
 
 	public Medico(String cedula, String nombre, String apellido, String lugarNacimiento,
-			GregorianCalendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
+			Calendar fechaDeNacimiento, String nacionalidad, String sexo, String email, String tipoUsuario,
 			String estado, String userMedico, String passwordMedico, String urlFotoMedico) {
 		
 		super(cedula, nombre, apellido, lugarNacimiento, fechaDeNacimiento, nacionalidad, sexo, email, tipoUsuario, estado);

@@ -38,15 +38,6 @@ public class Especialidad implements Serializable {
 		super();		
 	}	
 	
-	public Especialidad(int id_Especialidad, String nombre_Especialidad, List<EstudioMedico> especialidadPorEstudio) {
-		super();
-		this.id_Especialidad = id_Especialidad;
-		this.nombre_Especialidad = nombre_Especialidad;
-	}	
-	
-
-
-
 
 	public int getId_Especialidad() {
 		return id_Especialidad;

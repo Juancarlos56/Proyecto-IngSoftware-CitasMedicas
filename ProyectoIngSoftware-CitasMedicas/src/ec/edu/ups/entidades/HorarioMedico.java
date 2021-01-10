@@ -25,9 +25,11 @@ public class HorarioMedico implements Serializable {
 	@Column(name = "diaHorarioMedico")
 	private int diaHorarioMedico;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "horaInicioHorarioMedico")
 	private Calendar horaInicioHorarioMedico;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "horaFinHorarioMedico")
 	private Calendar horaFinHorarioMedico;
 	

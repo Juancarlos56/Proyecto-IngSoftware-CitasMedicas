@@ -1,6 +1,7 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -27,21 +28,32 @@ public class OrdenMedica implements Serializable {
 	@Column(name="diagnosticoOrdenMedica", length=20, nullable=false)
 	private String diagnostico;
 	
-	
+	@Temporal(TemporalType.DATE)
 	@Column(name="fechaOrdenMedica", length=20, nullable=false)
-	private Date fechaOrdenMedica;
+	private Calendar fechaOrdenMedica;
 	
 	@ManyToOne
 	@JoinColumn(name = "FK_OrdenMedica_Consulta")
-	private Paciente ordenesMedicasDeUnaConsulta;
+	private Consulta ordenesMedicasDeUnaConsulta;
 
 	
 	public OrdenMedica() {
 		super();
 	}
+	
+	
 
-	public OrdenMedica(int idOrdenMedica, String descripcion, String diagnostico, Date fechaOrdenMedica,
-			Paciente ordenesMedicasDeUnaConsulta) {
+	public OrdenMedica(String descripcion, String diagnostico, Calendar fechaOrdenMedica) {
+		super();
+		this.descripcion = descripcion;
+		this.diagnostico = diagnostico;
+		this.fechaOrdenMedica = fechaOrdenMedica;
+	}
+
+
+
+	public OrdenMedica(int idOrdenMedica, String descripcion, String diagnostico, Calendar fechaOrdenMedica,
+			Consulta ordenesMedicasDeUnaConsulta) {
 		super();
 		this.idOrdenMedica = idOrdenMedica;
 		this.descripcion = descripcion;
@@ -51,8 +63,8 @@ public class OrdenMedica implements Serializable {
 	}
 	
 	//Constructor para orden medica sin codigo por autogeneracion
-	public OrdenMedica(String descripcion, String diagnostico, Date fechaOrdenMedica,
-			Paciente ordenesMedicasDeUnaConsulta) {
+	public OrdenMedica(String descripcion, String diagnostico, Calendar fechaOrdenMedica,
+			Consulta ordenesMedicasDeUnaConsulta) {
 		super();
 		this.descripcion = descripcion;
 		this.diagnostico = diagnostico;
@@ -90,22 +102,22 @@ public class OrdenMedica implements Serializable {
 	}
 
 
-	public Date getFechaOrdenMedica() {
+	public Calendar getFechaOrdenMedica() {
 		return fechaOrdenMedica;
 	}
 
 
-	public void setFechaOrdenMedica(Date fechaOrdenMedica) {
+	public void setFechaOrdenMedica(Calendar fechaOrdenMedica) {
 		this.fechaOrdenMedica = fechaOrdenMedica;
 	}
 
 
-	public Paciente getOrdenesMedicasDeUnaConsulta() {
+	public Consulta getOrdenesMedicasDeUnaConsulta() {
 		return ordenesMedicasDeUnaConsulta;
 	}
 
 
-	public void setOrdenesMedicasDeUnaConsulta(Paciente ordenesMedicasDeUnaConsulta) {
+	public void setOrdenesMedicasDeUnaConsulta(Consulta ordenesMedicasDeUnaConsulta) {
 		this.ordenesMedicasDeUnaConsulta = ordenesMedicasDeUnaConsulta;
 	}
 

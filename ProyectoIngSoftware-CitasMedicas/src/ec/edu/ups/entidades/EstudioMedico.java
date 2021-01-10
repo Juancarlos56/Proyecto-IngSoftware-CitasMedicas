@@ -22,6 +22,7 @@ public class EstudioMedico implements Serializable {
 	@Column(name = "id_estudioMedico")
 	private int id_estudioMedico;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaTituloMedico")
 	private Calendar  fechaTituloMedico;
 	

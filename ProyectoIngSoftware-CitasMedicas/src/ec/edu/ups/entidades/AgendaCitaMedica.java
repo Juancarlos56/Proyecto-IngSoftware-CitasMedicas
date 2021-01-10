@@ -22,9 +22,11 @@ public class AgendaCitaMedica implements Serializable {
 	@Column(name = "idAgendaCitaMedica")
 	private int idAgendaCitaMedica;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaActualDeAgendaCitaMedica")
 	private Calendar fechaActualDeAgendaCitaMedica;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaReservaDeAgendaCitaMedica")
 	private Calendar fechaReservaDeAgendaCitaMedica;
 	

@@ -26,6 +26,7 @@ public class LibroDiario implements Serializable {
 	@Column(name = "totalLibroDiario")
 	private double totalLibroDiario;	
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fechaLibroDiario")
 	private Calendar fechaLibroDiario;
 	
