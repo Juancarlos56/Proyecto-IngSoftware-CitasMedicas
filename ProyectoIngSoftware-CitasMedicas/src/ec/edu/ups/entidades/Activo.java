@@ -76,19 +76,23 @@ public class Activo implements Serializable {
 
 	//Metodos propios de la clase Activo
 	
-	public void calcularValorActivoCitas() {
+	public double calcularValorActivoCitas() {
+		double valorCitas = 0.0; 
 		List<FacturaCabecera> facturasCitas = getActivosCobrosCitaMedica();
 		for (FacturaCabecera facturaCabecera : facturasCitas) {
-			setValorActivoCitas(getValorActivoCitas()+facturaCabecera.getTotal());
+			valorCitas = valorCitas +facturaCabecera.getTotal();
 		}
+		return valorCitas;
 	}
 	
 	
-	public void calcularValorActivoCompras() {
+	public double calcularValorActivoCompras() {
+		double valorCompras = 0.0; 
 		List<FacturaCompra> facturasCompras = getActivosCompraEmpresa();
 		for (FacturaCompra facturaCompra : facturasCompras) {
-			setValorActivoCompras(getValorActivoCompras()+facturaCompra.getTotal());
+			valorCompras = valorCompras + facturaCompra.getTotal();
 		}
+		return valorCompras;
 	}
 	
 	//Metodos getters y setters

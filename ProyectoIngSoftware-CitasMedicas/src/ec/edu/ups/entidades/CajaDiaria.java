@@ -1,6 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -84,9 +86,11 @@ public class CajaDiaria implements Serializable {
 	 */
 	
 	public double calcularTotalPatrimonio() {
+		DecimalFormat df = new DecimalFormat("##.##");
+		df.setRoundingMode(RoundingMode.DOWN);
 		double totalPatriminio = 0.0;
 		totalPatriminio = calcularTotalEntradas()-calcularSalidasPorPagoSalario();
-		return totalPatriminio;
+		return Double.parseDouble(df.format(totalPatriminio).replace(",","."));
 	}
 	
 	public double calcularTotalEntradas() {

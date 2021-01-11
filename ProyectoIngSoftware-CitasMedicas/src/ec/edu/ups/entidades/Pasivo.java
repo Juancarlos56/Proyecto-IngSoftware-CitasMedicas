@@ -56,11 +56,15 @@ public class Pasivo implements Serializable {
 	
 	//Metodos propios de la clase Pasivo
 	
-	public void calcularValorActivoCitas() {
+	public double calcularValorPasivoSalarioDoctor() {
+		double valorPasivo = 0.0;
 		List<FacturaSalario> facturasSalarios = getPasivosPorPagoSalarios();
 		for (FacturaSalario facturaSalario : facturasSalarios) {
-			setValorPasivo(getValorPasivo()+facturaSalario.getTotal());
+			if (facturaSalario.getEstado() == "Pagado") {
+				valorPasivo = valorPasivo + facturaSalario.getTotal();
+			}
 		}
+		return valorPasivo;
 	}
 	
 	public int getActivoId() {

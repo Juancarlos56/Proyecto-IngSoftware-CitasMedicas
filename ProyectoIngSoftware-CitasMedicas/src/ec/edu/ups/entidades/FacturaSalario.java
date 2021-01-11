@@ -1,6 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 import javax.persistence.*;
@@ -69,6 +71,14 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 	}
 	
 	
+	public FacturaSalario(Calendar fecha, String descripcion, String tipoTransaccion,
+			String estado, double iva, String tipoFactura, double comisionEmpresaFacturaSalario) {
+		super(fecha, descripcion, tipoTransaccion, estado, tipoFactura, iva);
+		this.comisionEmpresaFacturaSalario = comisionEmpresaFacturaSalario;
+	}
+
+
+
 	@Override
 	public double calcularSubtotal() {
 		Medico facturasMedico = getFacturasSalarioDeMedico();
@@ -83,7 +93,11 @@ public class FacturaSalario extends FacturaGeneral<FacturaSalario> implements Se
 
 	
 	public double calcularSalarioTotalPagoMedico() {
-		return calcularSubtotal() - getComisionEmpresaFacturaSalario();
+		
+		DecimalFormat df = new DecimalFormat("##.##");
+		df.setRoundingMode(RoundingMode.DOWN);
+		double totalSalario = getSubtotal()-((getSubtotal()*getComisionEmpresaFacturaSalario())/100);
+		return Double.parseDouble(df.format(totalSalario).replace(",","."));
 	}
 	
 	

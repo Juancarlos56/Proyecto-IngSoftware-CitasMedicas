@@ -73,6 +73,11 @@ public class LibroDiario implements Serializable {
 	//Metodos propios de la clase LibroDiario
 	
 	
+	public LibroDiario(Calendar fecha, Secretaria responsable) {
+		this.fechaLibroDiario = fecha;
+		this.responsableLibroDiario = responsable;
+	}
+
 	public double calcularTotal() {
 		double totalPasivos = 0.0;
 		double totalActivos = 0.0;
@@ -89,7 +94,7 @@ public class LibroDiario implements Serializable {
 		List<Pasivo> pasivos = getPasivosDeLibroDiario();
 		double totalPasivos = 0.0;
 		for (Pasivo pasivo : pasivos) {
-			totalPasivos = totalPasivos + pasivo.getValorPasivo();
+			totalPasivos = totalPasivos + pasivo.calcularValorPasivoSalarioDoctor();
 		}
 		
 		return totalPasivos;
@@ -109,7 +114,7 @@ public class LibroDiario implements Serializable {
 		double totalActivoCitas = 0.0;
 		
 		for (Activo activo : activos) {
-			totalActivoCitas = totalActivoCitas + activo.getValorActivoCitas();
+			totalActivoCitas = totalActivoCitas + activo.calcularValorActivoCitas();
 		}
 		
 		return totalActivoCitas;
@@ -120,7 +125,7 @@ public class LibroDiario implements Serializable {
 		double totalActivoCompras = 0.0;
 		
 		for (Activo activo : activos) {
-			totalActivoCompras = totalActivoCompras + activo.getValorActivoCompras();
+			totalActivoCompras = totalActivoCompras + activo.calcularValorActivoCompras();
 		}
 		
 		return totalActivoCompras;

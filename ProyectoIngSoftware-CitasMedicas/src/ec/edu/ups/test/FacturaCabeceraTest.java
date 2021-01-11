@@ -65,7 +65,7 @@ class FacturaCabeceraTest {
 	void CalculoSubtotalFacturaCabecera() {
 		double subtotalEsperado = 20;
 		Calendar fecha2 = Calendar.getInstance();
-		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera");
+		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera", (float)12.0);
 		factura.agregarDetalleDeFacturaCabecera(detalle);
 		factura.setMedico(detalle.getCitasDeFacturaDetalle().getMedico());
 		double subtotalObtenido  = factura.calcularSubtotal();
@@ -77,7 +77,7 @@ class FacturaCabeceraTest {
 	void CalculoSubtotalFacturaCabeceraMuchosDetalles() {
 		double subtotalEsperado = 80;
 		Calendar fecha2 = Calendar.getInstance();
-		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera");
+		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera", (float)12.0);
 		for (int i = 0; i < 4; i++) {
 			factura.agregarDetalleDeFacturaCabecera(detalle);
 		}
@@ -95,10 +95,9 @@ class FacturaCabeceraTest {
 	void CalculoTotalFacturaCabecera() {
 		double totalEsperado = 22.4;
 		Calendar fecha2 = Calendar.getInstance();
-		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera");
+		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera", (float)12.0);
 		factura.agregarDetalleDeFacturaCabecera(detalle);
 		factura.setMedico(detalle.getCitasDeFacturaDetalle().getMedico());
-		factura.setIva(12.0);
 		double subtotal = factura.calcularSubtotal();
 		factura.setSubtotal(subtotal);
 		
@@ -115,13 +114,12 @@ class FacturaCabeceraTest {
 	void CalculoTotalFacturaCabeceraMuchosDetalles() {
 		double totalEsperado = 89.6;
 		Calendar fecha2 = Calendar.getInstance();
-		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera");
+		factura = new FacturaCabecera(fecha2, "Cobro de factura cabecera", "Cita Medica", "PagarMedico", "facturaCabecera", (float)12.0);
 		for (int i = 0; i < 4; i++) {
 			factura.agregarDetalleDeFacturaCabecera(detalle);
 		}
 		
 		factura.setMedico(detalle.getCitasDeFacturaDetalle().getMedico());
-		factura.setIva(12.0);
 		double subtotal = factura.calcularSubtotal();
 		factura.setSubtotal(subtotal);
 		
