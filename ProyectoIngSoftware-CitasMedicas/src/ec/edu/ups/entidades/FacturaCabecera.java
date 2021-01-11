@@ -39,6 +39,11 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	}
 	
 	
+	public FacturaCabecera(Calendar fecha, String descripcion, String tipoTransaccion,
+			String estado, double subtotal, double iva, double total, String tipoFactura) {
+		
+		super(fecha, descripcion, tipoTransaccion, estado, subtotal, iva, total, tipoFactura);
+	}
 	
 	public FacturaCabecera(Calendar fecha, String descripcion, String tipoTransaccion,
 			String estado, double subtotal, double iva, double total, String tipoFactura,
@@ -61,6 +66,11 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 	}
 
 	
+	public FacturaCabecera(Calendar fecha, String descripcion, String tipoTransaccion, String estado, String tipoFactura, float iva) {
+		super(fecha, descripcion, tipoTransaccion, estado, tipoFactura, iva);
+	}
+
+
 	@Override
 	public double calcularSubtotal() {
 		double subtotalFacturaCabecera = 0.0; 
@@ -106,7 +116,7 @@ public class FacturaCabecera extends FacturaGeneral<FacturaCabecera> implements 
 		this.detallesDeFacturaCabecera = detallesDeFacturaCabecera;
 	}
    
-	public void addDetalleDeFacturaCabecera(FacturaDetalle detalleDeFacturaCabecera) {
+	public void agregarDetalleDeFacturaCabecera(FacturaDetalle detalleDeFacturaCabecera) {
 		this.detallesDeFacturaCabecera.add(detalleDeFacturaCabecera);
 	}
 

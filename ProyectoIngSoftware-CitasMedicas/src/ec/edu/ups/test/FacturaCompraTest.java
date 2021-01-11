@@ -2,37 +2,41 @@ package ec.edu.ups.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import ec.edu.ups.entidades.Activo;
-import ec.edu.ups.entidades.FacturaCompra;
-import ec.edu.ups.entidades.Activo;
-
 import java.util.Calendar;
 
-class FacturaCompraTest {
-	
-	private FacturaCompra facturaCompra;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
+import ec.edu.ups.entidades.FacturaCompra;
+
+class FacturaCompraTest {
+
+	private FacturaCompra compra; 
+	
 	@BeforeEach
 	void setUp() throws Exception {
-		this.facturaCompra = new FacturaCompra(Calendar.getInstance(), "Compra de gasas y utencilios", "Pagado", "Activo", 12.20, 12.00, 13.66, "Cliente", 2, 6.10
-				,new Activo());
+		Calendar fecha2 = Calendar.getInstance();
+		compra = new FacturaCompra(fecha2, "Compra de producto sanitario cloro", "Compra", "Comprado", "facturaCompra", (float)12.0, 10, 2.50);
 	}
 
 	@Test
-	void calcularSubtotaltest() {
-		double respuesta = this.facturaCompra.calcularSubtotal();
-		assertEquals(12.20, respuesta);
+	@Tag("SubtotalFacturaCompra")
+	void CalculoSubtotalFacturaCabecera() {
+		double subtotalEsperado = 25;
+		double subtotalObtenido  = compra.calcularSubtotal();
+		assertEquals(subtotalEsperado,subtotalObtenido);
 	}
+	
 	
 	@Test
-	void calcularTotaltest() {
-		double respuesta = this.facturaCompra.calcularTotalFactura();
-		assertEquals(13.66, respuesta);
+	@Tag("totalFacturaCompra")
+	void totalFacturaCabecera() {
+		double totalEsperado = 28;
 		
+		compra.setSubtotal(compra.calcularSubtotal());
+		double totalObtenido  = compra.calcularTotalFactura();
+		assertEquals(totalEsperado,totalObtenido);
 	}
-	
 
 }

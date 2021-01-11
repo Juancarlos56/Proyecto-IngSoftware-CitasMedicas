@@ -1,9 +1,8 @@
 package ec.edu.ups.entidades;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.List;
 
+import java.util.Calendar;
 import javax.persistence.*;
 
 /**
@@ -54,6 +53,14 @@ public class FacturaCompra extends FacturaGeneral<FacturaCompra> implements Seri
 	}
 
 	
+	public FacturaCompra(Calendar fecha, String descripcion, String tipoTransaccion, String estado, String tipoFactura, 
+			double iva, int cantidadFacturaCompra, double precioUnitario) {
+		super(fecha, descripcion, tipoTransaccion, estado, tipoFactura, iva);
+		this.cantidadFacturaCompra = cantidadFacturaCompra;
+		this.precioUnitario = precioUnitario;
+	}
+
+
 	@Override
 	public double calcularSubtotal() {
 		return getPrecioUnitario() * getCantidadFacturaCompra();

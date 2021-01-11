@@ -15,7 +15,7 @@ import ec.edu.ups.controladores.LibroDiarioControlador;
 import ec.edu.ups.entidades.CajaDiaria;
 import ec.edu.ups.entidades.Secretaria;
 
-class LibroDIario {
+class LibroDIarioTest {
 		private String respuesta="";
 
 		private LibroDiarioControlador libro= new LibroDiarioControlador();

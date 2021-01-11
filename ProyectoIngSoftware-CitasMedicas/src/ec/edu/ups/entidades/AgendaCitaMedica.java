@@ -96,6 +96,21 @@ public class AgendaCitaMedica implements Serializable {
 		this.pacienteCitaMedica = pacienteCitaMedica;
 		this.citasDeFacturaDetalle = citasDeFacturaDetalle;
 	}
+	
+	public AgendaCitaMedica(Calendar fechaActualDeAgendaCitaMedica,
+			Calendar fechaReservaDeAgendaCitaMedica, String tipoCitaDeAgendaCitaMedica,
+			String estadoDeAgendaCitaMedica, float precioDeAgendaCitaMedica, Secretaria secretariaAgendaCita,
+			Medico medico, Paciente pacienteCitaMedica) {
+		super();
+		this.fechaActualDeAgendaCitaMedica = fechaActualDeAgendaCitaMedica;
+		this.fechaReservaDeAgendaCitaMedica = fechaReservaDeAgendaCitaMedica;
+		this.tipoCitaDeAgendaCitaMedica = tipoCitaDeAgendaCitaMedica;
+		this.estadoDeAgendaCitaMedica = estadoDeAgendaCitaMedica;
+		this.precioDeAgendaCitaMedica = precioDeAgendaCitaMedica;
+		this.secretariaAgendaCita = secretariaAgendaCita;
+		this.medicoParaCitaMedica = medico;
+		this.pacienteCitaMedica = pacienteCitaMedica;
+	}
 
 	
 	//Metodos propios para la clase AgendaCitaMedica

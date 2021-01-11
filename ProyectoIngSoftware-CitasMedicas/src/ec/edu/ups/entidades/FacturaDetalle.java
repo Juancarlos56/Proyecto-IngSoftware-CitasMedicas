@@ -28,6 +28,10 @@ public class FacturaDetalle implements Serializable {
 	@Column(name="subtotalFacturaDetalle",nullable=false)
 	private double subtotalFacturaDetalle;
 	
+	@Column(name="descripcionFacturaDetalle",nullable=false)
+	private String descripcionFacturaDetalle;
+	
+	
 	@ManyToOne 
     @JoinColumn
     private FacturaCabecera detallesDeFacturaCabecera;
@@ -42,32 +46,46 @@ public class FacturaDetalle implements Serializable {
 
 
 
-	public FacturaDetalle(int idFacturaDetalle, int cantidadFacturaDetalle, double subtotalFacturaDetalle,
+	public FacturaDetalle(int idFacturaDetalle, int cantidadFacturaDetalle, double subtotalFacturaDetalle, String descripcionFacturaDetalle,
 			FacturaCabecera detallesDeFacturaCabecera) {
 		super();
 		this.idFacturaDetalle = idFacturaDetalle;
 		this.cantidadFacturaDetalle = cantidadFacturaDetalle;
 		this.subtotalFacturaDetalle = subtotalFacturaDetalle;
 		this.detallesDeFacturaCabecera = detallesDeFacturaCabecera;
+		this.descripcionFacturaDetalle = descripcionFacturaDetalle;
 	}
 
-	public FacturaDetalle(int cantidadFacturaDetalle, double subtotalFacturaDetalle,
+	public FacturaDetalle(int cantidadFacturaDetalle, double subtotalFacturaDetalle, String descripcionFacturaDetalle,
 			FacturaCabecera detallesDeFacturaCabecera) {
 		super();
 		this.cantidadFacturaDetalle = cantidadFacturaDetalle;
 		this.subtotalFacturaDetalle = subtotalFacturaDetalle;
 		this.detallesDeFacturaCabecera = detallesDeFacturaCabecera;
+		this.descripcionFacturaDetalle = descripcionFacturaDetalle;
+	}
+	
+	public FacturaDetalle(int cantidadFacturaDetalle, double subtotalFacturaDetalle, String descripcionFacturaDetalle) {
+		super();
+		this.cantidadFacturaDetalle = cantidadFacturaDetalle;
+		this.subtotalFacturaDetalle = subtotalFacturaDetalle;
+		this.descripcionFacturaDetalle = descripcionFacturaDetalle;
+	}
+
+	
+	public FacturaDetalle(int cantidadFacturaDetalle, String descripcionFacturaDetalle) {
+		super();
+		this.cantidadFacturaDetalle = cantidadFacturaDetalle;
+		this.descripcionFacturaDetalle = descripcionFacturaDetalle;
 	}
 
 
 
-	public double calcularSubtotalFacturaDetalle(double precioCitaMedica) {
-		double subtotal = getCantidadFacturaDetalle()*precioCitaMedica;
-		return subtotal;
+	public double calcularSubtotalFacturaDetalle() {
+		return getCantidadFacturaDetalle()*getCitasDeFacturaDetalle().getPrecioDeAgendaCitaMedica();
+		
 	}
 	
-	
-
 
 	public int getIdFacturaDetalle() {
 		return idFacturaDetalle;
@@ -95,6 +113,20 @@ public class FacturaDetalle implements Serializable {
 
 	public double getSubtotalFacturaDetalle() {
 		return subtotalFacturaDetalle;
+	}
+
+	
+	
+
+
+	public String getDescripcionFacturaDetalle() {
+		return descripcionFacturaDetalle;
+	}
+
+
+
+	public void setDescripcionFacturaDetalle(String descripcionFacturaDetalle) {
+		this.descripcionFacturaDetalle = descripcionFacturaDetalle;
 	}
 
 
